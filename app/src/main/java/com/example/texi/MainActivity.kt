@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val btnLogin = findViewById<Button>(R.id.btnLogin)
+        val btnLogin = findViewById<Button>(R.id.btn_login_page)
 
         btnLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)

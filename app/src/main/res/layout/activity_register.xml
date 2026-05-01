@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Space
+        android:id="@+id/space_header"
+        android:layout_width="360dp"
+        android:layout_height="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Space
+        android:id="@+id/space_top"
+        android:layout_width="200dp"
+        android:layout_height="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/space_right"
+        app:layout_constraintStart_toEndOf="@+id/space_left"
+        app:layout_constraintTop_toBottomOf="@+id/space_header" />
+
+    <Space
+        android:id="@+id/space_left"
+        android:layout_width="80dp"
+        android:layout_height="480dp"
+        app:layout_constraintBottom_toTopOf="@+id/space_footer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/space_header"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Space
+        android:id="@+id/space_right"
+        android:layout_width="80dp"
+        android:layout_height="480dp"
+        app:layout_constraintBottom_toTopOf="@+id/space_footer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/space_header"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <LinearLayout
+        android:id="@+id/layout_register_main"
+        android:layout_width="200dp"
+        android:layout_height="460dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/space_bottom"
+        app:layout_constraintEnd_toStartOf="@+id/space_right"
+        app:layout_constraintStart_toEndOf="@+id/space_left"
+        app:layout_constraintTop_toBottomOf="@+id/space_top">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="-55dp">
+
+            <TextView
+                android:id="@+id/tv_register_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/layout_register_form"
+                android:layout_width="200dp"
+                android:layout_height="355dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@+id/btn_register_submit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_register_heading">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toTopOf="@+id/et_register_university"
+                    app:layout_constraintTop_toTopOf="@+id/et_register_university">
+
+                    <EditText
+                        android:id="@+id/et_register_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:text="Name"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/et_register_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:ems="10"
+                        android:inputType="textEmailAddress"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/et_register_name" />
+
+                    <EditText
+                        android:id="@+id/et_register_student_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:text="Name"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/et_register_email" />
+
+                    <EditText
+                        android:id="@+id/et_register_university"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:text="Name"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/et_register_student_number" />
+
+                    <EditText
+                        android:id="@+id/et_register_graduation_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:ems="10"
+                        android:inputType="number"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/et_register_university" />
+
+                    <EditText
+                        android:id="@+id/et_register_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="textPassword"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/et_register_graduation_year" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_register_submit"
+                android:layout_width="85dp"
+                android:layout_height="35dp"
+                android:text="Button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <Space
+        android:id="@+id/space_bottom"
+        android:layout_width="200dp"
+        android:layout_height="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/space_footer"
+        app:layout_constraintEnd_toStartOf="@+id/space_right"
+        app:layout_constraintStart_toEndOf="@+id/space_left" />
+
+    <Space
+        android:id="@+id/space_footer"
+        android:layout_width="360dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Texi">
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,9 +21,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".LoginActivity" />
-
         <activity android:name=".RegisterActivity" />
+
+        <activity android:name=".TextbooksActivity" />
     </application>
 
 </manifest>

@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">texi</string>
+    <string name="todo">TODO</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="student_number">Student Number</string>
+    <string name="register">Register</string>
+    <string name="graduation_year">Graduation Year</string>
+    <string name="university">University</string>
+    <string name="full_name">Full Name</string>
+    <string name="create_an_account">Create An Account</string>
+    <string name="email_address">Email Address</string>
 </resources>

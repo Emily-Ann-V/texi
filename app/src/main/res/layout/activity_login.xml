@@ -4,36 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cl_login"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="60dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_end"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="60dp" />
+    android:layout_height="match_parent"
+    android:paddingStart="@dimen/screen_horizontal_padding"
+    android:paddingEnd="@dimen/screen_horizontal_padding"
+    android:paddingTop="@dimen/screen_section_padding"
+    android:paddingBottom="@dimen/screen_section_padding">
 
     <ImageView
         android:id="@+id/iv_login_image"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="@dimen/login_form_spacing"
         android:background="@drawable/rounded_images"
         android:clipToOutline="true"
         android:contentDescription="@string/todo"
         android:scaleType="centerCrop"
         android:src="@drawable/delete"
         app:layout_constraintBottom_toTopOf="@+id/tv_login_heading"
-        app:layout_constraintEnd_toEndOf="@id/guideline_end"
-        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:targetApi="31" />
 
@@ -41,24 +30,24 @@
         android:id="@+id/tv_login_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="@dimen/login_form_spacing"
         android:text="@string/welcome_back"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@id/guideline_end"
-        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_login_image" />
 
     <EditText
         android:id="@+id/et_login_student_number"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="@dimen/login_form_spacing"
         android:autofillHints=""
         android:hint="@string/student_number"
         android:inputType="text"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@id/guideline_end"
-        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_login_heading"
         tools:ignore="TextFields" />
 
@@ -67,26 +56,26 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:layout_marginBottom="@dimen/login_form_spacing"
         android:autofillHints=""
         android:hint="@string/password"
         android:inputType="textPassword"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@id/guideline_end"
-        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintBottom_toTopOf="@+id/ll_login_buttons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_login_student_number" />
 
     <LinearLayout
         android:id="@+id/ll_login_buttons"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginTop="@dimen/login_form_spacing"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/guideline_end"
-        app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@+id/et_login_password">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/btn_login_submit"
@@ -94,8 +83,8 @@
             android:layout_height="wrap_content"
 
             android:gravity="center"
-            android:minWidth="110dp"
-            android:minHeight="40dp"
+            android:minWidth="@dimen/button_min_width"
+            android:minHeight="@dimen/button_min_height"
             android:text="@string/login"
             android:textSize="16sp" />
 
@@ -110,8 +99,8 @@
             android:layout_height="wrap_content"
 
             android:gravity="center"
-            android:minWidth="110dp"
-            android:minHeight="40dp"
+            android:minWidth="@dimen/button_min_width"
+            android:minHeight="@dimen/button_min_height"
             android:text="@string/register"
             android:textSize="16sp" />
 

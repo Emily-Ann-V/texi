@@ -7,8 +7,8 @@
     android:layout_height="match_parent"
     android:paddingStart="@dimen/screen_horizontal_padding"
     android:paddingEnd="@dimen/screen_horizontal_padding"
-    android:paddingTop="@dimen/screen_section_padding"
-    android:paddingBottom="@dimen/screen_section_padding">
+    android:paddingTop="@dimen/screen_vertical_padding"
+    android:paddingBottom="@dimen/screen_vertical_padding">
 
     <TextView
         style="@style/MainHeading"
@@ -25,7 +25,7 @@
         style="@style/FormText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="30dp"
         android:autofillHints="name"
         android:hint="@string/full_name"
         android:inputType="textPersonName"
@@ -34,70 +34,71 @@
         app:layout_constraintTop_toBottomOf="@id/tv_register_heading" />
 
     <EditText
-        style="@style/FormText"
         android:id="@+id/et_register_email"
+        style="@style/FormText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/register_form_spacing"
         android:autofillHints="emailAddress"
         android:hint="@string/email_address"
         android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/et_register_student_number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_register_name" />
+        app:layout_constraintTop_toBottomOf="@+id/et_register_name" />
 
     <EditText
-        style="@style/FormText"
         android:id="@+id/et_register_student_number"
+        style="@style/FormText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/register_form_spacing"
         android:autofillHints=""
         android:hint="@string/student_number"
         android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/et_register_university"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_register_email"
+        app:layout_constraintTop_toBottomOf="@+id/et_register_email"
         tools:ignore="TextFields" />
 
     <EditText
-        style="@style/FormText"
         android:id="@+id/et_register_university"
+        style="@style/FormText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/register_form_spacing"
         android:autofillHints=""
         android:hint="@string/university"
         android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/et_register_graduation_year"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_register_student_number" />
+        app:layout_constraintTop_toBottomOf="@+id/et_register_student_number" />
 
     <EditText
-        style="@style/FormText"
         android:id="@+id/et_register_graduation_year"
+        style="@style/FormText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/register_form_spacing"
         android:autofillHints=""
         android:hint="@string/graduation_year"
         android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/et_register_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_register_university" />
+        app:layout_constraintTop_toBottomOf="@+id/et_register_university" />
 
     <EditText
         android:id="@+id/et_register_password"
         style="@style/FormText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/register_form_spacing"
+        android:layout_marginBottom="30dp"
         android:autofillHints="password"
         android:hint="@string/password"
         android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/btn_register_submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_register_graduation_year" />
+        app:layout_constraintTop_toBottomOf="@+id/et_register_graduation_year" />
 
     <Button
         android:id="@+id/btn_register_submit"
@@ -105,12 +106,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/screen_horizontal_padding"
-        android:layout_marginTop="25dp"
         android:layout_marginEnd="@dimen/screen_horizontal_padding"
         android:text="@string/register"
+        app:layout_constraintBottom_toTopOf="@+id/tv_login_back_link"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_register_password" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tv_login_back_link"
@@ -120,7 +120,6 @@
         android:text="@string/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_register_submit" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

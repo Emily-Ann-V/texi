@@ -7,107 +7,21 @@
     android:layout_height="match_parent"
     tools:context=".TextbooksActivity">
 
-    <LinearLayout
-        android:id="@+id/ll_header"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:minHeight="70dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/tv_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="TextView"
-            android:textSize="32sp"
-            tools:ignore="HardcodedText" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <ImageButton
-            android:id="@+id/ib_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:contentDescription="@string/todo"
-            app:srcCompat="@android:drawable/ic_menu_agenda" />
-
-    </LinearLayout>
+    <include layout="@layout/header"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        style="@style/MainText"
         android:id="@+id/rv_textbooks"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/screen_vertical_padding"
-        android:layout_marginBottom="@dimen/screen_vertical_padding"
         android:layout_marginStart="@dimen/screen_horizontal_padding"
         android:layout_marginEnd="@dimen/screen_horizontal_padding"
-        app:layout_constraintTop_toBottomOf="@+id/ll_header"
-        app:layout_constraintBottom_toTopOf="@+id/ll_footer"
+        android:layout_marginTop="@dimen/screen_vertical_padding"
+        android:layout_marginBottom="@dimen/screen_vertical_padding"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/ll_footer"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:minHeight="70dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <ImageButton
-            android:id="@+id/ib_home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/todo"
-            app:srcCompat="@android:drawable/btn_star_big_on" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <ImageButton
-            android:id="@+id/ib_upload"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/todo"
-            app:srcCompat="@android:drawable/btn_star_big_on" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <ImageButton
-            android:id="@+id/ib_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/todo"
-            app:srcCompat="@android:drawable/btn_star_big_on" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-    </LinearLayout>
+    <include layout="@layout/footer"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

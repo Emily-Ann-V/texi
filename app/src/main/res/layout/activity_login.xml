@@ -12,32 +12,31 @@
 
     <ImageView
         android:id="@+id/iv_login_image"
+        style="@style/Image"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="@dimen/login_form_spacing"
-        android:background="@drawable/rounded_images"
-        android:clipToOutline="true"
         android:contentDescription="@string/todo"
-        android:scaleType="centerCrop"
-        android:src="@drawable/delete"
+        android:scaleType="fitCenter"
+        android:src="@drawable/login_logo"
         app:layout_constraintBottom_toTopOf="@+id/tv_login_heading"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:targetApi="31" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        style="@style/MainHeading"
         android:id="@+id/tv_login_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/login_form_spacing"
         android:text="@string/welcome_back"
-        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_login_image" />
 
     <EditText
+        style="@style/LoginFormText"
         android:id="@+id/et_login_student_number"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -45,22 +44,20 @@
         android:autofillHints=""
         android:hint="@string/student_number"
         android:inputType="text"
-        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_login_heading"
         tools:ignore="TextFields" />
 
     <EditText
+        style="@style/LoginFormText"
         android:id="@+id/et_login_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:layout_marginBottom="@dimen/login_form_spacing"
         android:autofillHints=""
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/ll_login_buttons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,15 +75,12 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
+            style="@style/PrimaryButton"
             android:id="@+id/btn_login_submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:gravity="center"
-            android:minWidth="@dimen/button_min_width"
-            android:minHeight="@dimen/button_min_height"
-            android:text="@string/login"
-            android:textSize="16sp" />
+            android:text="@string/login" />
 
         <Space
             android:layout_width="0dp"
@@ -94,15 +88,12 @@
             android:layout_weight="1" />
 
         <Button
+            style="@style/SecondaryButton"
             android:id="@+id/btn_register_page"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:gravity="center"
-            android:minWidth="@dimen/button_min_width"
-            android:minHeight="@dimen/button_min_height"
-            android:text="@string/register"
-            android:textSize="16sp" />
+            android:text="@string/register" />
 
     </LinearLayout>
 

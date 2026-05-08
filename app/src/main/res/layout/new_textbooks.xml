@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="@dimen/primary_screen_horizontal_padding"
+    android:paddingEnd="@dimen/secondary_screen_horizontal_padding">
+
+    <Button
+        style="@style/PrimaryButton"
+        android:id="@+id/btn_view_all_textbooks"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/view_all"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_textbooks"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/general_spacing"
+        android:layout_marginEnd="@dimen/secondary_screen_horizontal_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_view_all_textbooks" />
+</androidx.constraintlayout.widget.ConstraintLayout>

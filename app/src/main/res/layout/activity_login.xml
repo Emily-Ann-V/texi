@@ -5,8 +5,8 @@
     android:id="@+id/cl_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingStart="@dimen/screen_horizontal_padding"
-    android:paddingEnd="@dimen/screen_horizontal_padding"
+    android:paddingStart="@dimen/primary_screen_horizontal_padding"
+    android:paddingEnd="@dimen/primary_screen_horizontal_padding"
     android:paddingTop="@dimen/screen_vertical_padding"
     android:paddingBottom="@dimen/screen_vertical_padding">
 
@@ -19,6 +19,7 @@
         android:contentDescription="@string/todo"
         android:scaleType="fitCenter"
         android:src="@drawable/login_logo"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintBottom_toTopOf="@+id/tv_login_heading"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,7 +76,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            style="@style/PrimaryButton"
+            style="@style/PrimaryLoginButton"
             android:id="@+id/btn_login_submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -88,7 +89,7 @@
             android:layout_weight="1" />
 
         <Button
-            style="@style/SecondaryButton"
+            style="@style/SecondaryLoginButton"
             android:id="@+id/btn_register_page"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

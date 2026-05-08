@@ -32,7 +32,7 @@
         <item name="android:textColorHint">@color/grey</item>
     </style>
 
-    <style name="PrimaryButton">
+    <style name="PrimaryLoginButton">
         <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">@font/opensans_regular</item>
         <item name="android:minWidth">110dp</item>
@@ -40,10 +40,27 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="SecondaryButton">
+    <style name="SecondaryLoginButton">
         <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">@font/opensans_regular</item>
         <item name="android:minWidth">110dp</item>
+        <item name="android:minHeight">40dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="backgroundTint">@color/grey</item>
+    </style>
+
+    <style name="PrimaryButton">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/opensans_regular</item>
+        <item name="android:minWidth">90dp</item>
+        <item name="android:minHeight">40dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="SecondaryButton">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/opensans_regular</item>
+        <item name="android:minWidth">90dp</item>
         <item name="android:minHeight">40dp</item>
         <item name="android:textColor">@color/black</item>
         <item name="backgroundTint">@color/grey</item>
@@ -56,7 +73,17 @@
     </style>
 
     <style name="Image">
-        <item name="android:background">@drawable/rounded_images</item>
+        <item name="android:background">@drawable/rounded_image</item>
+        <item name="android:clipToOutline">true</item>
+    </style>
+
+    <style name="SearchBar">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/opensans_regular</item>
+        <item name="android:minHeight">40dp</item>
+        <item name="android:minWidth">210dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@drawable/rounded_search_bar</item>
         <item name="android:clipToOutline">true</item>
     </style>
 </resources>

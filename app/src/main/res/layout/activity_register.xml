@@ -5,8 +5,8 @@
     android:id="@+id/cl_register"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingStart="@dimen/screen_horizontal_padding"
-    android:paddingEnd="@dimen/screen_horizontal_padding"
+    android:paddingStart="@dimen/primary_screen_horizontal_padding"
+    android:paddingEnd="@dimen/primary_screen_horizontal_padding"
     android:paddingTop="@dimen/screen_vertical_padding"
     android:paddingBottom="@dimen/screen_vertical_padding">
 
@@ -25,7 +25,7 @@
         style="@style/FormText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/register_form_spacing"
         android:autofillHints="name"
         android:hint="@string/full_name"
         android:inputType="textPersonName"
@@ -91,7 +91,7 @@
         style="@style/FormText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="@dimen/register_form_spacing"
         android:autofillHints="password"
         android:hint="@string/password"
         android:inputType="textPassword"
@@ -101,12 +101,12 @@
         app:layout_constraintTop_toBottomOf="@+id/et_register_graduation_year" />
 
     <Button
+        style="@style/PrimaryLoginButton"
         android:id="@+id/btn_register_submit"
-        style="@style/PrimaryButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/screen_horizontal_padding"
-        android:layout_marginEnd="@dimen/screen_horizontal_padding"
+        android:layout_marginStart="@dimen/primary_screen_horizontal_padding"
+        android:layout_marginEnd="@dimen/primary_screen_horizontal_padding"
         android:text="@string/register"
         app:layout_constraintBottom_toTopOf="@+id/tv_login_back_link"
         app:layout_constraintEnd_toEndOf="parent"

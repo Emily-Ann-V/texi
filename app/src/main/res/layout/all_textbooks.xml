@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="@dimen/primary_screen_horizontal_padding"
+    android:paddingEnd="@dimen/secondary_screen_horizontal_padding">
+
+    <EditText
+        android:id="@+id/et_search_bar"
+        style="@style/SearchBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/general_spacing"
+        android:gravity="center_vertical"
+        android:hint="@string/search"
+        android:inputType="text"
+        android:paddingStart="@dimen/general_spacing"
+        app:layout_constraintEnd_toStartOf="@+id/ib_filter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ib_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/todo"
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:src="@drawable/search_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/et_search_bar"
+        app:layout_constraintEnd_toEndOf="@+id/et_search_bar"
+        app:layout_constraintTop_toTopOf="@+id/et_search_bar" />
+
+    <ImageButton
+        android:id="@+id/ib_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/todo"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        android:src="@drawable/filter_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/et_search_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_search_bar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_textbooks"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/general_spacing"
+        android:layout_marginEnd="@dimen/secondary_screen_horizontal_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_search_bar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,13 +23,8 @@
 
         <ImageButton
             android:id="@+id/ib_home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#00000000"
+            style="@style/Icon"
             android:contentDescription="@string/todo"
-            android:scaleType="centerInside"
-            android:scaleX="0.5"
-            android:scaleY="0.5"
             android:src="@drawable/home_icon" />
 
         <Space
@@ -39,13 +34,8 @@
 
         <ImageButton
             android:id="@+id/ib_upload"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#00000000"
+            style="@style/Icon"
             android:contentDescription="@string/todo"
-            android:scaleType="centerInside"
-            android:scaleX="0.5"
-            android:scaleY="0.5"
             android:src="@drawable/upload_icon" />
 
         <Space
@@ -55,13 +45,8 @@
 
         <ImageButton
             android:id="@+id/ib_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#00000000"
+            style="@style/Icon"
             android:contentDescription="@string/todo"
-            android:scaleType="centerInside"
-            android:scaleX="0.5"
-            android:scaleY="0.5"
             android:src="@drawable/my_profile_icon" />
 
         <Space

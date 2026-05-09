@@ -32,14 +32,12 @@
 
         <ImageButton
             android:id="@+id/ib_menu"
+            style="@style/Icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:background="@null"
             android:contentDescription="@string/todo"
-            android:scaleType="centerInside"
-            android:scaleX="0.5"
-            android:scaleY="0.5"
             android:src="@drawable/hamburger_menu_icon" />
 
     </LinearLayout>

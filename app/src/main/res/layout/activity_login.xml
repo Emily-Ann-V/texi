@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cl_login"
+    style="@style/AuthenticationScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingStart="@dimen/primary_screen_horizontal_padding"
-    android:paddingEnd="@dimen/primary_screen_horizontal_padding"
     android:paddingTop="@dimen/screen_vertical_padding"
+    android:paddingEnd="@dimen/primary_screen_horizontal_padding"
     android:paddingBottom="@dimen/screen_vertical_padding">
 
     <ImageView
@@ -19,15 +19,15 @@
         android:contentDescription="@string/todo"
         android:scaleType="fitCenter"
         android:src="@drawable/login_logo"
-        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintBottom_toTopOf="@+id/tv_login_heading"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        style="@style/MainHeading"
         android:id="@+id/tv_login_heading"
+        style="@style/MainHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/login_form_spacing"
@@ -37,22 +37,21 @@
         app:layout_constraintTop_toBottomOf="@+id/iv_login_logo" />
 
     <EditText
-        style="@style/LoginFormText"
         android:id="@+id/et_login_student_number"
+        style="@style/LoginFormText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/login_form_spacing"
         android:autofillHints=""
         android:hint="@string/student_number"
-        android:inputType="text"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_login_heading"
-        tools:ignore="TextFields" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_login_heading" />
 
     <EditText
-        style="@style/LoginFormText"
         android:id="@+id/et_login_password"
+        style="@style/LoginFormText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/login_form_spacing"
@@ -76,8 +75,8 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            style="@style/PrimaryLoginButton"
             android:id="@+id/btn_login_submit"
+            style="@style/PrimaryLoginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -89,8 +88,8 @@
             android:layout_weight="1" />
 
         <Button
-            style="@style/SecondaryLoginButton"
             android:id="@+id/btn_register_page"
+            style="@style/SecondaryLoginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"

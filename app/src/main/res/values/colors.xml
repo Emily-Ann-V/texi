@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FCA105</color>
     <color name="grey">#CACACA</color>
+    <color name="transparent">@android:color/transparent</color>
 </resources>

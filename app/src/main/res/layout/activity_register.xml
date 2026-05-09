@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cl_register"
+    style="@style/AuthenticationScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingStart="@dimen/primary_screen_horizontal_padding"
-    android:paddingEnd="@dimen/primary_screen_horizontal_padding"
     android:paddingTop="@dimen/screen_vertical_padding"
+    android:paddingEnd="@dimen/primary_screen_horizontal_padding"
     android:paddingBottom="@dimen/screen_vertical_padding">
 
     <TextView
-        style="@style/MainHeading"
         android:id="@+id/tv_register_heading"
+        style="@style/MainHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/create_an_account"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_register_name"
+        android:id="@+id/et_register_full_name"
         style="@style/FormText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
         app:layout_constraintBottom_toTopOf="@+id/et_register_student_number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_register_name" />
+        app:layout_constraintTop_toBottomOf="@+id/et_register_full_name" />
 
     <EditText
         android:id="@+id/et_register_student_number"
@@ -53,12 +53,11 @@
         android:layout_height="wrap_content"
         android:autofillHints=""
         android:hint="@string/student_number"
-        android:inputType="text"
+        android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/et_register_university"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_register_email"
-        tools:ignore="TextFields" />
+        app:layout_constraintTop_toBottomOf="@+id/et_register_email" />
 
     <EditText
         android:id="@+id/et_register_university"
@@ -91,7 +90,6 @@
         style="@style/FormText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/register_form_spacing"
         android:autofillHints="password"
         android:hint="@string/password"
         android:inputType="textPassword"
@@ -101,16 +99,17 @@
         app:layout_constraintTop_toBottomOf="@+id/et_register_graduation_year" />
 
     <Button
-        style="@style/PrimaryLoginButton"
         android:id="@+id/btn_register_submit"
+        style="@style/PrimaryLoginButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/primary_screen_horizontal_padding"
         android:layout_marginEnd="@dimen/primary_screen_horizontal_padding"
         android:text="@string/register"
-        app:layout_constraintBottom_toTopOf="@+id/tv_login_back_link"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_register_password" />
 
     <TextView
         android:id="@+id/tv_login_back_link"
@@ -120,6 +119,7 @@
         android:text="@string/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_register_submit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,4 @@
-package com.example.texi
-
-import android.widget.Toast
+package com.example.texi.model
 
 class Student(
     var fullName: String,

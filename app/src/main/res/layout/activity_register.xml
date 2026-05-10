@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cl_register"
     style="@style/AuthenticationScreen">
 
@@ -19,10 +20,11 @@
         style="@style/FormText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/register_form_spacing"
+        android:layout_marginTop="@dimen/form_spacing"
         android:autofillHints="name"
         android:hint="@string/full_name"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/et_register_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_register_heading" />
@@ -61,10 +63,36 @@
         android:autofillHints=""
         android:hint="@string/university"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/et_register_graduation_year"
+        app:layout_constraintBottom_toTopOf="@+id/et_register_field"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_register_student_number" />
+
+    <EditText
+        android:id="@+id/et_register_field"
+        style="@style/FormText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="@string/field_of_study"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/et_register_degree"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_register_university" />
+
+    <EditText
+        android:id="@+id/et_register_degree"
+        style="@style/FormText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="@string/degree_of_study"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/et_register_graduation_year"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_register_field" />
 
     <EditText
         android:id="@+id/et_register_graduation_year"
@@ -77,43 +105,53 @@
         app:layout_constraintBottom_toTopOf="@+id/et_register_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_register_university" />
+        app:layout_constraintTop_toBottomOf="@+id/et_register_degree" />
 
     <EditText
         android:id="@+id/et_register_password"
         style="@style/FormText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/form_spacing"
         android:autofillHints="password"
         android:hint="@string/password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/btn_register_submit"
+        app:layout_constraintBottom_toTopOf="@+id/ll_register_buttons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_register_graduation_year" />
 
-    <Button
-        android:id="@+id/btn_register_submit"
-        style="@style/PrimaryLoginButton"
+    <LinearLayout
+        android:id="@+id/ll_register_buttons"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/primary_screen_horizontal_padding"
-        android:layout_marginEnd="@dimen/primary_screen_horizontal_padding"
-        android:text="@string/register"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_register_password" />
+        app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:id="@+id/tv_login_back_link"
-        style="@style/Link"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_register_submit" />
+        <Button
+            android:id="@+id/btn_register_submit"
+            style="@style/PrimaryLoginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/register" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_back_login"
+            style="@style/SecondaryLoginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/login" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -41,7 +41,7 @@
     <style name="PrimaryLoginButton">
         <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">@font/opensans_regular</item>
-        <item name="android:minWidth">110dp</item>
+        <item name="android:minWidth">115dp</item>
         <item name="android:minHeight">40dp</item>
         <item name="android:textColor">@color/black</item>
     </style>
@@ -49,7 +49,7 @@
     <style name="SecondaryLoginButton">
         <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">@font/opensans_regular</item>
-        <item name="android:minWidth">110dp</item>
+        <item name="android:minWidth">115dp</item>
         <item name="android:minHeight">40dp</item>
         <item name="android:textColor">@color/black</item>
         <item name="backgroundTint">@color/grey</item>

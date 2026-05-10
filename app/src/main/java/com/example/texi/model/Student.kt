@@ -5,6 +5,8 @@ class Student(
     var emailAddress: String,
     var studentNumber: Int,
     var university: String,
+    var field: String,
+    var degree: String,
     var graduationYear: Int,
     var password: String
 )
@@ -16,6 +18,8 @@ fun registerStudent(
     emailAddressRegisterInput: String,
     studentNumberRegisterInput: Int,
     universityRegisterInput: String,
+    fieldRegisterInput: String,
+    degreeRegisterInput: String,
     graduationYearRegisterInput: Int,
     passwordRegisterInput: String
 ): Boolean {
@@ -33,6 +37,8 @@ fun registerStudent(
         emailAddressRegisterInput,
         studentNumberRegisterInput,
         universityRegisterInput,
+        fieldRegisterInput,
+        degreeRegisterInput,
         graduationYearRegisterInput,
         passwordRegisterInput
     )

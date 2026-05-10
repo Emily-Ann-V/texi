@@ -20,4 +20,6 @@
     <string name="my_profile">My Profile</string>
     <string name="all_textbooks">All Textbooks</string>
     <string name="logout">Logout</string>
+    <string name="field_of_study">Field Of Study</string>
+    <string name="degree_of_study">Degree Of Study</string>
 </resources>

@@ -1,11 +1,9 @@
 package com.example.texi.ui
 
-import android.graphics.Paint
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -28,29 +26,31 @@ class RegisterActivity : AppCompatActivity() {
         val etStudentNumber = findViewById<EditText>(R.id.et_register_student_number)
         val etUniversity = findViewById<EditText>(R.id.et_register_university)
         val etGraduationYear = findViewById<EditText>(R.id.et_register_graduation_year)
+        val etField = findViewById<EditText>(R.id.et_register_field)
+        val etDegree = findViewById<EditText>(R.id.et_register_degree)
         val etPassword = findViewById<EditText>(R.id.et_register_password)
 
         val btnRegister = findViewById<Button>(R.id.btn_register_submit)
-        val tvBack = findViewById<TextView>(R.id.tv_login_back_link)
+        val btnBack = findViewById<Button>(R.id.btn_back_login)
 
-        tvBack.paintFlags =
-            tvBack.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-
-        tvBack.setOnClickListener {
+        btnBack.setOnClickListener {
             finish()
         }
 
         btnRegister.setOnClickListener {
 
             val fullNameInput = etFullName.text.toString()
-            val trimmedFullNameInput = fullNameInput.trim()
-
             val emailAddressInput = etEmail.text.toString()
             val universityInput = etUniversity.text.toString()
+            val fieldInput = etField.text.toString()
+            val degreeInput = etDegree.text.toString()
             val passwordInput = etPassword.text.toString()
-
             val stringStudentNumberInput = etStudentNumber.text.toString()
             val stringGraduationYearInput = etGraduationYear.text.toString()
+
+            val trimmedFullNameInput = fullNameInput.trim()
+            val trimmedFieldInput = fieldInput.trim()
+            val trimmedDegreeInput = degreeInput.trim()
 
             val fullNameLetterCount = trimmedFullNameInput.count { it.isLetter() }
             val universityLetterCount = universityInput.trim().count { it.isLetter() }
@@ -102,6 +102,14 @@ class RegisterActivity : AppCompatActivity() {
                             Toast.LENGTH_LONG
                         ).show()
 
+                    } else if (trimmedFieldInput.length < 5 ||
+                        trimmedFieldInput.any { it.isDigit() }){
+                        Toast.makeText(this, "Field of study must have 5+ letters and no numbers.", Toast.LENGTH_SHORT).show()
+
+                    } else if (trimmedDegreeInput.length < 5 ||
+                        trimmedDegreeInput.any { it.isDigit() }){
+                        Toast.makeText(this, "Degree of study must have 5+ letters and no numbers.", Toast.LENGTH_SHORT).show()
+
                     } else if (graduationYearInput < (year - 1) || graduationYearInput > (year + 4)) {
                         Toast.makeText(
                             this,
@@ -122,19 +130,21 @@ class RegisterActivity : AppCompatActivity() {
                             Toast.LENGTH_LONG
                         ).show()
 
-                    } else {
+                    } else{
 
                         val registered = viewModel.register(
                             fullNameInput,
                             emailAddressInput,
                             studentNumberInput,
                             universityInput,
+                            fieldInput,
+                            degreeInput,
                             graduationYearInput,
                             passwordInput
                         )
 
                         if (registered) {
-                            Toast.makeText(this, "Account saved.", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this, "Account created.", Toast.LENGTH_LONG).show()
                             finish()
                         } else {
                             Toast.makeText(this, "User already found. Please login.", Toast.LENGTH_LONG)

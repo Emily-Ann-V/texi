@@ -10,6 +10,8 @@ class RegisterViewModel : ViewModel() {
         emailAddressInput: String,
         studentNumberInput: Int,
         universityInput: String,
+        fieldInput: String,
+        degreeInput: String,
         graduationYearInput: Int,
         passwordInput: String
     ): Boolean {
@@ -19,6 +21,8 @@ class RegisterViewModel : ViewModel() {
             emailAddressInput,
             studentNumberInput,
             universityInput,
+            fieldInput,
+            degreeInput,
             graduationYearInput,
             passwordInput
         )

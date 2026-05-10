@@ -88,10 +88,10 @@ class RegisterActivity : AppCompatActivity() {
                             Toast.LENGTH_LONG
                         ).show()
 
-                    } else if (stringStudentNumberInput.length < 4) {
+                    } else if (stringStudentNumberInput.length < 2) {
                         Toast.makeText(
                             this,
-                            "Student number must have 4+ numbers",
+                            "Student number must have 2+ numbers",
                             Toast.LENGTH_LONG
                         ).show()
 
@@ -137,7 +137,7 @@ class RegisterActivity : AppCompatActivity() {
                             Toast.makeText(this, "Account saved.", Toast.LENGTH_LONG).show()
                             finish()
                         } else {
-                            Toast.makeText(this, "User already found. Please login", Toast.LENGTH_LONG)
+                            Toast.makeText(this, "User already found. Please login.", Toast.LENGTH_LONG)
                                 .show()
                         }
                     }

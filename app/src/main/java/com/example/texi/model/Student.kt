@@ -21,7 +21,7 @@ fun registerStudent(
 ): Boolean {
 
     val duplicate = students.any {
-        it.studentNumber == studentNumberRegisterInput
+        it.emailAddress == emailAddressRegisterInput
     }
 
     if (duplicate) {
@@ -43,10 +43,10 @@ fun registerStudent(
         }
 }
 
-fun loginStudent(studentNumberLoginInput: Int, passwordLoginInput: String): Boolean {
+fun loginStudent(studentEmailLoginInput: String, passwordLoginInput: String): Boolean {
 
     val authentication = students.any {
-        it.studentNumber == studentNumberLoginInput &&
+        it.emailAddress == studentEmailLoginInput &&
                 it.password == passwordLoginInput
     }
 

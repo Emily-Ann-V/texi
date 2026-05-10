@@ -5,7 +5,7 @@ import com.example.texi.model.loginStudent
 
 class LoginViewModel : ViewModel() {
 
-    fun login(studentNumberInput: Int, passwordInput: String): Boolean {
-        return loginStudent(studentNumberInput, passwordInput)
+    fun login(emailAddressInput: String, passwordInput: String): Boolean {
+        return loginStudent(emailAddressInput, passwordInput)
     }
 }

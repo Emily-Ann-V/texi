@@ -31,14 +31,14 @@
         app:layout_constraintTop_toBottomOf="@+id/iv_login_logo" />
 
     <EditText
-        android:id="@+id/et_login_student_number"
+        android:id="@+id/et_login_email_address"
         style="@style/LoginFormText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/login_form_spacing"
         android:autofillHints=""
-        android:hint="@string/student_number"
-        android:inputType="number"
+        android:hint="@string/email_address"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_login_heading" />
@@ -55,7 +55,7 @@
         app:layout_constraintBottom_toTopOf="@+id/ll_login_buttons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_login_student_number" />
+        app:layout_constraintTop_toBottomOf="@+id/et_login_email_address" />
 
     <LinearLayout
         android:id="@+id/ll_login_buttons"

@@ -31,12 +31,12 @@ class RegisterActivity : AppCompatActivity() {
         val etPassword = findViewById<EditText>(R.id.et_register_password)
 
         val btnRegister = findViewById<Button>(R.id.btn_register_submit)
-        val backLink = findViewById<TextView>(R.id.tv_login_back_link)
+        val tvBack = findViewById<TextView>(R.id.tv_login_back_link)
 
-        backLink.paintFlags =
-            backLink.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+        tvBack.paintFlags =
+            tvBack.paintFlags or Paint.UNDERLINE_TEXT_FLAG
 
-        backLink.setOnClickListener {
+        tvBack.setOnClickListener {
             finish()
         }
 

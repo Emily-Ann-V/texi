@@ -2,13 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cl_register"
-    style="@style/AuthenticationScreen"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingStart="@dimen/primary_screen_horizontal_padding"
-    android:paddingTop="@dimen/screen_vertical_padding"
-    android:paddingEnd="@dimen/primary_screen_horizontal_padding"
-    android:paddingBottom="@dimen/screen_vertical_padding">
+    style="@style/AuthenticationScreen">
 
     <TextView
         android:id="@+id/tv_register_heading"

@@ -1,6 +1,6 @@
 package com.example.texi.model
 
-class Student(
+data class Student(
     var fullName: String,
     var emailAddress: String,
     var studentNumber: Int,

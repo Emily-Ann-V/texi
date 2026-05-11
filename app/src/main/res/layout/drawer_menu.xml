@@ -8,9 +8,9 @@
     android:layout_gravity="end"
     android:background="@color/black"
     android:paddingStart="@dimen/primary_screen_horizontal_padding"
-    android:paddingTop="@dimen/screen_vertical_padding"
+    android:paddingTop="@dimen/primary_screen_vertical_padding"
     android:paddingEnd="@dimen/primary_screen_horizontal_padding"
-    android:paddingBottom="@dimen/screen_vertical_padding">
+    android:paddingBottom="@dimen/primary_screen_vertical_padding">
 
     <TextView
         android:id="@+id/tv_menu"

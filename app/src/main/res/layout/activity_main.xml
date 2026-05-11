@@ -18,17 +18,17 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <FrameLayout
-            android:id="@+id/fl_textbooks"
+            android:id="@+id/fl_main"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/primary_screen_horizontal_padding"
-            android:layout_marginTop="@dimen/screen_vertical_padding"
+            android:layout_marginTop="@dimen/primary_screen_vertical_padding"
             android:layout_marginEnd="@dimen/primary_screen_horizontal_padding"
-            android:layout_marginBottom="@dimen/screen_vertical_padding"
-            app:layout_constraintBottom_toTopOf="@id/l_footer"
+            android:layout_marginBottom="@dimen/primary_screen_vertical_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/l_header" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <include
             android:id="@+id/l_footer"

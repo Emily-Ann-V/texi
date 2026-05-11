@@ -108,9 +108,9 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:paddingStart">@dimen/primary_screen_horizontal_padding</item>
-        <item name="android:paddingTop">@dimen/screen_vertical_padding</item>
+        <item name="android:paddingTop">@dimen/primary_screen_vertical_padding</item>
         <item name="android:paddingEnd">@dimen/primary_screen_horizontal_padding</item>
-        <item name="android:paddingBottom">@dimen/screen_vertical_padding</item>
+        <item name="android:paddingBottom">@dimen/primary_screen_vertical_padding</item>
     </style>
 
     <style name="TextbooksScreen">

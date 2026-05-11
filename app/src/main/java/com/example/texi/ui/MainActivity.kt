@@ -25,5 +25,9 @@ class MainActivity : AppCompatActivity() {
         ibMenu.setOnClickListener {
                 dlMenu.openDrawer(GravityCompat.END)
         }
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fl_main, NewTextbooksFragment())
+            .commit()
     }
 }

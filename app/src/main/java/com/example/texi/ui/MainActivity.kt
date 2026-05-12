@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Paint
 import android.os.Bundle
 import android.widget.ImageButton
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -15,12 +16,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         val ibMenu = findViewById<ImageButton>(R.id.ib_menu)
         val dlMenu = findViewById<DrawerLayout>(R.id.dl_menu)
-        val ibHomeFooter = findViewById<ImageButton>(R.id.ib_home_footer)
-        val ibHomeMenu = findViewById<ImageButton>(R.id.ib_home_menu)
-        val ibAllTextbooks = findViewById<ImageButton>(R.id.ib_all_textbooks_menu)
+        val ibHome = findViewById<ImageButton>(R.id.ib_home_footer)
+        val llHome = findViewById<LinearLayout>(R.id.ll_home_menu)
+        val llAllTextbooks = findViewById<LinearLayout>(R.id.ll_all_textbooks_menu)
         val tvLogout = findViewById<TextView>(R.id.tv_logout)
 
         loadLatestTextbooks()
@@ -36,16 +36,16 @@ class MainActivity : AppCompatActivity() {
                 dlMenu.openDrawer(GravityCompat.END)
         }
 
-        ibHomeFooter.setOnClickListener {
+        ibHome.setOnClickListener {
             loadLatestTextbooks()
         }
 
-        ibHomeMenu.setOnClickListener {
+        llHome.setOnClickListener {
             loadLatestTextbooks()
             dlMenu.closeDrawer(GravityCompat.END)
         }
 
-        ibAllTextbooks.setOnClickListener {
+        llAllTextbooks.setOnClickListener {
             loadAllTextbooks()
             dlMenu.closeDrawer(GravityCompat.END)
         }

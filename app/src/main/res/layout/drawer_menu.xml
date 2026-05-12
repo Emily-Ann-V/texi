@@ -7,9 +7,9 @@
     android:layout_height="match_parent"
     android:layout_gravity="end"
     android:background="@color/black"
-    android:paddingStart="@dimen/primary_screen_horizontal_padding"
+    android:paddingStart="@dimen/secondary_screen_horizontal_padding"
     android:paddingTop="@dimen/primary_screen_vertical_padding"
-    android:paddingEnd="@dimen/primary_screen_horizontal_padding"
+    android:paddingEnd="@dimen/secondary_screen_horizontal_padding"
     android:paddingBottom="@dimen/primary_screen_vertical_padding">
 
     <TextView
@@ -22,93 +22,118 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/ib_home_menu"
-        style="@style/Icon"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/ll_home_menu"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/todo"
-        android:src="@drawable/home_menu_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_home"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/ll_upload_menu"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_home" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_menu">
 
-    <TextView
-        android:id="@+id/tv_home"
-        style="@style/SubHeading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/small_general_spacing"
-        android:text="@string/home"
-        app:layout_constraintBottom_toTopOf="@+id/tv_upload_textbook"
-        app:layout_constraintStart_toEndOf="@+id/ib_home_menu"
-        app:layout_constraintTop_toBottomOf="@+id/tv_menu" />
+        <ImageButton
+            android:id="@+id/ib_home_menu"
+            style="@style/Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/home_menu_icon" />
 
-    <ImageButton
-        android:id="@+id/ib_upload_menu"
-        style="@style/Icon"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tv_home"
+            style="@style/SubHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_general_spacing"
+            android:text="@string/home" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_upload_menu"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/todo"
-        android:src="@drawable/upload_menu_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_upload_textbook"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/ll_profile_menu"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_upload_textbook" />
+        app:layout_constraintTop_toBottomOf="@+id/ll_home_menu">
 
-    <TextView
-        android:id="@+id/tv_upload_textbook"
-        style="@style/SubHeading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/small_general_spacing"
-        android:text="@string/upload_textbook"
-        app:layout_constraintBottom_toTopOf="@+id/tv_my_profile"
-        app:layout_constraintStart_toEndOf="@+id/ib_upload_menu"
-        app:layout_constraintTop_toBottomOf="@+id/tv_home" />
+        <ImageButton
+            android:id="@+id/ib_upload_menu"
+            style="@style/Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/upload_menu_icon" />
 
-    <ImageButton
-        android:id="@+id/ib_profile_menu"
-        style="@style/Icon"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tv_upload_textbook"
+            style="@style/SubHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_general_spacing"
+            android:text="@string/upload_textbook" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_profile_menu"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/todo"
-        android:src="@drawable/my_profile_menu_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_my_profile"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/ll_all_textbooks_menu"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_my_profile" />
+        app:layout_constraintTop_toBottomOf="@+id/ll_upload_menu">
 
-    <TextView
-        android:id="@+id/tv_my_profile"
-        style="@style/SubHeading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/small_general_spacing"
-        android:text="@string/my_profile"
-        app:layout_constraintBottom_toTopOf="@+id/tv_all_textbooks"
-        app:layout_constraintStart_toEndOf="@+id/ib_profile_menu"
-        app:layout_constraintTop_toBottomOf="@+id/tv_upload_textbook" />
+        <ImageButton
+            android:id="@+id/ib_profile_menu"
+            style="@style/Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/my_profile_menu_icon" />
 
-    <ImageButton
-        android:id="@+id/ib_all_textbooks_menu"
-        style="@style/Icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/todo"
-        android:src="@drawable/all_textbooks_menu_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_all_textbooks"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_all_textbooks" />
+        <TextView
+            android:id="@+id/tv_my_profile"
+            style="@style/SubHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_general_spacing"
+            android:text="@string/my_profile" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_all_textbooks"
-        style="@style/SubHeading"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/ll_all_textbooks_menu"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/small_general_spacing"
-        android:text="@string/all_textbooks"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/tv_logout"
-        app:layout_constraintStart_toEndOf="@+id/ib_all_textbooks_menu"
-        app:layout_constraintTop_toBottomOf="@+id/tv_my_profile" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_profile_menu">
+
+        <ImageButton
+            android:id="@+id/ib_all_textbooks_menu"
+            style="@style/Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/all_textbooks_menu_icon" />
+
+        <TextView
+            android:id="@+id/tv_all_textbooks"
+            style="@style/SubHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_general_spacing"
+            android:gravity="center_vertical"
+            android:text="@string/all_textbooks" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_logout"

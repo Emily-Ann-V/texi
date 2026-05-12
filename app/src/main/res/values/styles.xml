@@ -12,10 +12,22 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+    <style name="SmallHeading">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/adventpro_medium</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="MainText">
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/opensans_regular</item>
         <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="SubText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/adventpro_medium</item>
+        <item name="android:textColor">@color/grey</item>
     </style>
 
     <style name="LogoutText">
@@ -38,7 +50,7 @@
         <item name="android:textColorHint">@color/grey</item>
     </style>
 
-    <style name="PrimaryLoginButton">
+    <style name="PrimaryLargeButton">
         <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">@font/opensans_regular</item>
         <item name="android:minWidth">115dp</item>
@@ -46,7 +58,7 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="SecondaryLoginButton">
+    <style name="SecondaryLargeButton">
         <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">@font/opensans_regular</item>
         <item name="android:minWidth">115dp</item>
@@ -55,7 +67,7 @@
         <item name="backgroundTint">@color/grey</item>
     </style>
 
-    <style name="PrimaryButton">
+    <style name="PrimaryNormalButton">
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">@font/opensans_regular</item>
         <item name="android:minWidth">90dp</item>
@@ -63,7 +75,7 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="SecondaryButton">
+    <style name="SecondaryNormalButton">
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">@font/opensans_regular</item>
         <item name="android:minWidth">90dp</item>
@@ -88,7 +100,7 @@
     </style>
 
     <style name="Image">
-        <item name="android:background">@drawable/rounded_image</item>
+        <item name="android:background">@drawable/bg_rounded_image</item>
         <item name="android:clipToOutline">true</item>
     </style>
 
@@ -98,7 +110,7 @@
         <item name="android:minHeight">30dp</item>
         <item name="android:minWidth">210dp</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:background">@drawable/rounded_search_bar</item>
+        <item name="android:background">@drawable/bg_rounded_search_bar</item>
         <item name="android:clipToOutline">true</item>
     </style>
 

@@ -23,22 +23,22 @@
             android:layout_marginStart="20dp"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
-            android:src="@drawable/header_logo" />
+            android:src="@drawable/img_header_logo" />
 
-        <View
+        <Space
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="1" />
 
         <ImageButton
-            android:id="@+id/ib_menu"
+            android:id="@+id/ib_header_menu_icon"
             style="@style/Icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:background="@null"
             android:contentDescription="@string/todo"
-            android:src="@drawable/hamburger_menu_icon" />
+            android:src="@drawable/ic_header_hamburger_menu" />
 
     </LinearLayout>
 

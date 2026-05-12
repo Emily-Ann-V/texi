@@ -1,5 +1,6 @@
 package com.example.texi.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Button
@@ -31,9 +32,11 @@ class RegisterActivity : AppCompatActivity() {
         val etPassword = findViewById<EditText>(R.id.et_register_password)
 
         val btnRegister = findViewById<Button>(R.id.btn_register_submit)
-        val btnBack = findViewById<Button>(R.id.btn_back_login)
+        val btnLoginPage = findViewById<Button>(R.id.btn_login_page)
 
-        btnBack.setOnClickListener { finish() }
+        btnLoginPage.setOnClickListener {
+            loadLoginPage()
+        }
 
         btnRegister.setOnClickListener {
 
@@ -168,6 +171,12 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         return true
+    }
+
+    fun loadLoginPage() {
+        startActivity(
+            Intent(this, LoginActivity::class.java)
+        )
     }
 
     fun registerStudent(

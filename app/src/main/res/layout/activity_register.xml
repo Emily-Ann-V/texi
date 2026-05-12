@@ -133,7 +133,7 @@
 
         <Button
             android:id="@+id/btn_register_submit"
-            style="@style/PrimaryLoginButton"
+            style="@style/PrimaryLargeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -145,8 +145,8 @@
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/btn_back_login"
-            style="@style/SecondaryLoginButton"
+            android:id="@+id/btn_login_page"
+            style="@style/SecondaryLargeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"

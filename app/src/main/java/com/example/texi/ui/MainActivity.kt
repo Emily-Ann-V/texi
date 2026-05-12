@@ -16,12 +16,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val ibMenu = findViewById<ImageButton>(R.id.ib_menu)
+        val ibMenu = findViewById<ImageButton>(R.id.ib_header_menu_icon)
         val dlMenu = findViewById<DrawerLayout>(R.id.dl_menu)
-        val ibHome = findViewById<ImageButton>(R.id.ib_home_footer)
-        val llHome = findViewById<LinearLayout>(R.id.ll_home_menu)
-        val llAllTextbooks = findViewById<LinearLayout>(R.id.ll_all_textbooks_menu)
-        val tvLogout = findViewById<TextView>(R.id.tv_logout)
+        val ibHome = findViewById<ImageButton>(R.id.ib_footer_home_icon)
+        val llHome = findViewById<LinearLayout>(R.id.ll_menu_home)
+        val llAllTextbooks = findViewById<LinearLayout>(R.id.ll_menu_all_textbooks)
+        val tvLogout = findViewById<TextView>(R.id.tv_menu_logout)
 
         loadLatestTextbooks()
 

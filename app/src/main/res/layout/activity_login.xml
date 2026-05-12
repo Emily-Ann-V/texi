@@ -12,7 +12,7 @@
         android:layout_marginBottom="@dimen/form_spacing"
         android:contentDescription="@string/todo"
         android:scaleType="fitCenter"
-        android:src="@drawable/login_logo"
+        android:src="@drawable/img_login_logo"
         app:layout_constraintBottom_toTopOf="@+id/tv_login_heading"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +71,7 @@
 
         <Button
             android:id="@+id/btn_login_submit"
-            style="@style/PrimaryLoginButton"
+            style="@style/PrimaryLargeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -84,7 +84,7 @@
 
         <Button
             android:id="@+id/btn_register_page"
-            style="@style/SecondaryLoginButton"
+            style="@style/SecondaryLargeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"

@@ -22,10 +22,10 @@
             android:layout_weight="1" />
 
         <ImageButton
-            android:id="@+id/ib_home_footer"
+            android:id="@+id/ib_footer_home_icon"
             style="@style/Icon"
             android:contentDescription="@string/todo"
-            android:src="@drawable/home_footer_icon" />
+            android:src="@drawable/ic_footer_home" />
 
         <Space
             android:layout_width="0dp"
@@ -33,10 +33,10 @@
             android:layout_weight="1" />
 
         <ImageButton
-            android:id="@+id/ib_upload_footer"
+            android:id="@+id/ib_footer_upload_textbook_icon"
             style="@style/Icon"
             android:contentDescription="@string/todo"
-            android:src="@drawable/upload_footer_icon" />
+            android:src="@drawable/ic_footer_upload_textbook" />
 
         <Space
             android:layout_width="0dp"
@@ -44,10 +44,10 @@
             android:layout_weight="1" />
 
         <ImageButton
-            android:id="@+id/ib_profile_footer"
+            android:id="@+id/ib_footer_my_profile_icon"
             style="@style/Icon"
             android:contentDescription="@string/todo"
-            android:src="@drawable/my_profile_footer_icon" />
+            android:src="@drawable/ic_footer_my_profile" />
 
         <Space
             android:layout_width="0dp"

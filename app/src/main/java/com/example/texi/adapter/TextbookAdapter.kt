@@ -10,13 +10,14 @@ import com.example.texi.R
 import com.example.texi.model.Textbook
 
 class TextbookAdapter(
-    private val textbooks: List<Textbook>
+    private val textbooks: List<Textbook>,
+    private val onDetailsClick: (Textbook) -> Unit
 ) : RecyclerView.Adapter<TextbookAdapter.TextbookViewHolder>() {
 
     class TextbookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val ivTextbook: ImageView = itemView.findViewById(R.id.iv_textbook)
-        val btnTextbookDetails: Button = itemView.findViewById(R.id.btn_textbook_details)
+        val ivTextbook: ImageView = itemView.findViewById(R.id.iv_textbook_image)
+        val btnTextbookDetails: Button = itemView.findViewById(R.id.btn_textbook_details_page)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TextbookViewHolder {
@@ -32,6 +33,10 @@ class TextbookAdapter(
         val textbook = textbooks[position]
 
         holder.ivTextbook.setImageResource(textbook.imageResId)
+
+        holder.btnTextbookDetails.setOnClickListener {
+            onDetailsClick(textbook)
+        }
     }
 
     override fun getItemCount(): Int {

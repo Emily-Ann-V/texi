@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/et_search_bar"
+        android:id="@+id/et_all_textbooks_search_bar"
         style="@style/SearchBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -16,38 +16,38 @@
         android:hint="@string/search"
         android:inputType="text"
         android:paddingStart="@dimen/normal_general_spacing"
-        app:layout_constraintEnd_toStartOf="@+id/ib_filter"
+        app:layout_constraintEnd_toStartOf="@+id/ib_all_textbooks_filter_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/ib_search"
+        android:id="@+id/ib_all_textbooks_search_icon"
         style="@style/Icon"
         android:layout_width="wrap_content"
         android:layout_marginEnd="@dimen/small_general_spacing"
         android:contentDescription="@string/todo"
-        android:src="@drawable/search_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/et_search_bar"
-        app:layout_constraintEnd_toStartOf="@+id/ib_filter"
-        app:layout_constraintTop_toTopOf="@+id/et_search_bar" />
+        android:src="@drawable/ic_all_textbooks_search"
+        app:layout_constraintBottom_toBottomOf="@+id/et_all_textbooks_search_bar"
+        app:layout_constraintEnd_toStartOf="@+id/ib_all_textbooks_filter_icon"
+        app:layout_constraintTop_toTopOf="@+id/et_all_textbooks_search_bar" />
 
     <ImageButton
-        android:id="@+id/ib_filter"
+        android:id="@+id/ib_all_textbooks_filter_icon"
         style="@style/Icon"
         android:contentDescription="@string/todo"
-        android:src="@drawable/filter_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/et_search_bar"
+        android:src="@drawable/ic_all_textbooks_filter"
+        app:layout_constraintBottom_toBottomOf="@+id/et_all_textbooks_search_bar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/et_search_bar" />
+        app:layout_constraintTop_toTopOf="@+id/et_all_textbooks_search_bar" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_textbooks"
+        android:id="@+id/rv_all_textbooks"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/normal_general_spacing"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_search_bar" />
+        app:layout_constraintTop_toBottomOf="@+id/et_all_textbooks_search_bar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

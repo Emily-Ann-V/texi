@@ -20,12 +20,12 @@ class LoginActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
 
-        val btnRegister = findViewById<Button>(R.id.btn_register_page)
+        val btnRegisterPage = findViewById<Button>(R.id.btn_register_page)
         val btnLogin = findViewById<Button>(R.id.btn_login_submit)
         val etEmailAddress = findViewById<EditText>(R.id.et_login_email_address)
         val etPassword = findViewById<EditText>(R.id.et_login_password)
 
-        btnRegister.setOnClickListener {
+        btnRegisterPage.setOnClickListener {
             loadRegisterPage()
         }
 

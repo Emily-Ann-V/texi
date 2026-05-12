@@ -23,26 +23,26 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/ll_home_menu"
+        android:id="@+id/ll_menu_home"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/ll_upload_menu"
+        app:layout_constraintBottom_toTopOf="@+id/ll_menu_upload"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_menu">
 
         <ImageButton
-            android:id="@+id/ib_home_menu"
+            android:id="@+id/ib_menu_home_icon"
             style="@style/Icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/todo"
-            android:src="@drawable/home_menu_icon" />
+            android:src="@drawable/ic_menu_home" />
 
         <TextView
-            android:id="@+id/tv_home"
+            android:id="@+id/tv_menu_home"
             style="@style/SubHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,26 +51,26 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ll_upload_menu"
+        android:id="@+id/ll_menu_upload"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/ll_profile_menu"
+        app:layout_constraintBottom_toTopOf="@+id/ll_menu_my_profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_home_menu">
+        app:layout_constraintTop_toBottomOf="@+id/ll_menu_home">
 
         <ImageButton
-            android:id="@+id/ib_upload_menu"
+            android:id="@+id/ib_menu_upload_textbook_icon"
             style="@style/Icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/todo"
-            android:src="@drawable/upload_menu_icon" />
+            android:src="@drawable/ic_menu_upload_textbook" />
 
         <TextView
-            android:id="@+id/tv_upload_textbook"
+            android:id="@+id/tv_menu_upload_textbook"
             style="@style/SubHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -79,26 +79,26 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ll_profile_menu"
+        android:id="@+id/ll_menu_my_profile"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/ll_all_textbooks_menu"
+        app:layout_constraintBottom_toTopOf="@+id/ll_menu_all_textbooks"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_upload_menu">
+        app:layout_constraintTop_toBottomOf="@+id/ll_menu_upload">
 
         <ImageButton
-            android:id="@+id/ib_profile_menu"
+            android:id="@+id/ib_menu_my_profile_icon"
             style="@style/Icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/todo"
-            android:src="@drawable/my_profile_menu_icon" />
+            android:src="@drawable/ic_menu_my_profile" />
 
         <TextView
-            android:id="@+id/tv_my_profile"
+            android:id="@+id/tv_menu_my_profile"
             style="@style/SubHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -107,26 +107,26 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ll_all_textbooks_menu"
+        android:id="@+id/ll_menu_all_textbooks"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/tv_logout"
+        app:layout_constraintBottom_toTopOf="@+id/tv_menu_logout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_profile_menu">
+        app:layout_constraintTop_toBottomOf="@+id/ll_menu_my_profile">
 
         <ImageButton
-            android:id="@+id/ib_all_textbooks_menu"
+            android:id="@+id/ib_menu_all_textbooks_icon"
             style="@style/Icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/todo"
-            android:src="@drawable/all_textbooks_menu_icon" />
+            android:src="@drawable/ic_menu_all_textbooks" />
 
         <TextView
-            android:id="@+id/tv_all_textbooks"
+            android:id="@+id/tv_menu_all_textbooks"
             style="@style/SubHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -136,7 +136,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tv_logout"
+        android:id="@+id/tv_menu_logout"
         style="@style/LogoutText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -156,7 +156,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         if (
-            passwordInput.length < 12 ||
+            passwordInput.length < 8 ||
             !passwordInput.any { it.isDigit() } ||
             !passwordInput.any { !it.isLetterOrDigit() } ||
             !passwordInput.any { it.isUpperCase() } ||
@@ -164,7 +164,7 @@ class RegisterActivity : AppCompatActivity() {
         ) {
             Toast.makeText(
                 this,
-                "Password must have 12+ uppercase, lowercase, number and special chars.",
+                "Password must have 8+ uppercase, lowercase, number and special chars.",
                 Toast.LENGTH_LONG
             ).show()
             return false

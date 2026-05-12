@@ -23,8 +23,11 @@
         android:id="@+id/ll_textbook_details_filter_categories"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_general_spacing"
+        android:layout_marginBottom="@dimen/medium_general_spacing"
         android:gravity="clip_horizontal|center_vertical"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/tv_textbook_details_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_textbook_details_image">
@@ -35,7 +38,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
             android:text="@string/university" />
 
         <TextView
@@ -44,7 +46,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
             android:text="@string/field" />
 
         <TextView
@@ -53,15 +54,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
             android:text="@string/degree" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/tv_textbook_details_title"
         style="@style/MainHeading"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_general_spacing"
         android:text="@string/title"
         app:layout_constraintBottom_toTopOf="@+id/tv_textbook_details_author"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,8 +72,9 @@
     <TextView
         android:id="@+id/tv_textbook_details_author"
         style="@style/SubHeading"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/medium_general_spacing"
         android:text="@string/author"
         app:layout_constraintBottom_toTopOf="@+id/tv_textbook_details_isbn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,8 +84,9 @@
     <TextView
         android:id="@+id/tv_textbook_details_isbn"
         style="@style/SmallHeading"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/medium_general_spacing"
         android:text="@string/isbn"
         app:layout_constraintBottom_toTopOf="@+id/tv_textbook_details_description"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,8 +96,9 @@
     <TextView
         android:id="@+id/tv_textbook_details_description"
         style="@style/MainText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/medium_general_spacing"
         android:text="@string/description"
         app:layout_constraintBottom_toTopOf="@+id/tv_textbook_details_price"
         app:layout_constraintEnd_toEndOf="parent"
@@ -104,8 +108,10 @@
     <TextView
         android:id="@+id/tv_textbook_details_price"
         style="@style/SmallHeading"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/medium_general_spacing"
+        android:layout_marginBottom="@dimen/small_general_spacing"
         android:text="@string/price"
         app:layout_constraintBottom_toTopOf="@+id/btn_inquire_page"
         app:layout_constraintEnd_toEndOf="parent"
@@ -114,7 +120,7 @@
 
     <Button
         android:id="@+id/btn_inquire_page"
-        style="@style/PrimaryLargeButton"
+        style="@style/PrimaryNormalButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/inquire"

@@ -28,7 +28,7 @@ class LatestTextbooksFragment : Fragment(R.layout.fragment_latest_textbooks) {
             bundle.putInt("imageResId", textbook.imageResId)
             bundle.putString("title", textbook.title)
             bundle.putString("author", textbook.author)
-            bundle.putInt("isbn", textbook.isbn)
+            bundle.putLong("isbn", textbook.isbn)
             bundle.putString("description", textbook.description)
             bundle.putFloat("price", textbook.price)
             bundle.putString("field", textbook.field)

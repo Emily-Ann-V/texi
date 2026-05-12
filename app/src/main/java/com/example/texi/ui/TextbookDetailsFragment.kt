@@ -15,7 +15,7 @@ class TextbookDetailsFragment : Fragment(R.layout.fragment_textbook_details) {
         val imageResId = arguments?.getInt("imageResId")
         val title = arguments?.getString("title")
         val author = arguments?.getString("author")
-        val isbn = arguments?.getInt("isbn")
+        val isbn = arguments?.getLong("isbn")
         val description = arguments?.getString("description")
         val price = arguments?.getFloat("price")
         val university = arguments?.getString("university")

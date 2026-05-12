@@ -93,7 +93,7 @@ val textbooks = mutableListOf(
         degree = "BCom"
     ),
     Textbook(
-        imageResId = R.drawable.login_logo,
+        imageResId = R.drawable.home_menu_icon,
         title = "Mathematics 101",
         author = "Alan Turing",
         isbn = 1003,
@@ -104,7 +104,7 @@ val textbooks = mutableListOf(
         degree = "BSc"
     ),
     Textbook(
-        imageResId = R.drawable.login_logo,
+        imageResId = R.drawable.filter_icon,
         title = "Intro to Programming",
         author = "John Doe",
         isbn = 1001,
@@ -115,7 +115,7 @@ val textbooks = mutableListOf(
         degree = "BSc"
     ),
     Textbook(
-        imageResId = R.drawable.login_logo,
+        imageResId = R.drawable.all_textbooks_menu_icon,
         title = "Business Basics",
         author = "Jane Smith",
         isbn = 1002,

@@ -26,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
         val etPassword = findViewById<EditText>(R.id.et_login_password)
 
         btnRegister.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
+            loadRegisterPage()
         }
 
         btnLogin.setOnClickListener {
@@ -34,26 +34,70 @@ class LoginActivity : AppCompatActivity() {
             val emailAddressInput = etEmailAddress.text.toString()
             val passwordInput = etPassword.text.toString()
 
-            if (emailAddressInput.isEmpty()) {
-                Toast.makeText(this, "Please enter email address.", Toast.LENGTH_SHORT).show()
-
-            } else if (passwordInput.isEmpty()) {
-                Toast.makeText(this, "Please enter password.", Toast.LENGTH_SHORT).show()
-
-            } else {
-
-
-                    val authentication = viewModel.login(
-                        emailAddressInput,
-                        passwordInput
-                    )
-
-                    if (authentication) {
-                        startActivity(Intent(this, MainActivity::class.java))
-                    } else {
-                        Toast.makeText(this, "User not found.", Toast.LENGTH_SHORT).show()
-                    }
+            if (loginValidation(emailAddressInput, passwordInput)) {
+                loginAuthentication(
+                    emailAddressInput,
+                    passwordInput
+                )
             }
+        }
+    }
+
+    fun loadRegisterPage() {
+        startActivity(
+            Intent(this, RegisterActivity::class.java)
+        )
+    }
+
+    fun loginValidation(
+        emailAddressInput: String,
+        passwordInput: String
+    ): Boolean {
+
+        if (emailAddressInput.isEmpty()) {
+
+            Toast.makeText(
+                this,
+                "Please enter email address.",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            return false
+
+        } else if (passwordInput.isEmpty()) {
+
+            Toast.makeText(
+                this,
+                "Please enter password.",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            return false
+        }
+
+        return true
+    }
+
+    fun loginAuthentication(
+        emailAddressInput: String,
+        passwordInput: String
+    ) {
+
+        val authentication = viewModel.login(
+            emailAddressInput,
+            passwordInput
+        )
+
+        if (authentication) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        } else {
+
+            Toast.makeText(
+                this,
+                "User not found.",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 }

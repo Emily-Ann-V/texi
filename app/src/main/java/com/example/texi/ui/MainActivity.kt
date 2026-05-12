@@ -1,5 +1,6 @@
 package com.example.texi.ui
 
+import android.content.Intent
 import android.graphics.Paint
 import android.os.Bundle
 import android.widget.ImageButton
@@ -7,6 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import com.example.texi.R
 
 class MainActivity : AppCompatActivity() {
@@ -14,20 +16,57 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val ibMenu = findViewById<ImageButton>(R.id.ib_menu)
+        val dlMenu = findViewById<DrawerLayout>(R.id.dl_menu)
+        val ibHomeFooter = findViewById<ImageButton>(R.id.ib_home_footer)
+        val ibHomeMenu = findViewById<ImageButton>(R.id.ib_home_menu)
+        val ibAllTextbooks = findViewById<ImageButton>(R.id.ib_all_textbooks_menu)
         val tvLogout = findViewById<TextView>(R.id.tv_logout)
+
+        loadLatestTextbooks()
 
         tvLogout.paintFlags =
             tvLogout.paintFlags or Paint.UNDERLINE_TEXT_FLAG
 
-        val ibMenu = findViewById<ImageButton>(R.id.ib_menu)
-        val dlMenu = findViewById<DrawerLayout>(R.id.dl_menu)
+        tvLogout.setOnClickListener {
+            logout()
+        }
 
         ibMenu.setOnClickListener {
                 dlMenu.openDrawer(GravityCompat.END)
         }
 
+        ibHomeFooter.setOnClickListener {
+            loadLatestTextbooks()
+        }
+
+        ibHomeMenu.setOnClickListener {
+            loadLatestTextbooks()
+            dlMenu.closeDrawer(GravityCompat.END)
+        }
+
+        ibAllTextbooks.setOnClickListener {
+            loadAllTextbooks()
+            dlMenu.closeDrawer(GravityCompat.END)
+        }
+    }
+
+    fun loadNewFragment(fragment: Fragment){
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fl_main, NewTextbooksFragment())
+            .replace(R.id.fl_main, fragment)
             .commit()
+    }
+
+    fun loadLatestTextbooks(){
+        loadNewFragment(LatestTextbooksFragment())
+    }
+
+    fun loadAllTextbooks(){
+        loadNewFragment(AllTextbooksFragment())
+    }
+
+    fun logout(){
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
     }
 }

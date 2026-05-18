@@ -20,7 +20,7 @@
             android:id="@+id/iv_header_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="@dimen/default_spacing"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:src="@drawable/img_header_logo" />
@@ -32,10 +32,10 @@
 
         <ImageButton
             android:id="@+id/ib_header_menu_icon"
-            style="@style/Icon"
+            style="@style/DefaultIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="@dimen/default_spacing"
             android:background="@null"
             android:contentDescription="@string/todo"
             android:src="@drawable/ic_header_hamburger_menu" />

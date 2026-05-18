@@ -7,14 +7,12 @@
     android:layout_height="match_parent"
     android:layout_gravity="end"
     android:background="@color/black"
-    android:paddingStart="@dimen/secondary_screen_horizontal_padding"
-    android:paddingTop="@dimen/primary_screen_vertical_padding"
-    android:paddingEnd="@dimen/secondary_screen_horizontal_padding"
-    android:paddingBottom="@dimen/primary_screen_vertical_padding">
+    android:paddingTop="@dimen/default_vertical_padding"
+    android:paddingBottom="@dimen/default_vertical_padding">
 
     <TextView
         android:id="@+id/tv_menu"
-        style="@style/MainHeading"
+        style="@style/PrimaryHeadingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/menu"
@@ -35,7 +33,7 @@
 
         <ImageButton
             android:id="@+id/ib_menu_home_icon"
-            style="@style/Icon"
+            style="@style/DefaultIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/todo"
@@ -43,10 +41,10 @@
 
         <TextView
             android:id="@+id/tv_menu_home"
-            style="@style/SubHeading"
+            style="@style/SecondaryHeadingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small_general_spacing"
+            android:layout_marginStart="@dimen/small_spacing"
             android:text="@string/home" />
     </LinearLayout>
 
@@ -63,7 +61,7 @@
 
         <ImageButton
             android:id="@+id/ib_menu_upload_textbook_icon"
-            style="@style/Icon"
+            style="@style/DefaultIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/todo"
@@ -71,10 +69,10 @@
 
         <TextView
             android:id="@+id/tv_menu_upload_textbook"
-            style="@style/SubHeading"
+            style="@style/SecondaryHeadingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small_general_spacing"
+            android:layout_marginStart="@dimen/small_spacing"
             android:text="@string/upload_textbook" />
     </LinearLayout>
 
@@ -91,7 +89,7 @@
 
         <ImageButton
             android:id="@+id/ib_menu_my_profile_icon"
-            style="@style/Icon"
+            style="@style/DefaultIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/todo"
@@ -99,10 +97,10 @@
 
         <TextView
             android:id="@+id/tv_menu_my_profile"
-            style="@style/SubHeading"
+            style="@style/SecondaryHeadingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small_general_spacing"
+            android:layout_marginStart="@dimen/small_spacing"
             android:text="@string/my_profile" />
     </LinearLayout>
 
@@ -119,7 +117,7 @@
 
         <ImageButton
             android:id="@+id/ib_menu_all_textbooks_icon"
-            style="@style/Icon"
+            style="@style/DefaultIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/todo"
@@ -127,10 +125,10 @@
 
         <TextView
             android:id="@+id/tv_menu_all_textbooks"
-            style="@style/SubHeading"
+            style="@style/SecondaryHeadingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small_general_spacing"
+            android:layout_marginStart="@dimen/small_spacing"
             android:gravity="center_vertical"
             android:text="@string/all_textbooks" />
     </LinearLayout>
@@ -140,7 +138,6 @@
         style="@style/LogoutText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/small_general_spacing"
         android:text="@string/logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

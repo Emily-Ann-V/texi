@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cl_latest_textbooks"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_my_uploads"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btn_view_all_textbooks_page"
-        style="@style/DefaultPrimaryButton"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/tv_my_uploads_heading"
+        style="@style/PrimaryHeadingText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/view_all"
+        android:text="@string/my_uploads"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_latest_textbooks"
+        android:id="@+id/rv_my_uploads"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/default_spacing"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_view_all_textbooks_page" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_my_uploads_heading" />
 </androidx.constraintlayout.widget.ConstraintLayout>

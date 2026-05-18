@@ -23,7 +23,7 @@
 
         <ImageButton
             android:id="@+id/ib_footer_home_icon"
-            style="@style/Icon"
+            style="@style/DefaultIcon"
             android:contentDescription="@string/todo"
             android:src="@drawable/ic_footer_home" />
 
@@ -34,7 +34,7 @@
 
         <ImageButton
             android:id="@+id/ib_footer_upload_textbook_icon"
-            style="@style/Icon"
+            style="@style/DefaultIcon"
             android:contentDescription="@string/todo"
             android:src="@drawable/ic_footer_upload_textbook" />
 
@@ -45,7 +45,7 @@
 
         <ImageButton
             android:id="@+id/ib_footer_my_profile_icon"
-            style="@style/Icon"
+            style="@style/DefaultIcon"
             android:contentDescription="@string/todo"
             android:src="@drawable/ic_footer_my_profile" />
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="primary_screen_horizontal_padding">60dp</dimen>
-    <dimen name="secondary_screen_horizontal_padding">30dp</dimen>
-    <dimen name="primary_screen_vertical_padding">90dp</dimen>
-    <dimen name="login_screen_vertical_padding">80dp</dimen>
-    <dimen name="form_spacing">15dp</dimen>
-    <dimen name="normal_general_spacing">20dp</dimen>
-    <dimen name="medium_general_spacing">15dp</dimen>
-    <dimen name="small_general_spacing">10dp</dimen>
+    <dimen name="default_horizontal_padding">50dp</dimen>
+    <dimen name="default_vertical_padding">90dp</dimen>
+    <dimen name="login_vertical_padding">80dp</dimen>
+    <dimen name="default_spacing">20dp</dimen>
+    <dimen name="medium_spacing">15dp</dimen>
+    <dimen name="small_spacing">10dp</dimen>
+    <dimen name="default_form_spacing">15dp</dimen>
+    <dimen name="search_bar_spacing">80dp</dimen>
 </resources>

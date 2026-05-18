@@ -31,4 +31,5 @@
     <string name="price">Price</string>
     <string name="author">Author</string>
     <string name="isbn">ISBN</string>
+    <string name="my_uploads">My Uploads</string>
 </resources>

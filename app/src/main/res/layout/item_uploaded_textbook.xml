@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cl_textbook"
+    android:id="@+id/cl_uploaded_textbook"
     android:layout_width="match_parent"
     android:layout_height="225dp">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv_textbook"
+        android:id="@+id/cv_uploaded_textbook"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:cardBackgroundColor="@color/transparent"
@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_cv_textbook"
+            android:id="@+id/cl_cv_uploaded_textbook"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -25,21 +25,21 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/iv_textbook_image"
+                android:id="@+id/iv_uploaded_textbook_image"
                 style="@style/RoundedImage"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:contentDescription="@string/todo"
                 android:scaleType="centerCrop"
                 android:src="@drawable/img_login_logo"
-                app:layout_constraintBottom_toTopOf="@+id/btn_textbook_details_page"
+                app:layout_constraintBottom_toTopOf="@+id/btn_uploaded_textbook_details_page"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/btn_textbook_details_page"
+                android:id="@+id/btn_uploaded_textbook_details_page"
                 style="@style/DefaultPrimaryButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_textbook_image" />
+                app:layout_constraintTop_toBottomOf="@+id/iv_uploaded_textbook_image" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

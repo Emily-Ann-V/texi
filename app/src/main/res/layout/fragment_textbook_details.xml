@@ -7,7 +7,7 @@
 
     <ImageView
         android:id="@+id/iv_textbook_details_image"
-        style="@style/Image"
+        style="@style/RoundedImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/todo"
@@ -23,8 +23,8 @@
         android:id="@+id/ll_textbook_details_filter_categories"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_general_spacing"
-        android:layout_marginBottom="@dimen/medium_general_spacing"
+        android:layout_marginTop="@dimen/small_spacing"
+        android:layout_marginBottom="@dimen/medium_spacing"
         android:gravity="clip_horizontal|center_vertical"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/tv_textbook_details_title"
@@ -34,7 +34,7 @@
 
         <TextView
             android:id="@+id/tv_textbook_details_university"
-            style="@style/SubText"
+            style="@style/SecondaryBodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -42,7 +42,7 @@
 
         <TextView
             android:id="@+id/tv_textbook_details_field"
-            style="@style/SubText"
+            style="@style/SecondaryBodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -50,7 +50,7 @@
 
         <TextView
             android:id="@+id/tv_textbook_details_degree"
-            style="@style/SubText"
+            style="@style/SecondaryBodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -59,10 +59,10 @@
 
     <TextView
         android:id="@+id/tv_textbook_details_title"
-        style="@style/MainHeading"
+        style="@style/PrimaryHeadingText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_general_spacing"
+        android:layout_marginTop="@dimen/small_spacing"
         android:text="@string/title"
         app:layout_constraintBottom_toTopOf="@+id/tv_textbook_details_author"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,10 +71,10 @@
 
     <TextView
         android:id="@+id/tv_textbook_details_author"
-        style="@style/SubHeading"
+        style="@style/SecondaryHeadingText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/medium_general_spacing"
+        android:layout_marginTop="@dimen/medium_spacing"
         android:text="@string/author"
         app:layout_constraintBottom_toTopOf="@+id/tv_textbook_details_isbn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,10 +83,10 @@
 
     <TextView
         android:id="@+id/tv_textbook_details_isbn"
-        style="@style/SmallHeading"
+        style="@style/SmallHeadingText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/medium_general_spacing"
+        android:layout_marginTop="@dimen/medium_spacing"
         android:text="@string/isbn"
         app:layout_constraintBottom_toTopOf="@+id/tv_textbook_details_description"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,10 +95,10 @@
 
     <TextView
         android:id="@+id/tv_textbook_details_description"
-        style="@style/MainText"
+        style="@style/PrimaryBodyText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/medium_general_spacing"
+        android:layout_marginTop="@dimen/medium_spacing"
         android:text="@string/description"
         app:layout_constraintBottom_toTopOf="@+id/tv_textbook_details_price"
         app:layout_constraintEnd_toEndOf="parent"
@@ -107,11 +107,11 @@
 
     <TextView
         android:id="@+id/tv_textbook_details_price"
-        style="@style/SmallHeading"
+        style="@style/SmallHeadingText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/medium_general_spacing"
-        android:layout_marginBottom="@dimen/small_general_spacing"
+        android:layout_marginTop="@dimen/medium_spacing"
+        android:layout_marginBottom="@dimen/small_spacing"
         android:text="@string/price"
         app:layout_constraintBottom_toTopOf="@+id/btn_inquire_page"
         app:layout_constraintEnd_toEndOf="parent"
@@ -120,7 +120,7 @@
 
     <Button
         android:id="@+id/btn_inquire_page"
-        style="@style/PrimaryNormalButton"
+        style="@style/DefaultPrimaryButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/inquire"

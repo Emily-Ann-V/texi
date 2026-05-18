@@ -35,6 +35,56 @@
         <item name="android:gravity">center</item>
     </style>
 
+
+    <style name="TextbookDetailsPrimaryHeadingText">
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/abyssinicasil_latin</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/grey</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/default_spacing</item>
+        <item name="android:layout_marginEnd">@dimen/default_spacing</item>
+    </style>
+
+    <style name="TextbookDetailsSecondaryHeadingText">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/adventpro_medium</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/grey</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/default_spacing</item>
+        <item name="android:layout_marginEnd">@dimen/default_spacing</item>
+    </style>
+
+    <style name="TextbookDetailsSmallHeadingText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/adventpro_medium</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/grey</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/default_spacing</item>
+        <item name="android:layout_marginEnd">@dimen/default_spacing</item>
+    </style>
+
+    <style name="TextbookDetailsPrimaryBodyText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/opensans_regular</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/grey</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/default_spacing</item>
+        <item name="android:layout_marginEnd">@dimen/default_spacing</item>
+    </style>
+
+
     <style name="LogoutText">
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">@font/adventpro_medium</item>
@@ -142,5 +192,12 @@
         <item name="android:paddingTop">@dimen/login_vertical_padding</item>
         <item name="android:paddingEnd">@dimen/default_horizontal_padding</item>
         <item name="android:paddingBottom">@dimen/login_vertical_padding</item>
+    </style>
+
+    <style name="FragmentScreen">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingStart">@dimen/default_horizontal_padding</item>
+        <item name="android:paddingEnd">@dimen/default_horizontal_padding</item>
     </style>
 </resources>

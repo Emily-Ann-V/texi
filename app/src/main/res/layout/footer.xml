@@ -9,6 +9,7 @@
         android:id="@+id/ll_footer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_footer_pattern"
         android:gravity="center_vertical"
         android:minHeight="70dp"
         android:orientation="horizontal"

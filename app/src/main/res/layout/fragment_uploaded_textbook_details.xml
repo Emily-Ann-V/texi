@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cl_textbook_details"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_uploaded_textbook_details"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/iv_textbook_details_image"
+        android:id="@+id/iv_uploaded_textbook_details_image"
         style="@style/RoundedImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/todo"
         android:scaleType="fitCenter"
         android:src="@drawable/img_login_logo"
-        app:layout_constraintBottom_toTopOf="@+id/ll_textbook_details_filter_categories"
+        app:layout_constraintBottom_toTopOf="@+id/ll_uploaded_textbook_details_filter_categories"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/ll_textbook_details_filter_categories"
+        android:id="@+id/ll_uploaded_textbook_details_filter_categories"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_spacing"
         android:layout_marginBottom="@dimen/small_spacing"
         android:gravity="clip_horizontal|center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/tv_textbook_details_title"
+        app:layout_constraintBottom_toTopOf="@+id/tv_uploaded_textbook_details_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_textbook_details_image">
+        app:layout_constraintTop_toBottomOf="@+id/iv_uploaded_textbook_details_image">
 
         <TextView
-            android:id="@+id/tv_textbook_details_university"
+            android:id="@+id/tv_uploaded_textbook_details_university"
             style="@style/SecondaryBodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,7 +42,7 @@
             android:text="@string/university" />
 
         <TextView
-            android:id="@+id/tv_textbook_details_field"
+            android:id="@+id/tv_uploaded_textbook_details_field"
             style="@style/SecondaryBodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,7 +50,7 @@
             android:text="@string/field" />
 
         <TextView
-            android:id="@+id/tv_textbook_details_degree"
+            android:id="@+id/tv_uploaded_textbook_details_degree"
             style="@style/SecondaryBodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,61 +58,66 @@
             android:text="@string/degree" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_textbook_details_title"
+    <EditText
+        android:id="@+id/tv_uploaded_textbook_details_title"
         style="@style/TextbookDetailsPrimaryHeadingText"
-        android:layout_marginTop="@dimen/default_form_spacing"
+        android:autofillHints=""
+        android:gravity="start"
+        android:hint="@string/title"
         android:inputType="text"
-        android:text="@string/title"
-        app:layout_constraintBottom_toTopOf="@+id/tv_textbook_details_author"
+        app:layout_constraintBottom_toTopOf="@+id/tv_uploaded_textbook_details_author"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_textbook_details_filter_categories" />
+        app:layout_constraintTop_toBottomOf="@+id/ll_uploaded_textbook_details_filter_categories" />
 
-    <TextView
-        android:id="@+id/tv_textbook_details_author"
+    <EditText
+        android:id="@+id/tv_uploaded_textbook_details_author"
         style="@style/TextbookDetailsSecondaryHeadingText"
-        android:layout_marginTop="@dimen/default_form_spacing"
-        android:text="@string/author"
+        android:autofillHints=""
+        android:gravity="start"
+        android:hint="@string/author"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/tv_textbook_details_isbn"
+        app:layout_constraintBottom_toTopOf="@+id/tv_uploaded_textbook_details_isbn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_textbook_details_title" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_uploaded_textbook_details_title" />
 
-    <TextView
-        android:id="@+id/tv_textbook_details_isbn"
+    <EditText
+        android:id="@+id/tv_uploaded_textbook_details_isbn"
         style="@style/TextbookDetailsSmallHeadingText"
-        android:layout_marginTop="@dimen/default_form_spacing"
-        android:text="@string/isbn"
+        android:autofillHints=""
+        android:gravity="start"
+        android:hint="@string/isbn"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/tv_textbook_details_description"
+        app:layout_constraintBottom_toTopOf="@+id/tv_uploaded_textbook_details_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_textbook_details_author" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_uploaded_textbook_details_author" />
 
-    <TextView
-        android:id="@+id/tv_textbook_details_description"
+    <EditText
+        android:id="@+id/tv_uploaded_textbook_details_description"
         style="@style/TextbookDetailsPrimaryBodyText"
-        android:layout_marginTop="@dimen/default_form_spacing"
-        android:text="@string/description"
+        android:autofillHints=""
+        android:gravity="start"
+        android:hint="@string/description"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/tv_textbook_details_price"
+        app:layout_constraintBottom_toTopOf="@+id/tv_uploaded_textbook_details_price"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_textbook_details_isbn" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_uploaded_textbook_details_isbn" />
 
-    <TextView
-        android:id="@+id/tv_textbook_details_price"
+    <EditText
+        android:id="@+id/tv_uploaded_textbook_details_price"
         style="@style/TextbookDetailsSmallHeadingText"
-        android:layout_marginTop="@dimen/default_form_spacing"
         android:layout_marginBottom="@dimen/small_spacing"
-        android:text="@string/price"
+        android:autofillHints=""
+        android:gravity="start"
+        android:hint="@string/price"
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toTopOf="@+id/btn_inquire_page"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_textbook_details_description" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_uploaded_textbook_details_description" />
 
     <Button
         android:id="@+id/btn_inquire_page"
@@ -122,4 +128,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        style="@style/LargeIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_uploaded_textbook_details_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_uploaded_textbook_details_edit" />
 </androidx.constraintlayout.widget.ConstraintLayout>

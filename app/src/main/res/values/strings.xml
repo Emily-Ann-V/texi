@@ -35,4 +35,6 @@
     <string name="save">Save</string>
     <string name="delete">Delete</string>
     <string name="uploads">Uploads</string>
+    <string name="upload">Upload</string>
+    <string name="upload_a_textbook">Upload A Textbook</string>
 </resources>

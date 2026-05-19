@@ -37,4 +37,6 @@
     <string name="uploads">Uploads</string>
     <string name="upload">Upload</string>
     <string name="upload_a_textbook">Upload A Textbook</string>
+    <string name="chat">Chat</string>
+    <string name="type">Type...</string>
 </resources>

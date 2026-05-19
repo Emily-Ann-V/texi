@@ -33,7 +33,6 @@
         style="@style/DefaultIcon"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_gravity="center"
         android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="@+id/iv_upload_textbook_image"
         app:layout_constraintStart_toEndOf="@+id/iv_upload_textbook_image"

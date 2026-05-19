@@ -16,7 +16,7 @@ data class Textbook (
 
 val textbooks = mutableListOf(
     Textbook(
-        imageResId = R.drawable.img_introduction_to_law_and_legal_skills_in_south_africa_2ed,
+        imageResId = R.drawable.img_textbook_introduction_to_law_and_legal_skills_in_south_africa_2ed,
         title = "Introduction to Law and Legal Skills in South Africa 2ed.",
         author = "Du Plessis et al",
         isbn = 	9780190748111,

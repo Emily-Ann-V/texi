@@ -2,6 +2,8 @@ package com.example.texi.ui
 
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
+import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -9,38 +11,97 @@ import com.example.texi.R
 import com.example.texi.adapter.TextbookAdapter
 import com.example.texi.model.textbooks
 
-class AllTextbooksFragment : Fragment(R.layout.fragment_all_textbooks){
+class AllTextbooksFragment : Fragment(R.layout.fragment_all_textbooks) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_all_textbooks)
+        val ibSearch = view.findViewById<ImageButton>(R.id.ib_all_textbooks_search_icon)
+        val ibFilter = view.findViewById<ImageButton>(R.id.ib_all_textbooks_filter_icon)
+        val etSearchBar = view.findViewById<EditText>(R.id.et_all_textbooks_search_bar)
 
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        filterTextbooks(recyclerView)
+
+        ibSearch.setOnClickListener {
+            val searchBarInput = etSearchBar.text.toString()
+            searchTextbooks(recyclerView, searchBarInput)
+        }
+
+        ibFilter.setOnClickListener {
+            loadNewFragment(FilterTextbooksFragment())
+        }
 
         val allTextbookAdapter = TextbookAdapter(textbooks) { textbook ->
-
-            val bundle = Bundle()
-
-            bundle.putInt("imageResId", textbook.imageResId)
-            bundle.putString("title", textbook.title)
-            bundle.putString("author", textbook.author)
-            bundle.putLong("isbn", textbook.isbn)
-            bundle.putString("description", textbook.description)
-            bundle.putFloat("price", textbook.price)
-            bundle.putString("field", textbook.field)
-            bundle.putString("university", textbook.university)
-            bundle.putString("degree", textbook.degree)
-
-            val fragment = TextbookDetailsFragment()
-            fragment.arguments = bundle
-
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fl_main, fragment)
-                .addToBackStack(null)
-                .commit()
+            openDetails(textbook)
         }
 
         recyclerView.adapter = allTextbookAdapter
+    }
+
+    private fun openDetails(textbook: com.example.texi.model.Textbook) {
+
+        val fragment = TextbookDetailsFragment().apply {
+            arguments = Bundle().apply {
+                putInt("imageResId", textbook.imageResId)
+                putString("title", textbook.title)
+                putString("author", textbook.author)
+                putLong("isbn", textbook.isbn)
+                putString("description", textbook.description)
+                putFloat("price", textbook.price)
+                putString("field", textbook.field)
+                putString("university", textbook.university)
+                putString("degree", textbook.degree)
+            }
+        }
+
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fl_main, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+    fun searchTextbooks(recyclerView: RecyclerView, searchBarInput: String) {
+
+        val searchedTextbooks = textbooks.filter { textbook ->
+            textbook.title.contains(searchBarInput, true) ||
+                    textbook.author.contains(searchBarInput, true)
+        }
+
+        recyclerView.adapter = TextbookAdapter(searchedTextbooks) { textbook ->
+            openDetails(textbook)
+        }
+    }
+
+    fun filterTextbooks(recyclerView: RecyclerView) {
+
+        parentFragmentManager.setFragmentResultListener(
+            "filterKey",
+            viewLifecycleOwner
+        ) { _, bundle ->
+
+            val university = bundle.getString("university") ?: "Any"
+            val field = bundle.getString("field") ?: "Any"
+            val degree = bundle.getString("degree") ?: "Any"
+
+            val filteredTextbooks = textbooks.filter { textbook ->
+
+                (university == "Any" || textbook.university.equals(university, true)) &&
+                        (field == "Any" || textbook.field.equals(field, true)) &&
+                        (degree == "Any" || textbook.degree.equals(degree, true))
+            }
+
+            recyclerView.adapter = TextbookAdapter(filteredTextbooks) { textbook ->
+                openDetails(textbook)
+            }
+        }
+    }
+
+    fun loadNewFragment(fragment: Fragment) {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fl_main, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 }

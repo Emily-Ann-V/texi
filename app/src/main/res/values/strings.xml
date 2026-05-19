@@ -39,4 +39,6 @@
     <string name="upload_a_textbook">Upload A Textbook</string>
     <string name="chat">Chat</string>
     <string name="type">Type...</string>
+    <string name="filter_textbooks">Filter Textbooks</string>
+    <string name="filter">Filter</string>
 </resources>

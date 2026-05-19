@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         ibHome.setOnClickListener {
-            loadLatestTextbooks()
+            loadNewFragment(LatestTextbooksFragment())
         }
 
         llHome.setOnClickListener {
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         llAllTextbooks.setOnClickListener {
-            loadAllTextbooks()
+            loadNewFragment(AllTextbooksFragment())
             dlMenu.closeDrawer(GravityCompat.END)
         }
     }
@@ -59,10 +59,6 @@ class MainActivity : AppCompatActivity() {
 
     fun loadLatestTextbooks(){
         loadNewFragment(LatestTextbooksFragment())
-    }
-
-    fun loadAllTextbooks(){
-        loadNewFragment(AllTextbooksFragment())
     }
 
     fun logout(){

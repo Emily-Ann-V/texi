@@ -19,6 +19,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/ib_edit_uploaded_textbook_details_edit_icon"
+        style="@style/LargeIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_edit_uploaded_textbook_details_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_edit_uploaded_textbook_details_edit_details" />
+
     <LinearLayout
         android:id="@+id/ll_edit_uploaded_textbook_details_filter_categories"
         android:layout_width="0dp"
@@ -27,7 +36,7 @@
         android:layout_marginBottom="@dimen/small_spacing"
         android:gravity="clip_horizontal|center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/tv_edit_uploaded_textbook_details_title"
+        app:layout_constraintBottom_toTopOf="@+id/et_edit_uploaded_textbook_details_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_edit_uploaded_textbook_details_image">
@@ -58,55 +67,55 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/tv_edit_uploaded_textbook_details_title"
+        android:id="@+id/et_edit_uploaded_textbook_details_title"
         style="@style/TextbookDetailsPrimaryHeadingText"
         android:autofillHints=""
         android:gravity="start"
         android:hint="@string/title"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/tv_edit_uploaded_textbook_details_author"
+        app:layout_constraintBottom_toTopOf="@+id/et_edit_uploaded_textbook_details_author"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ll_edit_uploaded_textbook_details_filter_categories" />
 
     <EditText
-        android:id="@+id/tv_edit_uploaded_textbook_details_author"
+        android:id="@+id/et_edit_uploaded_textbook_details_author"
         style="@style/TextbookDetailsSecondaryHeadingText"
         android:autofillHints=""
         android:gravity="start"
         android:hint="@string/author"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/tv_edit_uploaded_textbook_details_isbn"
+        app:layout_constraintBottom_toTopOf="@+id/et_edit_uploaded_textbook_details_isbn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_edit_uploaded_textbook_details_title" />
+        app:layout_constraintTop_toBottomOf="@+id/et_edit_uploaded_textbook_details_title" />
 
     <EditText
-        android:id="@+id/tv_edit_uploaded_textbook_details_isbn"
+        android:id="@+id/et_edit_uploaded_textbook_details_isbn"
         style="@style/TextbookDetailsSmallHeadingText"
         android:autofillHints=""
         android:gravity="start"
         android:hint="@string/isbn"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/tv_edit_uploaded_textbook_details_description"
+        app:layout_constraintBottom_toTopOf="@+id/et_edit_uploaded_textbook_details_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_edit_uploaded_textbook_details_author" />
+        app:layout_constraintTop_toBottomOf="@+id/et_edit_uploaded_textbook_details_author" />
 
     <EditText
-        android:id="@+id/tv_edit_uploaded_textbook_details_description"
+        android:id="@+id/et_edit_uploaded_textbook_details_description"
         style="@style/TextbookDetailsPrimaryBodyText"
         android:autofillHints=""
         android:gravity="start"
         android:hint="@string/description"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/tv_edit_uploaded_textbook_details_price"
+        app:layout_constraintBottom_toTopOf="@+id/et_edit_uploaded_textbook_details_price"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_edit_uploaded_textbook_details_isbn" />
+        app:layout_constraintTop_toBottomOf="@+id/et_edit_uploaded_textbook_details_isbn" />
 
     <EditText
-        android:id="@+id/tv_edit_uploaded_textbook_details_price"
+        android:id="@+id/et_edit_uploaded_textbook_details_price"
         style="@style/TextbookDetailsSmallHeadingText"
         android:autofillHints=""
         android:gravity="start"
@@ -114,16 +123,7 @@
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_edit_uploaded_textbook_details_description" />
-
-    <ImageButton
-        android:id="@+id/ib_edit_uploaded_textbook_details_edit_icon"
-        style="@style/LargeIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_edit_uploaded_textbook_details_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_edit_uploaded_textbook_details_edit" />
+        app:layout_constraintTop_toBottomOf="@+id/et_edit_uploaded_textbook_details_description" />
 
     <LinearLayout
         android:id="@+id/ll_edit_uploaded_textbook_details_buttons"

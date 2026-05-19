@@ -21,7 +21,7 @@
             android:layout_height="match_parent">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cv_inquire_heading"
+                android:id="@+id/cv_inquire_chat_header"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 app:cardBackgroundColor="@color/yellow"
@@ -30,13 +30,13 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cl_inquire_heading"
+                    android:id="@+id/cl_inquire_chat_header"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <TextView
                         android:id="@+id/tv_inquire_heading"
-                        style="@style/AlternatePrimaryHeadingText"
+                        style="@style/DarkPrimaryHeadingText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/chat"
@@ -53,14 +53,14 @@
                 android:id="@+id/cl_inquire_messages"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/cv_inquire_type_and_send_message"
+                app:layout_constraintBottom_toTopOf="@+id/cv_inquire_chat_footer"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cv_inquire_heading" />
+                app:layout_constraintTop_toBottomOf="@+id/cv_inquire_chat_header" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cv_inquire_type_and_send_message"
+                android:id="@+id/cv_inquire_chat_footer"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 app:cardBackgroundColor="@color/yellow"
@@ -69,23 +69,26 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cl_inquire_type_and_send_message"
+                    android:id="@+id/cl_inquire_chat_footer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <TextView
+                    <EditText
                         android:id="@+id/tv_inquire_type"
-                        style="@style/AlternateLargePrimaryBodyText"
+                        style="@style/DarkLargePrimaryBodyText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/medium_spacing"
-                        android:text="@string/type"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/transparent"
+                        android:hint="@string/type"
+                        android:inputType="text"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageButton
-                        android:id="@+id/ib_inquire_send_message"
+                        android:id="@+id/ib_inquire_send_message_icon"
                         style="@style/LargeIcon"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

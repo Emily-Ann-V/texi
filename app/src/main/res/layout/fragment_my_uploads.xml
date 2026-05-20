@@ -25,4 +25,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_my_uploads_heading" />
+
+    <TextView
+        android:id="@+id/tv_my_uploads_no_books_message"
+        style="@style/NoBookMessage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_my_uploads_heading" />
 </androidx.constraintlayout.widget.ConstraintLayout>

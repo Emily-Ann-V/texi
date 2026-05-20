@@ -2,6 +2,7 @@ package com.example.texi.ui
 
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +18,18 @@ class MyUploadsFragment: Fragment(R.layout.fragment_my_uploads) {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_my_uploads)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        val uploadedTextbookAdapter = TextbookAdapter(textbooks.filter { it.uploadedBy == LoggedInStudent.emailAddress }) { textbook ->
+        val tvNoBooksMessage = view.findViewById<TextView>(R.id.tv_my_uploads_no_books_message)
+        val uploadedTextbooks = textbooks.filter { it.uploadedBy == LoggedInStudent.emailAddress }
+
+        if(uploadedTextbooks.isEmpty()){
+            tvNoBooksMessage.visibility = View.VISIBLE
+            recyclerView.visibility = View.GONE
+        } else{
+            tvNoBooksMessage.visibility = View.GONE
+            recyclerView.visibility = View.VISIBLE
+        }
+
+        val uploadedTextbookAdapter = TextbookAdapter(uploadedTextbooks) { textbook ->
 
             val bundle = Bundle().apply {
                 if (textbook.uploadedImageResId != null) {

@@ -41,6 +41,7 @@
     <string name="type">Type...</string>
     <string name="filter_textbooks">Filter Textbooks</string>
     <string name="filter">Filter</string>
+    <string name="no_books_found">No books found.</string>
 
     <string-array name="university_options">
         <item>STADIO Higher Education</item>

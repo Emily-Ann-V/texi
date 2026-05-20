@@ -3,6 +3,7 @@ package com.example.texi.ui
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,10 +19,19 @@ class LatestTextbooksFragment : Fragment(R.layout.fragment_latest_textbooks) {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_latest_textbooks)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        val btnViewAllTextbooks =
-            view.findViewById<Button>(R.id.btn_view_all_textbooks_page)
+        val btnViewAllTextbooks = view.findViewById<Button>(R.id.btn_view_all_textbooks_page)
+        val tvNoBooksMessage = view.findViewById<TextView>(R.id.tv_latest_textbooks_no_books_message)
+        val latestTextbooks = textbooks.takeLast(5)
 
-        val latestTextbookAdapter = TextbookAdapter(textbooks.takeLast(5)) { textbook ->
+        if(latestTextbooks.isEmpty()){
+            tvNoBooksMessage.visibility = View.VISIBLE
+            recyclerView.visibility = View.GONE
+        } else{
+            tvNoBooksMessage.visibility = View.GONE
+            recyclerView.visibility = View.VISIBLE
+        }
+
+        val latestTextbookAdapter = TextbookAdapter(latestTextbooks) { textbook ->
 
             val bundle = Bundle().apply {
                 if (textbook.uploadedImageResId != null) {

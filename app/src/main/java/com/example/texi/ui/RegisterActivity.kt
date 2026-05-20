@@ -47,13 +47,14 @@ class RegisterActivity : AppCompatActivity() {
         btnRegister.setOnClickListener {
 
             val fullNameInput = etFullName.text.toString().trim()
-            val emailAddressInput = etEmail.text.toString()
+            val emailAddressInput = etEmail.text.toString().trim()
             val universityInput = spUniversity.selectedItem.toString().trim()
             val fieldInput = spField.selectedItem.toString().trim()
             val degreeInput = spDegree.selectedItem.toString().trim()
             val passwordInput = etPassword.text.toString()
 
-            val studentNumberInput = etStudentNumber.text.toString().toIntOrNull()
+            val studentNumberInputString = etStudentNumber.text.toString().trim()
+            val studentNumberInput = studentNumberInputString.toIntOrNull()
             val graduationYearInput = etGraduationYear.text.toString().toIntOrNull()
 
             val fullNameLetterCount = fullNameInput.count { it.isLetter() }
@@ -65,6 +66,7 @@ class RegisterActivity : AppCompatActivity() {
                     fullNameLetterCount,
                     emailAddressInput,
                     studentNumberInput,
+                    studentNumberInputString,
                     graduationYearInput,
                     passwordInput,
                     year
@@ -89,6 +91,7 @@ class RegisterActivity : AppCompatActivity() {
         fullNameLetterCount: Int,
         emailAddressInput: String,
         studentNumberInput: Int?,
+        studentNumberInputString : String,
         graduationYearInput: Int?,
         passwordInput: String,
         year: Int
@@ -121,7 +124,7 @@ class RegisterActivity : AppCompatActivity() {
             return false
         }
 
-        if (studentNumberInput.toString().length < 2) {
+        if (studentNumberInputString.length < 2) {
             Toast.makeText(this, "Student number must have 2+ numbers", Toast.LENGTH_LONG).show()
             return false
         }
@@ -181,10 +184,6 @@ class RegisterActivity : AppCompatActivity() {
         )
 
         if (registered) {
-            LoggedInStudent.university = universityInput
-            LoggedInStudent.field = fieldInput
-            LoggedInStudent.degree = degreeInput
-
             Toast.makeText(this, "Account created.", Toast.LENGTH_LONG).show()
             finish()
         } else {

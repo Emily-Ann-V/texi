@@ -31,14 +31,11 @@ class LoginActivity : AppCompatActivity() {
 
         btnLogin.setOnClickListener {
 
-            val emailAddressInput = etEmailAddress.text.toString()
-            val passwordInput = etPassword.text.toString()
+            val emailAddressInput = etEmailAddress.text.toString().trim()
+            val passwordInput = etPassword.text.toString().trim()
 
             if (loginValidation(emailAddressInput, passwordInput)) {
-                loginAuthentication(
-                    emailAddressInput,
-                    passwordInput
-                )
+                loginAuthentication(emailAddressInput, passwordInput)
             }
         }
     }

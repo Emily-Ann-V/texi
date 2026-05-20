@@ -51,10 +51,63 @@ fun registerStudent(
 
 fun loginStudent(studentEmailLoginInput: String, passwordLoginInput: String): Boolean {
 
-    val authentication = students.any {
+    val existingStudent = students.find {
         it.emailAddress == studentEmailLoginInput &&
                 it.password == passwordLoginInput
     }
 
-    return authentication
+    if (existingStudent == null) {
+        return false
+    } else {
+
+        LoggedInStudent.fullName = existingStudent.fullName
+        LoggedInStudent.emailAddress = existingStudent.emailAddress
+        LoggedInStudent.studentNumber = existingStudent.studentNumber
+        LoggedInStudent.university = existingStudent.university
+        LoggedInStudent.field = existingStudent.field
+        LoggedInStudent.degree = existingStudent.degree
+        LoggedInStudent.graduationYear = existingStudent.graduationYear
+        LoggedInStudent.password = existingStudent.password
+
+        return true
+    }
+}
+
+fun updateProfile(
+    fullNameProfileInput: String,
+    emailAddressProfileInput: String,
+    passwordProfileInput: String
+): Boolean {
+
+    val existingEmail = LoggedInStudent.emailAddress
+
+    val duplicate = students.any {
+        it.emailAddress == emailAddressProfileInput &&
+                it.emailAddress != existingEmail
+    }
+
+    if (duplicate){
+        return false
+    } else {
+
+    val index = students.indexOfFirst {
+        it.emailAddress == existingEmail
+    }
+
+    if (index == -1) return false
+
+    val updatedStudent = students[index].copy(
+        fullName = fullNameProfileInput,
+        emailAddress = emailAddressProfileInput,
+        password = passwordProfileInput
+    )
+
+    students[index] = updatedStudent
+
+    LoggedInStudent.fullName = fullNameProfileInput
+    LoggedInStudent.emailAddress = emailAddressProfileInput
+    LoggedInStudent.password = passwordProfileInput
+
+    return true
+    }
 }

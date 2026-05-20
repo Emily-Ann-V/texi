@@ -15,11 +15,9 @@
 
     <ImageView
         android:id="@+id/iv_textbook_details_image"
-        style="@style/RoundedImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/todo"
-        android:scaleType="fitCenter"
         android:src="@drawable/img_login_logo"
         app:layout_constraintBottom_toTopOf="@+id/ll_textbook_details_filter_categories"
         app:layout_constraintDimensionRatio="1:1"

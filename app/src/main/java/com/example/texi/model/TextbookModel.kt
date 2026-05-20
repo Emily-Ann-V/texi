@@ -170,3 +170,50 @@ val textbooks = mutableListOf(
         textbooks.add(newTextbook)
         return true
 }
+
+fun updateTextbook(
+    currentISBN:Long,
+    uploadedImageResIdInput: Int? = null,
+    uploadedImageUriInput: Uri? = null,
+    titleInput: String,
+    authorInput: String,
+    isbnInput: Long,
+    descriptionInput: String,
+    priceInput: Float) : Boolean {
+
+    val currentUser = LoggedInStudent.emailAddress
+
+    val index = textbooks.indexOfFirst {
+            it.uploadedBy == currentUser && it.isbn == currentISBN
+        }
+
+        if (index == -1) return false
+
+    val updatedTextbook = textbooks[index].copy(
+        uploadedImageResId = uploadedImageResIdInput,
+        uploadedImageUri = uploadedImageUriInput,
+        title = titleInput,
+        author = authorInput,
+        isbn = isbnInput,
+        description = descriptionInput,
+        price = priceInput
+    )
+
+    textbooks[index] = updatedTextbook
+
+    return true
+}
+
+fun deleteTextbook(currentISBN: Long):Boolean{
+    val currentUser = LoggedInStudent.emailAddress
+
+    val index = textbooks.indexOfFirst {
+        it.uploadedBy == currentUser && it.isbn == currentISBN
+    }
+
+    if (index == -1) return false
+
+    textbooks.removeAt(index)
+
+    return true
+}

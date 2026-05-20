@@ -34,7 +34,7 @@ class MyUploadsFragment: Fragment(R.layout.fragment_my_uploads) {
                 putString("degree", textbook.degree)
             }
 
-            val fragment = TextbookDetailsFragment()
+            val fragment = EditUploadedTextbookDetailsFragment()
             fragment.arguments = bundle
 
             parentFragmentManager.beginTransaction()

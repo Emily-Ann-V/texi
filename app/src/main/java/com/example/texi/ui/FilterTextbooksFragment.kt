@@ -60,16 +60,13 @@ class FilterTextbooksFragment : Fragment(R.layout.fragment_filter_textbooks) {
         spDegree: Spinner
     ) {
 
-        val universityOptions = mutableListOf("Any").apply {
-            addAll(textbooks.map { it.university }.distinct())
+        val universityOptions = mutableListOf("Any").apply { addAll(textbooks.map { it.university }.distinct())
         }
 
-        val fieldOptions = mutableListOf("Any").apply {
-            addAll(textbooks.map { it.field }.distinct())
+        val fieldOptions = mutableListOf("Any").apply { addAll(textbooks.map { it.field }.distinct())
         }
 
-        val degreeOptions = mutableListOf("Any").apply {
-            addAll(textbooks.map { it.degree }.distinct())
+        val degreeOptions = mutableListOf("Any").apply { addAll(textbooks.map { it.degree }.distinct())
         }
 
         val universityAdapter = ArrayAdapter(

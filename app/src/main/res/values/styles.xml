@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="PrimaryHeadingText">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">@dimen/primary_heading_text_size</item>
         <item name="android:fontFamily">@font/abyssinica_sil_latin</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:gravity">center</item>
     </style>
 
     <style name="DarkPrimaryHeadingText">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">@dimen/primary_heading_text_size</item>
         <item name="android:fontFamily">@font/abyssinica_sil_latin</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:gravity">center</item>
     </style>
 
     <style name="TextbookDetailsPrimaryHeadingText">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">@dimen/primary_heading_text_size</item>
         <item name="android:fontFamily">@font/abyssinica_sil_latin</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textColorHint">@color/grey</item>
@@ -27,14 +27,14 @@
     </style>
 
     <style name="SecondaryHeadingText">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/secondary_heading_text_size</item>
         <item name="android:fontFamily">@font/advent_pro_medium</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:gravity">center</item>
     </style>
 
     <style name="TextbookDetailsSecondaryHeadingText">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/secondary_heading_text_size</item>
         <item name="android:fontFamily">@font/advent_pro_medium</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textColorHint">@color/grey</item>
@@ -46,14 +46,14 @@
     </style>
 
     <style name="SmallHeadingText">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/small_heading_text_size</item>
         <item name="android:fontFamily">@font/advent_pro_medium</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:gravity">center</item>
     </style>
 
     <style name="TextbookDetailsSmallHeadingText">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/small_heading_text_size</item>
         <item name="android:fontFamily">@font/advent_pro_medium</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textColorHint">@color/grey</item>
@@ -65,21 +65,21 @@
     </style>
 
     <style name="PrimaryBodyText">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/primary_body_text_size</item>
         <item name="android:fontFamily">@font/open_sans_regular</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:gravity">center</item>
     </style>
 
     <style name="LargePrimaryBodyText">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/small_heading_text_size</item>
         <item name="android:fontFamily">@font/open_sans_regular</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:gravity">center</item>
     </style>
 
     <style name="DarkLargePrimaryBodyText">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/small_heading_text_size</item>
         <item name="android:fontFamily">@font/open_sans_regular</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textColorHint">@color/black</item>
@@ -87,7 +87,7 @@
     </style>
 
     <style name="TextbookDetailsPrimaryBodyText">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/primary_body_text_size</item>
         <item name="android:fontFamily">@font/open_sans_regular</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textColorHint">@color/grey</item>
@@ -99,66 +99,66 @@
     </style>
 
     <style name="SecondaryBodyText">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/primary_body_text_size</item>
         <item name="android:fontFamily">@font/advent_pro_medium</item>
         <item name="android:textColor">@color/grey</item>
         <item name="android:gravity">center</item>
     </style>
 
     <style name="LogoutText">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/small_heading_text_size</item>
         <item name="android:fontFamily">@font/advent_pro_medium</item>
         <item name="android:textColor">@color/yellow</item>
         <item name="android:gravity">center</item>
     </style>
 
     <style name="PrimaryFormText">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/primary_body_text_size</item>
         <item name="android:fontFamily">@font/open_sans_regular</item>
         <item name="android:textColor">@color/grey</item>
         <item name="android:textColorHint">@color/grey</item>
     </style>
 
     <style name="LoginFormText">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/small_heading_text_size</item>
         <item name="android:fontFamily">@font/open_sans_regular</item>
         <item name="android:textColor">@color/grey</item>
         <item name="android:textColorHint">@color/grey</item>
     </style>
 
     <style name="DefaultPrimaryButton">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/small_heading_text_size</item>
         <item name="android:fontFamily">@font/open_sans_regular</item>
-        <item name="android:minWidth">90dp</item>
-        <item name="android:minHeight">40dp</item>
+        <item name="android:minWidth">@dimen/default_button_width</item>
+        <item name="android:minHeight">@dimen/default_button_height</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:gravity">center</item>
     </style>
 
     <style name="LargePrimaryButton">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/secondary_heading_text_size</item>
         <item name="android:fontFamily">@font/open_sans_regular</item>
-        <item name="android:minWidth">115dp</item>
-        <item name="android:minHeight">40dp</item>
+        <item name="android:minWidth">@dimen/large_button_width</item>
+        <item name="android:minHeight">@dimen/default_button_height</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:gravity">center</item>
     </style>
 
     <style name="DefaultSecondaryButton">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/small_heading_text_size</item>
         <item name="android:fontFamily">@font/open_sans_regular</item>
-        <item name="android:minWidth">90dp</item>
-        <item name="android:minHeight">40dp</item>
+        <item name="android:minWidth">@dimen/default_button_width</item>
+        <item name="android:minHeight">@dimen/default_button_height</item>
         <item name="android:textColor">@color/black</item>
         <item name="backgroundTint">@color/grey</item>
         <item name="android:gravity">center</item>
     </style>
 
     <style name="LargeSecondaryButton">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/secondary_heading_text_size</item>
         <item name="android:fontFamily">@font/open_sans_regular</item>
-        <item name="android:minWidth">115dp</item>
-        <item name="android:minHeight">40dp</item>
+        <item name="android:minWidth">@dimen/large_button_width</item>
+        <item name="android:minHeight">@dimen/default_button_height</item>
         <item name="android:textColor">@color/black</item>
         <item name="backgroundTint">@color/grey</item>
         <item name="android:gravity">center</item>
@@ -169,8 +169,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:backgroundTint">@color/transparent</item>
         <item name="android:scaleType">centerCrop</item>
-        <item name="android:scaleX">0.5</item>
-        <item name="android:scaleY">0.5</item>
+        <item name="android:scaleX">@dimen/default_icon_scale</item>
+        <item name="android:scaleY">@dimen/default_icon_scale</item>
     </style>
 
     <style name="LargeIcon">
@@ -178,12 +178,12 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:backgroundTint">@color/transparent</item>
         <item name="android:scaleType">centerCrop</item>
-        <item name="android:scaleX">0.55</item>
-        <item name="android:scaleY">0.55</item>
+        <item name="android:scaleX">@dimen/large_icon_scale</item>
+        <item name="android:scaleY">@dimen/large_icon_scale</item>
     </style>
 
     <style name="PrimaryLink">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">@dimen/secondary_body_text_size</item>
         <item name="android:fontFamily">@font/open_sans_regular</item>
         <item name="android:textColor">@color/yellow</item>
     </style>
@@ -201,39 +201,53 @@
     </style>
 
     <style name="SearchBar">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/small_heading_text_size</item>
         <item name="android:fontFamily">@font/open_sans_regular</item>
-        <item name="android:minHeight">30dp</item>
-        <item name="android:minWidth">210dp</item>
+        <item name="android:minHeight">@dimen/default_element_height</item>
+        <item name="android:minWidth">@dimen/search_bar_width</item>
         <item name="android:textColor">@color/dark_grey</item>
         <item name="android:textColorHint">@color/dark_grey</item>
         <item name="android:background">@drawable/bg_rounded_search_bar</item>
         <item name="android:clipToOutline">true</item>
     </style>
 
+    <style name="RegisterSpinnerBackground">
+        <item name="android:minHeight">@dimen/default_button_height</item>
+        <item name="android:background">@drawable/bg_register_spinner</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/extra_small_spacing</item>
+    </style>
+
     <style name="FilterSpinnerBackground">
-        <item name="android:minHeight">30dp</item>
+        <item name="android:minHeight">@dimen/default_button_height</item>
         <item name="android:background">@drawable/bg_rounded_filter_spinner</item>
         <item name="android:clipToOutline">true</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">@dimen/medium_spacing</item>
-        <item name="android:layout_marginEnd">@dimen/medium_spacing</item>
+        <item name="android:layout_marginStart">@dimen/small_spacing</item>
+        <item name="android:layout_marginEnd">@dimen/small_spacing</item>
+    </style>
+
+    <style name="RegisterSpinnerText">
+        <item name="android:textSize">@dimen/primary_body_text_size</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+        <item name="android:textColor">@color/grey</item>
     </style>
 
     <style name="FilterSpinnerText">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">@dimen/primary_body_text_size</item>
         <item name="android:fontFamily">@font/open_sans_regular</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:paddingStart">@dimen/small_spacing</item>
     </style>
 
     <style name="InquireMessage">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/primary_body_text_size</item>
         <item name="android:fontFamily">@font/open_sans_regular</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:padding">@dimen/small_spacing</item>
-        <item name="android:minHeight">30dp</item>
+        <item name="android:minHeight">@dimen/default_element_height</item>
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/bg_rounded_message</item>
         <item name="android:clipToOutline">true</item>
@@ -245,12 +259,12 @@
 
     <style name="AuthenticationScreen">
         <item name="android:layout_gravity">center_horizontal|center_vertical</item>
-        <item name="android:maxWidth">800dp</item>
+        <item name="android:maxWidth">@dimen/authentication_screen_max_width</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:paddingStart">@dimen/default_horizontal_padding</item>
+        <item name="android:paddingStart">@dimen/large_horizontal_padding</item>
         <item name="android:paddingTop">@dimen/login_vertical_padding</item>
-        <item name="android:paddingEnd">@dimen/default_horizontal_padding</item>
+        <item name="android:paddingEnd">@dimen/large_horizontal_padding</item>
         <item name="android:paddingBottom">@dimen/login_vertical_padding</item>
     </style>
 
@@ -259,5 +273,12 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:paddingStart">@dimen/default_horizontal_padding</item>
         <item name="android:paddingEnd">@dimen/default_horizontal_padding</item>
+    </style>
+
+    <style name="InquireScreen">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingStart">@dimen/medium_horizontal_padding</item>
+        <item name="android:paddingEnd">@dimen/medium_horizontal_padding</item>
     </style>
 </resources>

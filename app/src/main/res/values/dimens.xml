@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="default_horizontal_padding">50dp</dimen>
+    <dimen name="primary_heading_text_size">24sp</dimen>
+    <dimen name="secondary_heading_text_size">18sp</dimen>
+    <dimen name="small_heading_text_size">16sp</dimen>
+    <dimen name="primary_body_text_size">14sp</dimen>
+    <dimen name="secondary_body_text_size">12sp</dimen>
+    <dimen name="default_button_height">40dp</dimen>
+    <dimen name="default_element_height">30dp</dimen>
+    <dimen name="default_button_width">90dp</dimen>
+    <dimen name="search_bar_width">210dp</dimen>
+    <dimen name="default_icon_scale">0.5</dimen>
+    <dimen name="large_icon_scale">0.55</dimen>
+    <dimen name="authentication_screen_max_width">800dp</dimen>
+    <dimen name="large_button_width">115dp</dimen>
+    <dimen name="default_horizontal_padding">30dp</dimen>
+    <dimen name="large_horizontal_padding">50dp</dimen>
+    <dimen name="medium_horizontal_padding">45dp</dimen>
     <dimen name="default_vertical_padding">90dp</dimen>
     <dimen name="login_vertical_padding">80dp</dimen>
     <dimen name="default_spacing">20dp</dimen>
     <dimen name="medium_spacing">15dp</dimen>
     <dimen name="small_spacing">10dp</dimen>
+    <dimen name="extra_small_spacing">5dp</dimen>
     <dimen name="default_form_spacing">15dp</dimen>
     <dimen name="textbook_details_spacing">30dp</dimen>
     <dimen name="search_bar_spacing">60dp</dimen>

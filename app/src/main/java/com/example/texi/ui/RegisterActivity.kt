@@ -3,13 +3,16 @@ package com.example.texi.ui
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.texi.R
 import com.example.texi.model.LoggedInStudent
+import com.example.texi.model.textbooks
 import com.example.texi.viewmodel.RegisterViewModel
 import java.time.LocalDate
 
@@ -26,14 +29,16 @@ class RegisterActivity : AppCompatActivity() {
         val etFullName = findViewById<EditText>(R.id.et_register_full_name)
         val etEmail = findViewById<EditText>(R.id.et_register_email)
         val etStudentNumber = findViewById<EditText>(R.id.et_register_student_number)
-        val etUniversity = findViewById<EditText>(R.id.et_register_university)
+        val spUniversity = findViewById<Spinner>(R.id.sp_register_university)
+        val spField = findViewById<Spinner>(R.id.sp_register_field)
+        val spDegree = findViewById<Spinner>(R.id.sp_register_degree)
         val etGraduationYear = findViewById<EditText>(R.id.et_register_graduation_year)
-        val etField = findViewById<EditText>(R.id.et_register_field)
-        val etDegree = findViewById<EditText>(R.id.et_register_degree)
         val etPassword = findViewById<EditText>(R.id.et_register_password)
 
         val btnRegister = findViewById<Button>(R.id.btn_register_submit)
         val btnLoginPage = findViewById<Button>(R.id.btn_login_page)
+
+        setSpinnerOptions(spUniversity, spField, spDegree)
 
         btnLoginPage.setOnClickListener {
             loadLoginPage()
@@ -43,16 +48,15 @@ class RegisterActivity : AppCompatActivity() {
 
             val fullNameInput = etFullName.text.toString().trim()
             val emailAddressInput = etEmail.text.toString()
-            val universityInput = etUniversity.text.toString().trim()
-            val fieldInput = etField.text.toString().trim()
-            val degreeInput = etDegree.text.toString().trim()
+            val universityInput = spUniversity.selectedItem.toString().trim()
+            val fieldInput = spField.selectedItem.toString().trim()
+            val degreeInput = spDegree.selectedItem.toString().trim()
             val passwordInput = etPassword.text.toString()
 
             val studentNumberInput = etStudentNumber.text.toString().toIntOrNull()
             val graduationYearInput = etGraduationYear.text.toString().toIntOrNull()
 
             val fullNameLetterCount = fullNameInput.count { it.isLetter() }
-            val universityLetterCount = universityInput.count { it.isLetter() }
 
             val year = LocalDate.now().year
 
@@ -61,9 +65,6 @@ class RegisterActivity : AppCompatActivity() {
                     fullNameLetterCount,
                     emailAddressInput,
                     studentNumberInput,
-                    universityLetterCount,
-                    fieldInput,
-                    degreeInput,
                     graduationYearInput,
                     passwordInput,
                     year
@@ -88,9 +89,6 @@ class RegisterActivity : AppCompatActivity() {
         fullNameLetterCount: Int,
         emailAddressInput: String,
         studentNumberInput: Int?,
-        universityLetterCount: Int,
-        fieldInput: String,
-        degreeInput: String,
         graduationYearInput: Int?,
         passwordInput: String,
         year: Int
@@ -125,21 +123,6 @@ class RegisterActivity : AppCompatActivity() {
 
         if (studentNumberInput.toString().length < 2) {
             Toast.makeText(this, "Student number must have 2+ numbers", Toast.LENGTH_LONG).show()
-            return false
-        }
-
-        if (universityLetterCount < 5) {
-            Toast.makeText(this, "University must have 5+ letters.", Toast.LENGTH_LONG).show()
-            return false
-        }
-
-        if (fieldInput.length < 5 || fieldInput.any { it.isDigit() }) {
-            Toast.makeText(this, "Field of study must have 5+ letters and no numbers.", Toast.LENGTH_SHORT).show()
-            return false
-        }
-
-        if (degreeInput.length < 5 || degreeInput.any { it.isDigit() }) {
-            Toast.makeText(this, "Degree of study must have 5+ letters and no numbers.", Toast.LENGTH_SHORT).show()
             return false
         }
 
@@ -207,5 +190,38 @@ class RegisterActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "User already found. Please login.", Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun setSpinnerOptions(
+        spUniversity: Spinner,
+        spField: Spinner,
+        spDegree: Spinner
+    ) {
+
+        val universityAdapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.university_options,
+            R.layout.item_register_spinner
+        )
+
+        val fieldAdapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.field_options,
+            R.layout.item_register_spinner
+        )
+
+        val degreeAdapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.degree_options,
+            R.layout.item_register_spinner
+        )
+
+        universityAdapter.setDropDownViewResource(R.layout.item_filter_spinner)
+        fieldAdapter.setDropDownViewResource(R.layout.item_filter_spinner)
+        degreeAdapter.setDropDownViewResource(R.layout.item_filter_spinner)
+
+        spUniversity.adapter = universityAdapter
+        spField.adapter = fieldAdapter
+        spDegree.adapter = degreeAdapter
     }
 }

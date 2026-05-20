@@ -78,7 +78,7 @@ val textbooks = mutableListOf(
         isbn = 9781071827956,
         description = "Excellent condition, literally did not use it once.",
         price = 450.0f,
-        university = "STADIO",
+        university = "STADIO Higher Education",
         field = "Education",
         degree = "Higher Certificate"
     ),
@@ -100,7 +100,7 @@ val textbooks = mutableListOf(
         isbn = 9780128182000,
         description = "Basically new, comes with a clear cover.",
         price = 600.0f,
-        university = "STADIO",
+        university = "STADIO Higher Education",
         field = "Information Technology",
         degree = "Bachelor’s"
     ),

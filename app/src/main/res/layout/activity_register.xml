@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cl_register"
     style="@style/AuthenticationScreen">
 
@@ -49,49 +50,10 @@
         android:autofillHints=""
         android:hint="@string/student_number"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/et_register_university"
+        app:layout_constraintBottom_toTopOf="@+id/sp_register_university"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_register_email" />
-
-    <EditText
-        android:id="@+id/et_register_university"
-        style="@style/PrimaryFormText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:hint="@string/university"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/et_register_field"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_register_student_number" />
-
-    <EditText
-        android:id="@+id/et_register_field"
-        style="@style/PrimaryFormText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:hint="@string/field_of_study"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/et_register_degree"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_register_university" />
-
-    <EditText
-        android:id="@+id/et_register_degree"
-        style="@style/PrimaryFormText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:hint="@string/degree_of_study"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/et_register_graduation_year"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_register_field" />
 
     <EditText
         android:id="@+id/et_register_graduation_year"
@@ -104,7 +66,7 @@
         app:layout_constraintBottom_toTopOf="@+id/et_register_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_register_degree" />
+        app:layout_constraintTop_toBottomOf="@+id/sp_register_degree" />
 
     <EditText
         android:id="@+id/et_register_password"
@@ -128,7 +90,8 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_register_password">
 
         <Space
             android:layout_width="wrap_content"
@@ -162,5 +125,28 @@
             android:layout_weight="0.5" />
 
     </LinearLayout>
+
+    <Spinner
+        android:id="@+id/sp_register_university"
+        style="@style/RegisterSpinnerBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_register_student_number" />
+
+    <Spinner
+        android:id="@+id/sp_register_field"
+        style="@style/RegisterSpinnerBackground"
+        app:layout_constraintBottom_toTopOf="@+id/sp_register_degree"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_register_university" />
+
+    <Spinner
+        android:id="@+id/sp_register_degree"
+        style="@style/RegisterSpinnerBackground"
+        app:layout_constraintBottom_toTopOf="@+id/et_register_graduation_year"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_register_field" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

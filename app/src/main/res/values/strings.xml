@@ -41,4 +41,28 @@
     <string name="type">Type...</string>
     <string name="filter_textbooks">Filter Textbooks</string>
     <string name="filter">Filter</string>
+
+    <string-array name="university_options">
+        <item>STADIO Higher Education</item>
+        <item>UCT</item>
+        <item>UNISA</item>
+        <item>UP</item>
+        <item>Wits</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="field_options">
+        <item>Business</item>
+        <item>Education</item>
+        <item>Environmental Studies</item>
+        <item>Information Technology</item>
+        <item>Law</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="degree_options">
+        <item>Higher Certificate</item>
+        <item>Diploma</item>
+        <item>Bachelor’s</item>
+    </string-array>
 </resources>

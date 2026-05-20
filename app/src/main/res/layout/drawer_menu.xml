@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/ll_menu_upload"
+        app:layout_constraintBottom_toTopOf="@+id/ll_menu_upload_textbook"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_menu_heading">
@@ -49,7 +49,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ll_menu_upload"
+        android:id="@+id/ll_menu_upload_textbook"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -85,7 +85,7 @@
         app:layout_constraintBottom_toTopOf="@+id/ll_menu_all_textbooks"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_menu_upload">
+        app:layout_constraintTop_toBottomOf="@+id/ll_menu_upload_textbook">
 
         <ImageButton
             android:id="@+id/ib_menu_my_profile_icon"

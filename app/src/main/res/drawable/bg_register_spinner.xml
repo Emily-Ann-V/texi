@@ -2,12 +2,17 @@
     <item>
         <shape>
             <solid android:color="@color/black"/>
-            <corners android:radius="50dp"/>
         </shape>
     </item>
 
     <item
         android:drawable="@drawable/ic_spinner_open_options"
-        android:gravity="end|center_vertical"
-        android:right="@dimen/small_spacing" />
+        android:gravity="end|center_vertical"/>
+
+    <item android:gravity="bottom">
+        <shape>
+            <size android:height="0.5dp"/>
+            <solid android:color="@color/grey"/>
+        </shape>
+    </item>
 </layer-list>

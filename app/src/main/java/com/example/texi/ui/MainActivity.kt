@@ -16,15 +16,24 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val ibMenu = findViewById<ImageButton>(R.id.ib_header_menu_icon)
-        val dlMenu = findViewById<DrawerLayout>(R.id.dl_menu)
-        val ibHome = findViewById<ImageButton>(R.id.ib_footer_home_icon)
-        val llHome = findViewById<LinearLayout>(R.id.ll_menu_home)
-        val llAllTextbooks = findViewById<LinearLayout>(R.id.ll_menu_all_textbooks)
-        val tvLogout = findViewById<TextView>(R.id.tv_menu_logout)
-        val ibUploadTextbook = findViewById<ImageButton>(R.id.ib_footer_upload_textbook_icon)
 
         loadLatestTextbooks()
+
+        //Menu
+        val dlMenu = findViewById<DrawerLayout>(R.id.dl_menu)
+        val ibMenu = findViewById<ImageButton>(R.id.ib_header_menu_icon)
+
+        //Menu Nav
+        val llHome = findViewById<LinearLayout>(R.id.ll_menu_home)
+        val llUploadTextbook = findViewById<LinearLayout>(R.id.ll_menu_upload_textbook)
+        val llMyProfile = findViewById<LinearLayout>(R.id.ll_menu_my_profile)
+        val llAllTextbooks = findViewById<LinearLayout>(R.id.ll_menu_all_textbooks)
+
+        // Footer Nav
+        val ibHome = findViewById<ImageButton>(R.id.ib_footer_home_icon)
+        val ibUploadTextbook = findViewById<ImageButton>(R.id.ib_footer_upload_textbook_icon)
+        val ibMyProfile = findViewById<ImageButton>(R.id.ib_footer_my_profile_icon)
+        val tvLogout = findViewById<TextView>(R.id.tv_menu_logout)
 
         tvLogout.paintFlags =
             tvLogout.paintFlags or Paint.UNDERLINE_TEXT_FLAG
@@ -37,12 +46,18 @@ class MainActivity : AppCompatActivity() {
                 dlMenu.openDrawer(GravityCompat.END)
         }
 
-        ibHome.setOnClickListener {
-            loadNewFragment(LatestTextbooksFragment())
-        }
-
         llHome.setOnClickListener {
             loadLatestTextbooks()
+            dlMenu.closeDrawer(GravityCompat.END)
+        }
+
+        llUploadTextbook.setOnClickListener {
+            loadUploadTextbook()
+            dlMenu.closeDrawer(GravityCompat.END)
+        }
+
+        llMyProfile.setOnClickListener {
+            loadMyProfile()
             dlMenu.closeDrawer(GravityCompat.END)
         }
 
@@ -51,8 +66,16 @@ class MainActivity : AppCompatActivity() {
             dlMenu.closeDrawer(GravityCompat.END)
         }
 
+        ibHome.setOnClickListener {
+            loadNewFragment(LatestTextbooksFragment())
+        }
+
         ibUploadTextbook.setOnClickListener {
-            loadNewFragment(UploadTextbookFragment())
+            loadUploadTextbook()
+        }
+
+        ibMyProfile.setOnClickListener {
+            loadMyProfile()
         }
     }
 
@@ -65,6 +88,14 @@ class MainActivity : AppCompatActivity() {
 
     fun loadLatestTextbooks(){
         loadNewFragment(LatestTextbooksFragment())
+    }
+
+    fun loadUploadTextbook(){
+        loadNewFragment(UploadTextbookFragment())
+    }
+
+    fun loadMyProfile(){
+        loadNewFragment(MyProfileFragment())
     }
 
     fun logout(){

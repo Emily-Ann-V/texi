@@ -1,12 +1,13 @@
 package com.example.texi.viewmodel
 
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import com.example.texi.model.uploadTextbook
 
 class UploadTextbookViewModel: ViewModel() {
     fun upload(
         uploadedImageResIdInput: Int? = null,
-        uploadedImageUriInput: String? = null,
+        uploadedImageUriInput: Uri? = null,
         titleInput: String,
         authorInput: String,
         isbnInput: Long,
@@ -14,7 +15,8 @@ class UploadTextbookViewModel: ViewModel() {
         priceInput: Float,
         universityInput: String,
         fieldInput: String,
-        degreeInput: String) : Boolean {
+        degreeInput: String,
+        uploadedBy: String) : Boolean {
 
         return uploadTextbook(
             uploadedImageResIdInput,
@@ -26,7 +28,8 @@ class UploadTextbookViewModel: ViewModel() {
             priceInput,
             universityInput,
             fieldInput,
-            degreeInput
+            degreeInput,
+            uploadedBy
         )
     }
 }

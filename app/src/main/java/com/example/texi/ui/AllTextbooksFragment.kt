@@ -47,7 +47,7 @@ class AllTextbooksFragment : Fragment(R.layout.fragment_all_textbooks) {
                 if (textbook.uploadedImageResId != null) {
                     putInt("uploadedImageResId", textbook.uploadedImageResId)
                 }
-                putString("uploadedImageUri", textbook.uploadedImageUri)
+                putString("uploadedImageUri", textbook.uploadedImageUri.toString())
                 putString("title", textbook.title)
                 putString("author", textbook.author)
                 putLong("isbn", textbook.isbn)

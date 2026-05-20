@@ -1,5 +1,6 @@
 package com.example.texi.ui
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
@@ -20,12 +21,22 @@ class UploadTextbookFragment: Fragment(R.layout.fragment_upload_textbook) {
     private lateinit var viewModel: UploadTextbookViewModel
     private lateinit var uploadedImage: ImageView
     private var uploadedImageUri : Uri? = null
-    private val uploadImage = registerForActivityResult(ActivityResultContracts.GetContent()){ imageUri : Uri? ->
-        if(imageUri != null){
-            uploadedImageUri = imageUri
-            uploadedImage.setImageURI(imageUri)
+    private val uploadImage =
+        registerForActivityResult(ActivityResultContracts.OpenDocument()) { imageUri: Uri? ->
+
+            if (imageUri != null) {
+
+                val flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+
+                requireContext().contentResolver.takePersistableUriPermission(
+                    imageUri,
+                    flags
+                )
+
+                uploadedImageUri = imageUri
+                uploadedImage.setImageURI(imageUri)
+            }
         }
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,12 +52,12 @@ class UploadTextbookFragment: Fragment(R.layout.fragment_upload_textbook) {
         val etPrice = view.findViewById<EditText>(R.id.et_upload_textbook_price)
 
         ibUploadImage.setOnClickListener {
-            uploadImage.launch("image/*")
+            uploadImage.launch(arrayOf("image/*"))
         }
 
         btnUpload.setOnClickListener {
             val uploadedImageResIdInput = null
-            val uploadedImageUriInput = uploadedImageUri?.toString()
+            val uploadedImageUriInput = uploadedImageUri
 
             val titleInput = etTitle.text.toString().trim()
             val authorInput = etAuthor.text.toString().trim()
@@ -63,16 +74,17 @@ class UploadTextbookFragment: Fragment(R.layout.fragment_upload_textbook) {
             val universityInput = LoggedInStudent.university
             val fieldInput = LoggedInStudent.field
             val degreeInput = LoggedInStudent.degree
+            val uploadedByInput = LoggedInStudent.emailAddress
 
            if (uploadValidation(uploadedImageUriInput,titleLetterCount,authorLetterCount,isbnInputString,descriptionLetterCount,priceInput)){
-           uploadTextbook(uploadedImageResIdInput,uploadedImageUriInput,titleInput,authorInput,isbnInput!!,descriptionInput,priceInput!!, universityInput,fieldInput,degreeInput)
+           uploadTextbook(uploadedImageResIdInput,uploadedImageUriInput,titleInput,authorInput,isbnInput!!,descriptionInput,priceInput!!, universityInput,fieldInput,degreeInput,uploadedByInput)
 
                 }
         }
     }
 
     fun uploadValidation(
-        uploadedImageUriInput: String? = null,
+        uploadedImageUriInput: Uri? = null,
         titleLetterCount: Int,
         authorLetterCount: Int,
         isbnInputString: String,
@@ -80,7 +92,7 @@ class UploadTextbookFragment: Fragment(R.layout.fragment_upload_textbook) {
         priceInput: Float?,
     ): Boolean{
 
-        if(uploadedImageUriInput.isNullOrEmpty()){
+        if(uploadedImageUriInput == null){
             Toast.makeText(context, "Please upload an image.", Toast.LENGTH_SHORT).show()
             return false
         }
@@ -115,7 +127,7 @@ class UploadTextbookFragment: Fragment(R.layout.fragment_upload_textbook) {
 
     fun uploadTextbook(
         uploadedImageResIdInput: Int? = null,
-        uploadedImageUriInput: String? = null,
+        uploadedImageUriInput: Uri? = null,
         titleInput: String,
         authorInput: String,
         isbnInput: Long,
@@ -123,7 +135,8 @@ class UploadTextbookFragment: Fragment(R.layout.fragment_upload_textbook) {
         priceInput: Float,
         universityInput: String,
         fieldInput: String,
-        degreeInput: String) {
+        degreeInput: String,
+        uploadedByInput: String) {
 
         val uploaded =  viewModel.upload(
             uploadedImageResIdInput,
@@ -135,7 +148,8 @@ class UploadTextbookFragment: Fragment(R.layout.fragment_upload_textbook) {
             priceInput,
             universityInput,
             fieldInput,
-            degreeInput
+            degreeInput,
+            uploadedByInput
         )
 
         if (uploaded){

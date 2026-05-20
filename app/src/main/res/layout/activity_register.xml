@@ -129,6 +129,7 @@
     <Spinner
         android:id="@+id/sp_register_university"
         style="@style/RegisterSpinnerBackground"
+        app:layout_constraintBottom_toTopOf="@+id/sp_register_field"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_register_student_number" />

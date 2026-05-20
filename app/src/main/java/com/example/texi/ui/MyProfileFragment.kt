@@ -22,6 +22,7 @@ class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
         viewModel = ViewModelProvider(this)[MyProfileViewModel::class.java]
 
         val btnSave = view.findViewById<Button>(R.id.btn_my_profile_save)
+        val btnMyUploads = view.findViewById<Button>(R.id.btn_my_uploads_page)
 
         val etFullName = view.findViewById<EditText>(R.id.et_my_profile_full_name)
         val etEmailAddress = view.findViewById<EditText>(R.id.et_my_profile_email)
@@ -42,6 +43,13 @@ class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
             if (updateProfileValidation(fullNameInput, fullNameLetterCount, emailAddressInput, passwordInput)) {
                 updateProfile(fullNameInput, emailAddressInput, passwordInput)
             }
+        }
+
+        btnMyUploads.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fl_main, MyUploadsFragment())
+                .addToBackStack(null)
+                .commit()
         }
     }
 

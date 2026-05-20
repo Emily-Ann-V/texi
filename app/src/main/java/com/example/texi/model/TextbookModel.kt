@@ -1,10 +1,11 @@
 package com.example.texi.model
 
+import android.net.Uri
 import com.example.texi.R
 
 data class Textbook (
     val uploadedImageResId: Int? = null,
-    val uploadedImageUri: String? = null,
+    var uploadedImageUri: Uri? = null,
     var title: String,
     var author: String,
     var isbn: Long,
@@ -12,7 +13,8 @@ data class Textbook (
     var price: Float,
     var university: String,
     var field: String,
-    var degree: String
+    var degree: String,
+    var uploadedBy: String
     )
 
 val textbooks = mutableListOf(
@@ -25,7 +27,8 @@ val textbooks = mutableListOf(
         price = 300.0f,
         university = "UNISA",
         field = "Law",
-        degree = "Bachelor’s"
+        degree = "Bachelor’s",
+        uploadedBy = "Developer"
     ),
     Textbook(
         uploadedImageResId = R.drawable.img_textbook_textbook_of_environmental_studies_for_undergraduate_courses_3ed,
@@ -36,7 +39,8 @@ val textbooks = mutableListOf(
         price = 180.0f,
         university = "Wits",
         field = "Environmental Studies",
-        degree = "Diploma"
+        degree = "Diploma",
+        uploadedBy = "Developer"
     ),
     Textbook(
         uploadedImageResId = R.drawable.img_textbook_the_principles_of_computer_hardware_3ed,
@@ -47,7 +51,8 @@ val textbooks = mutableListOf(
         price = 200.0f,
         university = "UCT",
         field = "Information Technology",
-        degree = "Higher Certificate"
+        degree = "Higher Certificate",
+        uploadedBy = "Developer"
     ),
     Textbook(
         uploadedImageResId = R.drawable.img_textbook_introduction_to_business_management_11ed,
@@ -58,7 +63,8 @@ val textbooks = mutableListOf(
         price = 250.0f,
         university = "UP",
         field = "Business",
-        degree = "Bachelor’s"
+        degree = "Bachelor’s",
+        uploadedBy = "Developer"
     ),
     Textbook(
         uploadedImageResId = R.drawable.img_textbook_marketing_research_4ed,
@@ -69,7 +75,8 @@ val textbooks = mutableListOf(
         price = 350.0f,
         university = "UP",
         field = "Business",
-        degree = "Bachelor’s"
+        degree = "Bachelor’s",
+        uploadedBy = "Developer"
     ),
     Textbook(
         uploadedImageResId = R.drawable.img_textbook_introduction_to_teaching_making_a_difference_in_student_learning_3ed,
@@ -80,7 +87,8 @@ val textbooks = mutableListOf(
         price = 450.0f,
         university = "STADIO Higher Education",
         field = "Education",
-        degree = "Higher Certificate"
+        degree = "Higher Certificate",
+        uploadedBy = "Developer"
     ),
     Textbook(
         uploadedImageResId = R.drawable.img_textbook_environmental_education_and_education_for_sustainability_2ed,
@@ -91,7 +99,8 @@ val textbooks = mutableListOf(
         price = 150.0f,
         university = "Wits",
         field = "Environmental Studies",
-        degree = "Diploma"
+        degree = "Diploma",
+        uploadedBy = "Developer"
     ),
     Textbook(
         uploadedImageResId = R.drawable.img_textbook_computer_networks_a_systems_approach_6ed,
@@ -102,7 +111,8 @@ val textbooks = mutableListOf(
         price = 600.0f,
         university = "STADIO Higher Education",
         field = "Information Technology",
-        degree = "Bachelor’s"
+        degree = "Bachelor’s",
+        uploadedBy = "Developer"
     ),
     Textbook(
         uploadedImageResId = R.drawable.img_textbook_juta_criminal_procedure_handbook_12ed,
@@ -113,7 +123,8 @@ val textbooks = mutableListOf(
         price = 180.0f,
         university = "UP",
         field = "Law",
-        degree = "Bachelor’s"
+        degree = "Bachelor’s",
+        uploadedBy = "Developer"
     ),
     Textbook(
         uploadedImageResId = R.drawable.img_textbook_introducing_javafx_8_programming_1ed,
@@ -124,13 +135,14 @@ val textbooks = mutableListOf(
         price = 250.0f,
         university = "Wits",
         field = "Information Technology",
-        degree = "Higher Certificate"
+        degree = "Higher Certificate",
+        uploadedBy = "Developer"
     )
 )
 
     fun uploadTextbook(
         uploadedImageResIdInput: Int? = null,
-        uploadedImageUriInput: String? = null,
+        uploadedImageUriInput: Uri? = null,
         titleInput: String,
         authorInput: String,
         isbnInput: Long,
@@ -138,7 +150,8 @@ val textbooks = mutableListOf(
         priceInput: Float,
         universityInput: String,
         fieldInput: String,
-        degreeInput: String) : Boolean {
+        degreeInput: String,
+        uploadedBy: String) : Boolean {
 
             val newTextbook = Textbook(
                 uploadedImageResIdInput,
@@ -150,7 +163,8 @@ val textbooks = mutableListOf(
                 priceInput,
                 universityInput,
                 fieldInput,
-                degreeInput
+                degreeInput,
+                uploadedBy
             )
 
         textbooks.add(newTextbook)

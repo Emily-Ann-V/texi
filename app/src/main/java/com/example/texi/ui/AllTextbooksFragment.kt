@@ -44,7 +44,10 @@ class AllTextbooksFragment : Fragment(R.layout.fragment_all_textbooks) {
 
         val fragment = TextbookDetailsFragment().apply {
             arguments = Bundle().apply {
-                putInt("imageResId", textbook.imageResId)
+                if (textbook.uploadedImageResId != null) {
+                    putInt("uploadedImageResId", textbook.uploadedImageResId)
+                }
+                putString("uploadedImageUri", textbook.uploadedImageUri)
                 putString("title", textbook.title)
                 putString("author", textbook.author)
                 putLong("isbn", textbook.isbn)

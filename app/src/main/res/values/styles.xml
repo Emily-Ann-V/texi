@@ -189,7 +189,14 @@
     </style>
 
     <style name="RoundedImage">
+        <item name="android:scaleType">centerCrop</item>
         <item name="android:background">@drawable/bg_rounded_image</item>
+        <item name="android:clipToOutline">true</item>
+    </style>
+
+    <style name="RoundedUploadedImage">
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:background">@drawable/bg_rounded_uploaded_image</item>
         <item name="android:clipToOutline">true</item>
     </style>
 

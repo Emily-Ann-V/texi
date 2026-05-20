@@ -23,17 +23,20 @@ class LatestTextbooksFragment : Fragment(R.layout.fragment_latest_textbooks) {
 
         val latestTextbookAdapter = TextbookAdapter(textbooks.takeLast(5)) { textbook ->
 
-            val bundle = Bundle()
-
-            bundle.putInt("imageResId", textbook.imageResId)
-            bundle.putString("title", textbook.title)
-            bundle.putString("author", textbook.author)
-            bundle.putLong("isbn", textbook.isbn)
-            bundle.putString("description", textbook.description)
-            bundle.putFloat("price", textbook.price)
-            bundle.putString("field", textbook.field)
-            bundle.putString("university", textbook.university)
-            bundle.putString("degree", textbook.degree)
+            val bundle = Bundle().apply {
+                if (textbook.uploadedImageResId != null) {
+                    putInt("uploadedImageResId", textbook.uploadedImageResId)
+                }
+                putString("uploadedImageUri", textbook.uploadedImageUri)
+                putString("title", textbook.title)
+                putString("author", textbook.author)
+                putLong("isbn", textbook.isbn)
+                putString("description", textbook.description)
+                putFloat("price", textbook.price)
+                putString("field", textbook.field)
+                putString("university", textbook.university)
+                putString("degree", textbook.degree)
+            }
 
             val fragment = TextbookDetailsFragment()
             fragment.arguments = bundle

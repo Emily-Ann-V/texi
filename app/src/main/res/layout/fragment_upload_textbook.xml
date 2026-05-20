@@ -16,14 +16,12 @@
 
     <ImageView
         android:id="@+id/iv_upload_textbook_image"
-        style="@style/DefaultIcon"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        style="@style/RoundedUploadedImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="@dimen/default_form_spacing"
-        android:layout_weight="1"
-        android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/et_upload_textbook_title"
-        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/ib_upload_textbook_upload_image_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_upload_textbook_heading"
         app:srcCompat="@drawable/img_upload_textbook_image_placeholder" />
@@ -31,7 +29,6 @@
     <ImageButton
         android:id="@+id/ib_upload_textbook_upload_image_icon"
         style="@style/DefaultIcon"
-        android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="@+id/iv_upload_textbook_image"
         app:layout_constraintStart_toEndOf="@+id/iv_upload_textbook_image"
         app:layout_constraintTop_toTopOf="@+id/iv_upload_textbook_image"

@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.example.texi.R
 import com.example.texi.model.Textbook
@@ -31,8 +32,13 @@ class TextbookAdapter(
     override fun onBindViewHolder(holder: TextbookViewHolder, position: Int) {
 
         val textbook = textbooks[position]
+        val uploadedImageResId = textbook.uploadedImageResId
 
-        holder.ivTextbook.setImageResource(textbook.imageResId)
+        if (uploadedImageResId!= null && uploadedImageResId != 0) {
+            holder.ivTextbook.setImageResource(uploadedImageResId)
+        } else if (!textbook.uploadedImageUri.isNullOrEmpty()){
+            holder.ivTextbook.setImageURI(textbook.uploadedImageUri.toUri())
+        }
 
         holder.btnTextbookDetails.setOnClickListener {
             onDetailsClick(textbook)

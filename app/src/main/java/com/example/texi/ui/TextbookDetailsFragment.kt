@@ -3,17 +3,20 @@ package com.example.texi.ui
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.texi.R
+import androidx.core.net.toUri
 
 class TextbookDetailsFragment : Fragment(R.layout.fragment_textbook_details) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val imageResId = arguments?.getInt("imageResId")
+        val uploadedImageResId = arguments?.getInt("uploadedImageResId")
+        val uploadedImageUri = arguments?.getString("uploadedImageUri")
         val title = arguments?.getString("title")
         val author = arguments?.getString("author")
         val isbn = arguments?.getLong("isbn")
@@ -23,6 +26,7 @@ class TextbookDetailsFragment : Fragment(R.layout.fragment_textbook_details) {
         val field = arguments?.getString("field")
         val degree = arguments?.getString("degree")
 
+        val ibBack =view.findViewById<ImageButton>(R.id.ib_textbook_details_back)
         val btnInquire = view.findViewById<Button>(R.id.btn_inquire_page)
         val ivImage = view.findViewById<ImageView>(R.id.iv_textbook_details_image)
         val tvTitle = view.findViewById<TextView>(R.id.tv_textbook_details_title)
@@ -34,6 +38,10 @@ class TextbookDetailsFragment : Fragment(R.layout.fragment_textbook_details) {
         val tvField = view.findViewById<TextView>(R.id.tv_textbook_details_field)
         val tvDegree = view.findViewById<TextView>(R.id.tv_textbook_details_degree)
 
+        ibBack.setOnClickListener {
+            parentFragmentManager.popBackStack()
+        }
+
         btnInquire.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fl_main, InquireFragment())
@@ -41,7 +49,11 @@ class TextbookDetailsFragment : Fragment(R.layout.fragment_textbook_details) {
                 .commit()
         }
 
-        ivImage.setImageResource(imageResId ?: 0)
+        if (uploadedImageResId != null && uploadedImageResId != 0){
+        ivImage.setImageResource(uploadedImageResId)
+        } else if (!uploadedImageUri.isNullOrEmpty()){
+            ivImage.setImageURI(uploadedImageUri.toUri())
+        }
         tvTitle.text = title
         tvAuthor.text = author
         tvISBN.text = isbn?.toString()

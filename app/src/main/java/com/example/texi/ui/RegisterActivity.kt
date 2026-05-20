@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.texi.R
+import com.example.texi.model.LoggedInStudent
 import com.example.texi.viewmodel.RegisterViewModel
 import java.time.LocalDate
 
@@ -40,33 +41,29 @@ class RegisterActivity : AppCompatActivity() {
 
         btnRegister.setOnClickListener {
 
-            val fullNameInput = etFullName.text.toString()
+            val fullNameInput = etFullName.text.toString().trim()
             val emailAddressInput = etEmail.text.toString()
-            val universityInput = etUniversity.text.toString()
-            val fieldInput = etField.text.toString()
-            val degreeInput = etDegree.text.toString()
+            val universityInput = etUniversity.text.toString().trim()
+            val fieldInput = etField.text.toString().trim()
+            val degreeInput = etDegree.text.toString().trim()
             val passwordInput = etPassword.text.toString()
 
             val studentNumberInput = etStudentNumber.text.toString().toIntOrNull()
             val graduationYearInput = etGraduationYear.text.toString().toIntOrNull()
 
-            val trimmedFullNameInput = fullNameInput.trim()
-            val trimmedFieldInput = fieldInput.trim()
-            val trimmedDegreeInput = degreeInput.trim()
-
-            val fullNameLetterCount = trimmedFullNameInput.count { it.isLetter() }
-            val universityLetterCount = universityInput.trim().count { it.isLetter() }
+            val fullNameLetterCount = fullNameInput.count { it.isLetter() }
+            val universityLetterCount = universityInput.count { it.isLetter() }
 
             val year = LocalDate.now().year
 
             if (registerValidation(
-                    trimmedFullNameInput,
+                    fullNameInput,
                     fullNameLetterCount,
                     emailAddressInput,
                     studentNumberInput,
                     universityLetterCount,
-                    trimmedFieldInput,
-                    trimmedDegreeInput,
+                    fieldInput,
+                    degreeInput,
                     graduationYearInput,
                     passwordInput,
                     year
@@ -87,13 +84,13 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     fun registerValidation(
-        trimmedFullNameInput: String,
+        fullNameInput: String,
         fullNameLetterCount: Int,
         emailAddressInput: String,
         studentNumberInput: Int?,
         universityLetterCount: Int,
-        trimmedFieldInput: String,
-        trimmedDegreeInput: String,
+        fieldInput: String,
+        degreeInput: String,
         graduationYearInput: Int?,
         passwordInput: String,
         year: Int
@@ -110,8 +107,8 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         if (fullNameLetterCount < 5 ||
-            trimmedFullNameInput.any { it.isDigit() } ||
-            !trimmedFullNameInput.contains(" ")
+            fullNameInput.any { it.isDigit() } ||
+            !fullNameInput.contains(" ")
         ) {
             Toast.makeText(
                 this,
@@ -136,12 +133,12 @@ class RegisterActivity : AppCompatActivity() {
             return false
         }
 
-        if (trimmedFieldInput.length < 5 || trimmedFieldInput.any { it.isDigit() }) {
+        if (fieldInput.length < 5 || fieldInput.any { it.isDigit() }) {
             Toast.makeText(this, "Field of study must have 5+ letters and no numbers.", Toast.LENGTH_SHORT).show()
             return false
         }
 
-        if (trimmedDegreeInput.length < 5 || trimmedDegreeInput.any { it.isDigit() }) {
+        if (degreeInput.length < 5 || degreeInput.any { it.isDigit() }) {
             Toast.makeText(this, "Degree of study must have 5+ letters and no numbers.", Toast.LENGTH_SHORT).show()
             return false
         }
@@ -201,6 +198,10 @@ class RegisterActivity : AppCompatActivity() {
         )
 
         if (registered) {
+            LoggedInStudent.university = universityInput
+            LoggedInStudent.field = fieldInput
+            LoggedInStudent.degree = degreeInput
+
             Toast.makeText(this, "Account created.", Toast.LENGTH_LONG).show()
             finish()
         } else {

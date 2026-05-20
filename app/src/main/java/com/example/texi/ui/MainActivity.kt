@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         val llHome = findViewById<LinearLayout>(R.id.ll_menu_home)
         val llAllTextbooks = findViewById<LinearLayout>(R.id.ll_menu_all_textbooks)
         val tvLogout = findViewById<TextView>(R.id.tv_menu_logout)
+        val ibUploadTextbook = findViewById<ImageButton>(R.id.ib_footer_upload_textbook_icon)
 
         loadLatestTextbooks()
 
@@ -49,11 +50,16 @@ class MainActivity : AppCompatActivity() {
             loadNewFragment(AllTextbooksFragment())
             dlMenu.closeDrawer(GravityCompat.END)
         }
+
+        ibUploadTextbook.setOnClickListener {
+            loadNewFragment(UploadTextbookFragment())
+        }
     }
 
     fun loadNewFragment(fragment: Fragment){
         supportFragmentManager.beginTransaction()
             .replace(R.id.fl_main, fragment)
+            .addToBackStack(null)
             .commit()
     }
 

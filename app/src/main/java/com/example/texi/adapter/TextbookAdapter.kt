@@ -38,7 +38,7 @@ class TextbookAdapter(
         } else if (textbook.uploadedImageUri!=null){
             holder.ivTextbook.setImageURI(textbook.uploadedImageUri)
         } else{
-            holder.ivTextbook.setImageResource(R.drawable.img_upload_textbook_image_placeholder)
+            holder.ivTextbook.setImageResource(R.drawable.img_upload_textbook_image_preview_placeholder)
         }
 
         holder.btnTextbookDetails.setOnClickListener {

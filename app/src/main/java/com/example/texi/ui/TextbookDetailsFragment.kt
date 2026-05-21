@@ -30,7 +30,7 @@ class TextbookDetailsFragment : Fragment(R.layout.fragment_textbook_details) {
 
         val ibBack =view.findViewById<ImageButton>(R.id.ib_textbook_details_back)
         val btnInquire = view.findViewById<Button>(R.id.btn_inquire_page)
-        val ivImage = view.findViewById<ImageView>(R.id.iv_textbook_details_image)
+        val ivImage = view.findViewById<ImageView>(R.id.iv_textbook_details_cover_image)
         val tvTitle = view.findViewById<TextView>(R.id.tv_textbook_details_title)
         val tvAuthor = view.findViewById<TextView>(R.id.tv_textbook_details_author)
         val tvISBN = view.findViewById<TextView>(R.id.tv_textbook_details_isbn)

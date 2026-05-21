@@ -77,7 +77,7 @@
         style="@style/LargeIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/todo"
+        android:contentDescription="@string/close_filter_options"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_filter_textbooks_close_filter_options" />

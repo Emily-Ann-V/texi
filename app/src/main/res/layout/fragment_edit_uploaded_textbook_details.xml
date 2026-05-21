@@ -8,31 +8,31 @@
     <ImageButton
         android:id="@+id/ib_edit_uploaded_textbook_back"
         style="@style/DefaultIcon"
-        android:contentDescription="@string/todo"
+        android:contentDescription="@string/back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back" />
 
     <ImageView
-        android:id="@+id/iv_edit_uploaded_textbook_details_image"
+        android:id="@+id/iv_edit_uploaded_textbook_details_cover_image"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:contentDescription="@string/todo"
-        android:src="@drawable/img_login_logo"
+        android:contentDescription="@string/textbook_cover_image"
+        android:src="@drawable/img_default_logo"
         app:layout_constraintBottom_toTopOf="@+id/ll_edit_uploaded_textbook_details_filter_categories"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@+id/ib_edit_uploaded_textbook_details_edit_icon"
+        app:layout_constraintEnd_toStartOf="@+id/ib_edit_uploaded_textbook_details_edit_cover_image_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ib_edit_uploaded_textbook_back" />
 
     <ImageButton
-        android:id="@+id/ib_edit_uploaded_textbook_details_edit_icon"
+        android:id="@+id/ib_edit_uploaded_textbook_details_edit_cover_image_icon"
         style="@style/DefaultIcon"
-        android:contentDescription="@string/todo"
+        android:contentDescription="@string/edit_textbook_cover_image"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_edit_uploaded_textbook_details_image"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_edit_uploaded_textbook_details_cover_image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_edit_uploaded_textbook_details_edit_details" />
+        app:srcCompat="@drawable/ic_edit_uploaded_textbook_details_edit_cover_image" />
 
     <LinearLayout
         android:id="@+id/ll_edit_uploaded_textbook_details_filter_categories"
@@ -45,7 +45,7 @@
         app:layout_constraintBottom_toTopOf="@+id/et_edit_uploaded_textbook_details_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_edit_uploaded_textbook_details_image">
+        app:layout_constraintTop_toBottomOf="@+id/iv_edit_uploaded_textbook_details_cover_image">
 
         <TextView
             android:id="@+id/tv_edit_uploaded_textbook_details_university"
@@ -75,9 +75,9 @@
     <EditText
         android:id="@+id/et_edit_uploaded_textbook_details_title"
         style="@style/TextbookDetailsPrimaryHeadingText"
-        android:autofillHints=""
         android:gravity="start"
         android:hint="@string/title"
+        android:importantForAutofill="no"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/et_edit_uploaded_textbook_details_author"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,9 +87,9 @@
     <EditText
         android:id="@+id/et_edit_uploaded_textbook_details_author"
         style="@style/TextbookDetailsSecondaryHeadingText"
-        android:autofillHints=""
         android:gravity="start"
         android:hint="@string/author"
+        android:importantForAutofill="no"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/et_edit_uploaded_textbook_details_isbn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,9 +99,9 @@
     <EditText
         android:id="@+id/et_edit_uploaded_textbook_details_isbn"
         style="@style/TextbookDetailsSmallHeadingText"
-        android:autofillHints=""
         android:gravity="start"
         android:hint="@string/isbn"
+        android:importantForAutofill="no"
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/et_edit_uploaded_textbook_details_description"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,9 +111,9 @@
     <EditText
         android:id="@+id/et_edit_uploaded_textbook_details_description"
         style="@style/TextbookDetailsPrimaryBodyText"
-        android:autofillHints=""
         android:gravity="start"
         android:hint="@string/description"
+        android:importantForAutofill="no"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/et_edit_uploaded_textbook_details_price"
         app:layout_constraintEnd_toEndOf="parent"
@@ -124,9 +124,9 @@
         android:id="@+id/et_edit_uploaded_textbook_details_price"
         style="@style/TextbookDetailsSmallHeadingText"
         android:layout_marginBottom="4dp"
-        android:autofillHints=""
         android:gravity="start"
         android:hint="@string/price"
+        android:importantForAutofill="no"
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toTopOf="@+id/ll_edit_uploaded_textbook_details_buttons"
         app:layout_constraintEnd_toEndOf="parent"

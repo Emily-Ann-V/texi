@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">texi</string>
-    <string name="todo">TODO</string>
     <string name="welcome_back">Welcome Back</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
@@ -42,6 +41,19 @@
     <string name="filter_textbooks">Filter Textbooks</string>
     <string name="filter">Filter</string>
     <string name="no_books_found">No books found.</string>
+    <string name="login_logo">Login logo</string>
+    <string name="scrollable_main_content">Scrollable main content</string>
+    <string name="open_home">Open home</string>
+    <string name="open_my_profile">Open my profile</string>
+    <string name="texi_logo">Texi logo</string>
+    <string name="open_menu">Open menu</string>
+    <string name="view_all_textbooks">View all textbooks</string>
+    <string name="search_textbooks">Search textbooks</string>
+    <string name="textbook_cover_image">Textbook cover image</string>
+    <string name="edit_textbook_cover_image">Edit textbook cover image</string>
+    <string name="close_filter_options">Close filter options</string>
+    <string name="send_message">Send message</string>
+    <string name="textbook_cover_image_preview">Textbook cover image preview</string>
 
     <string-array name="university_options">
         <item>STADIO Higher Education</item>

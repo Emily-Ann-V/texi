@@ -45,7 +45,7 @@ class EditUploadedTextbookDetailsFragment: Fragment(R.layout.fragment_edit_uploa
 
         viewModel = ViewModelProvider(this)[EditUploadedTextbookDetailsViewModel::class.java]
 
-        updatedUploadedImage = view.findViewById(R.id.iv_edit_uploaded_textbook_details_image)
+        updatedUploadedImage = view.findViewById(R.id.iv_edit_uploaded_textbook_details_cover_image)
         val uploadedImageResId = arguments?.getInt("uploadedImageResId")
         val uploadedImageUri = arguments?.getString("uploadedImageUri")
         val title = arguments?.getString("title")
@@ -55,11 +55,11 @@ class EditUploadedTextbookDetailsFragment: Fragment(R.layout.fragment_edit_uploa
         val price = arguments?.getFloat("price")
 
         val ibBack =view.findViewById<ImageButton>(R.id.ib_edit_uploaded_textbook_back)
-        val ibEdit = view.findViewById<ImageButton>(R.id.ib_edit_uploaded_textbook_details_edit_icon)
+        val ibEdit = view.findViewById<ImageButton>(R.id.ib_edit_uploaded_textbook_details_edit_cover_image_icon)
         val btnSave = view.findViewById<Button>(R.id.btn_edit_uploaded_textbook_details_save)
         val btnDelete = view.findViewById<Button>(R.id.btn_uploaded_textbook_delete)
 
-        val ivImage = view.findViewById<ImageView>(R.id.iv_edit_uploaded_textbook_details_image)
+        val ivImage = view.findViewById<ImageView>(R.id.iv_edit_uploaded_textbook_details_cover_image)
         val etTitle = view.findViewById<EditText>(R.id.et_edit_uploaded_textbook_details_title)
         val etAuthor = view.findViewById<EditText>(R.id.et_edit_uploaded_textbook_details_author)
         val etISBN = view.findViewById<EditText>(R.id.et_edit_uploaded_textbook_details_isbn)

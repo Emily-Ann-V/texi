@@ -35,7 +35,7 @@
             style="@style/DefaultIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/todo"
+            android:contentDescription="@string/open_home"
             android:src="@drawable/ic_menu_home" />
 
         <TextView
@@ -63,7 +63,7 @@
             style="@style/DefaultIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/todo"
+            android:contentDescription="@string/upload_a_textbook"
             android:src="@drawable/ic_menu_upload_textbook" />
 
         <TextView
@@ -91,7 +91,7 @@
             style="@style/DefaultIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/todo"
+            android:contentDescription="@string/open_my_profile"
             android:src="@drawable/ic_menu_my_profile" />
 
         <TextView
@@ -119,7 +119,7 @@
             style="@style/DefaultIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/todo"
+            android:contentDescription="@string/view_all_textbooks"
             android:src="@drawable/ic_menu_all_textbooks" />
 
         <TextView

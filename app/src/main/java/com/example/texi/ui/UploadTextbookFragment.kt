@@ -42,7 +42,7 @@ class UploadTextbookFragment: Fragment(R.layout.fragment_upload_textbook) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[UploadTextbookViewModel::class.java]
 
-        uploadedImage = view.findViewById(R.id.iv_upload_textbook_image)
+        uploadedImage = view.findViewById(R.id.iv_upload_textbook_image_preview)
         val ibUploadImage = view.findViewById<ImageButton>(R.id.ib_upload_textbook_upload_image_icon)
         val btnUpload = view.findViewById<Button>(R.id.btn_upload_textbook_submit)
         val etTitle = view.findViewById<EditText>(R.id.et_upload_textbook_title)

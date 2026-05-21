@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_spacing"
             android:adjustViewBounds="true"
-            android:contentDescription="@string/todo"
+            android:contentDescription="@string/texi_logo"
             android:scaleType="fitCenter"
             android:src="@drawable/img_header_logo" />
 
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/default_spacing"
             android:background="@null"
-            android:contentDescription="@string/todo"
+            android:contentDescription="@string/open_menu"
             android:src="@drawable/ic_header_hamburger_menu" />
 
     </LinearLayout>

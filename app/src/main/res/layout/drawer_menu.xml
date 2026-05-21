@@ -9,6 +9,7 @@
     android:paddingTop="@dimen/default_vertical_padding"
     android:paddingBottom="@dimen/default_vertical_padding">
 
+    <!-- Menu header -->
     <TextView
         android:id="@+id/tv_menu_heading"
         style="@style/PrimaryHeadingText"
@@ -19,6 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Icons -->
     <LinearLayout
         android:id="@+id/ll_menu_home"
         android:layout_width="0dp"
@@ -132,9 +134,10 @@
             android:text="@string/all_textbooks" />
     </LinearLayout>
 
+    <!-- Logout -->
     <TextView
         android:id="@+id/tv_menu_logout"
-        style="@style/LogoutText"
+        style="@style/LogoutPrimaryBodyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/logout"

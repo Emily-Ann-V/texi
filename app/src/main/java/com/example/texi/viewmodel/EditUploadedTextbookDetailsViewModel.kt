@@ -5,7 +5,9 @@ import androidx.lifecycle.ViewModel
 import com.example.texi.model.deleteTextbook
 import com.example.texi.model.updateTextbook
 
-class EditUploadedTextbookDetailsViewModel: ViewModel() {
+class EditUploadedTextbookDetailsViewModel : ViewModel() {
+
+    // Passing user input to update textbook details
     fun update(
         currentISBN: Long,
         uploadedImageResIdInput: Int? = null,
@@ -15,7 +17,7 @@ class EditUploadedTextbookDetailsViewModel: ViewModel() {
         isbnInput: Long,
         descriptionInput: String,
         priceInput: Float
-    ) : Boolean {
+    ): Boolean {
 
         return updateTextbook(
             currentISBN,
@@ -29,7 +31,8 @@ class EditUploadedTextbookDetailsViewModel: ViewModel() {
         )
     }
 
-    fun delete(currentISBN: Long):Boolean{
+    // Passing ISBN number to delete textbook
+    fun delete(currentISBN: Long): Boolean {
         return deleteTextbook(currentISBN)
     }
 }

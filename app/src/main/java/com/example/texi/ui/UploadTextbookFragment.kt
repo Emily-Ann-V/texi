@@ -16,11 +16,14 @@ import com.example.texi.R
 import com.example.texi.model.LoggedInStudent
 import com.example.texi.viewmodel.UploadTextbookViewModel
 
-class UploadTextbookFragment: Fragment(R.layout.fragment_upload_textbook) {
+class UploadTextbookFragment : Fragment(R.layout.fragment_upload_textbook) {
 
+    // Declaring ViewModel
     private lateinit var viewModel: UploadTextbookViewModel
+
+    // Setting up document picker for textbook image
     private lateinit var uploadedImage: ImageView
-    private var uploadedImageUri : Uri? = null
+    private var uploadedImageUri: Uri? = null
     private val uploadImage =
         registerForActivityResult(ActivityResultContracts.OpenDocument()) { imageUri: Uri? ->
 
@@ -40,10 +43,11 @@ class UploadTextbookFragment: Fragment(R.layout.fragment_upload_textbook) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[UploadTextbookViewModel::class.java]
 
-        uploadedImage = view.findViewById(R.id.iv_upload_textbook_image_preview)
-        val ibUploadImage = view.findViewById<ImageButton>(R.id.ib_upload_textbook_upload_image_icon)
+        // Binding UI elements
+        val ibUploadImage = view.findViewById<ImageButton>(
+            R.id.ib_upload_textbook_upload_image_icon
+        )
         val btnUpload = view.findViewById<Button>(R.id.btn_upload_textbook_submit)
         val etTitle = view.findViewById<EditText>(R.id.et_upload_textbook_title)
         val etAuthor = view.findViewById<EditText>(R.id.et_upload_textbook_author)
@@ -51,11 +55,20 @@ class UploadTextbookFragment: Fragment(R.layout.fragment_upload_textbook) {
         val etISBN = view.findViewById<EditText>(R.id.et_upload_textbook_isbn)
         val etPrice = view.findViewById<EditText>(R.id.et_upload_textbook_price)
 
+        // Setting ViewModel
+        viewModel = ViewModelProvider(this)[UploadTextbookViewModel::class.java]
+
+        // Binding image preview
+        uploadedImage = view.findViewById(R.id.iv_upload_textbook_image_preview)
+
+        // Launching image picker (images)
         ibUploadImage.setOnClickListener {
             uploadImage.launch(arrayOf("image/*"))
         }
 
+        // Adding textbook to list of textbooks using function
         btnUpload.setOnClickListener {
+
             val uploadedImageResIdInput = null
             val uploadedImageUriInput = uploadedImageUri
 
@@ -71,18 +84,40 @@ class UploadTextbookFragment: Fragment(R.layout.fragment_upload_textbook) {
             val isbnInput = isbnInputString.toLongOrNull()
             val priceInput = etPrice.text.toString().toFloatOrNull()
 
+            // Getting logged in student data
             val universityInput = LoggedInStudent.university
             val fieldInput = LoggedInStudent.field
             val degreeInput = LoggedInStudent.degree
             val uploadedByInput = LoggedInStudent.emailAddress
 
-           if (uploadValidation(uploadedImageUriInput,titleLetterCount,authorLetterCount,isbnInputString,descriptionLetterCount,priceInput)){
-           uploadTextbook(uploadedImageResIdInput,uploadedImageUriInput,titleInput,authorInput,isbnInput!!,descriptionInput,priceInput!!, universityInput,fieldInput,degreeInput,uploadedByInput)
-
-                }
+            // Validating upload input and adding textbook to list of textbooks using functions
+            if (uploadValidation(
+                    uploadedImageUriInput,
+                    titleLetterCount,
+                    authorLetterCount,
+                    isbnInputString,
+                    descriptionLetterCount,
+                    priceInput
+                )
+            ) {
+                uploadTextbook(
+                    uploadedImageResIdInput,
+                    uploadedImageUriInput,
+                    titleInput,
+                    authorInput,
+                    isbnInput!!,
+                    descriptionInput,
+                    priceInput!!,
+                    universityInput,
+                    fieldInput,
+                    degreeInput,
+                    uploadedByInput
+                )
+            }
         }
     }
 
+    // Validating upload input
     fun uploadValidation(
         uploadedImageUriInput: Uri? = null,
         titleLetterCount: Int,
@@ -90,34 +125,34 @@ class UploadTextbookFragment: Fragment(R.layout.fragment_upload_textbook) {
         isbnInputString: String,
         descriptionLetterCount: Int,
         priceInput: Float?,
-    ): Boolean{
+    ): Boolean {
 
-        if(uploadedImageUriInput == null){
+        if (uploadedImageUriInput == null) {
             Toast.makeText(context, "Please upload an image.", Toast.LENGTH_SHORT).show()
             return false
         }
 
-        if (titleLetterCount < 5){
+        if (titleLetterCount < 5) {
             Toast.makeText(context, "Title must have 5+ letters.", Toast.LENGTH_SHORT).show()
             return false
         }
 
-        if (authorLetterCount < 5){
+        if (authorLetterCount < 5) {
             Toast.makeText(context, "Author must have 5+ letters.", Toast.LENGTH_SHORT).show()
             return false
         }
 
-        if (isbnInputString.length != 13 ){
+        if (isbnInputString.length != 13) {
             Toast.makeText(context, "ISBN must be 13 numbers.", Toast.LENGTH_SHORT).show()
             return false
         }
 
-        if(descriptionLetterCount < 10){
+        if (descriptionLetterCount < 10) {
             Toast.makeText(context, "Description must have 10+ letters.", Toast.LENGTH_SHORT).show()
             return false
         }
 
-        if(priceInput != null && priceInput < 20f){
+        if (priceInput == null || (priceInput < 20f)) {
             Toast.makeText(context, "Price must be R20+.", Toast.LENGTH_SHORT).show()
             return false
         }
@@ -125,6 +160,7 @@ class UploadTextbookFragment: Fragment(R.layout.fragment_upload_textbook) {
         return true
     }
 
+    // Passing data to ViewModel to add to list of textbooks
     fun uploadTextbook(
         uploadedImageResIdInput: Int? = null,
         uploadedImageUriInput: Uri? = null,
@@ -136,9 +172,10 @@ class UploadTextbookFragment: Fragment(R.layout.fragment_upload_textbook) {
         universityInput: String,
         fieldInput: String,
         degreeInput: String,
-        uploadedByInput: String) {
+        uploadedByInput: String
+    ) {
 
-        val uploaded =  viewModel.upload(
+        val uploaded = viewModel.upload(
             uploadedImageResIdInput,
             uploadedImageUriInput,
             titleInput,
@@ -152,7 +189,7 @@ class UploadTextbookFragment: Fragment(R.layout.fragment_upload_textbook) {
             uploadedByInput
         )
 
-        if (uploaded){
+        if (uploaded) {
             Toast.makeText(context, "Textbook uploaded.", Toast.LENGTH_SHORT).show()
             parentFragmentManager.popBackStack()
         } else {

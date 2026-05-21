@@ -1,5 +1,6 @@
 package com.example.texi.model
 
+// Stores logged-in student session data for reuse across screens
 object LoggedInStudent {
     var fullName: String = ""
     var emailAddress: String = ""

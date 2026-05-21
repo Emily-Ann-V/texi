@@ -7,6 +7,17 @@
     android:paddingEnd="0dp"
     tools:ignore="RtlSymmetry">
 
+    <!-- Close -->
+    <ImageButton
+        android:id="@+id/ib_filter_textbooks_close_filter_options_icon"
+        style="@style/LargeIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/close_filter_options"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_filter_textbooks_close_filter_options" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_filter_textbooks_container"
         android:layout_width="0dp"
@@ -23,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <!-- Form -->
             <TextView
                 android:id="@+id/tv_filter_textbooks_heading"
                 style="@style/DarkPrimaryHeadingText"
@@ -34,6 +46,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <!-- Form dropdowns -->
             <Spinner
                 android:id="@+id/sp_filter_textbooks_university"
                 style="@style/FilterSpinnerBackground"
@@ -58,6 +71,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sp_filter_textbooks_field" />
 
+            <!-- Form button -->
             <Button
                 android:id="@+id/btn_filter_textbooks_submit"
                 style="@style/DefaultPrimaryButton"
@@ -71,15 +85,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
-
-    <ImageButton
-        android:id="@+id/ib_filter_textbooks_close_filter_options_icon"
-        style="@style/LargeIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/close_filter_options"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_filter_textbooks_close_filter_options" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

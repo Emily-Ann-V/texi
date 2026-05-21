@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Base brand colour palette -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FCA105</color>
-    <color name="medium_yellow">#D68800</color>
     <color name="grey">#CACACA</color>
+
+    <!-- Expanded brand colour palette -->
+    <color name="medium_yellow">#D68800</color>
     <color name="medium_grey">#9C9C9C</color>
     <color name="dark_grey">#4D4D4D</color>
+
+    <!-- Utility colours -->
     <color name="disabled">#333333</color>
     <color name="transparent">@android:color/transparent</color>
 </resources>

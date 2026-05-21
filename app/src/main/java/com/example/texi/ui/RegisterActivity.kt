@@ -18,6 +18,7 @@ import java.time.LocalDate
 
 class RegisterActivity : AppCompatActivity() {
 
+    // Declaring ViewModel
     private lateinit var viewModel: RegisterViewModel
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -25,8 +26,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        viewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
-
+        // Binding UI elements
         val etFullName = findViewById<EditText>(R.id.et_register_full_name)
         val etEmail = findViewById<EditText>(R.id.et_register_email)
         val etStudentNumber = findViewById<EditText>(R.id.et_register_student_number)
@@ -39,12 +39,13 @@ class RegisterActivity : AppCompatActivity() {
         val btnRegister = findViewById<Button>(R.id.btn_register_submit)
         val btnLoginPage = findViewById<Button>(R.id.btn_login_page)
 
+        // Setting ViewModel
+        viewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
+
+        // Setting spinner options
         setSpinnerOptions(spUniversity, spField, spDegree)
 
-        btnLoginPage.setOnClickListener {
-            loadLoginPage()
-        }
-
+        // Adding user to list of students using functions
         btnRegister.setOnClickListener {
 
             val fullNameInput = etFullName.text.toString().trim()
@@ -62,6 +63,7 @@ class RegisterActivity : AppCompatActivity() {
 
             val year = LocalDate.now().year
 
+            // Validating registration input and adding student to list of students using functions
             if (registerValidation(
                     fullNameInput,
                     fullNameLetterCount,
@@ -85,25 +87,35 @@ class RegisterActivity : AppCompatActivity() {
                 )
             }
         }
+
+        // Opening login screen
+        btnLoginPage.setOnClickListener {
+            startActivity(
+                Intent(this, LoginActivity::class.java)
+            )
+        }
     }
 
+    // Validating registration input
     fun registerValidation(
         fullNameInput: String,
         fullNameLetterCount: Int,
         emailAddressInput: String,
         studentNumberInput: Int?,
-        studentNumberInputString : String,
+        studentNumberInputString: String,
         graduationYearInput: Int?,
         passwordInput: String,
         year: Int
     ): Boolean {
 
         if (studentNumberInput == null) {
+
             Toast.makeText(this, "Please enter student number.", Toast.LENGTH_SHORT).show()
             return false
         }
 
         if (graduationYearInput == null) {
+
             Toast.makeText(this, "Please enter graduation year.", Toast.LENGTH_SHORT).show()
             return false
         }
@@ -112,30 +124,46 @@ class RegisterActivity : AppCompatActivity() {
             fullNameInput.any { it.isDigit() } ||
             !fullNameInput.contains(" ")
         ) {
+
             Toast.makeText(
                 this,
                 "Full name (name + surname) must have 5+ letters and no numbers.",
                 Toast.LENGTH_LONG
             ).show()
+
             return false
         }
 
         if (!Patterns.EMAIL_ADDRESS.matcher(emailAddressInput).matches()) {
-            Toast.makeText(this, "Please enter a valid email address.", Toast.LENGTH_LONG).show()
+
+            Toast.makeText(
+                this,
+                "Please enter a valid email address.",
+                Toast.LENGTH_LONG
+            ).show()
+
             return false
         }
 
         if (studentNumberInputString.length < 2) {
-            Toast.makeText(this, "Student number must have 2+ numbers", Toast.LENGTH_LONG).show()
+
+            Toast.makeText(
+                this,
+                "Student number must have 2+ numbers",
+                Toast.LENGTH_LONG
+            ).show()
+
             return false
         }
 
         if (graduationYearInput < (year - 1) || graduationYearInput > (year + 4)) {
+
             Toast.makeText(
                 this,
                 "Graduation year must be within the last year or the next 4 years.",
                 Toast.LENGTH_LONG
             ).show()
+
             return false
         }
 
@@ -146,23 +174,20 @@ class RegisterActivity : AppCompatActivity() {
             !passwordInput.any { it.isUpperCase() } ||
             !passwordInput.any { it.isLowerCase() }
         ) {
+
             Toast.makeText(
                 this,
                 "Password must have 8+ uppercase, lowercase, number and special chars.",
                 Toast.LENGTH_LONG
             ).show()
+
             return false
         }
 
         return true
     }
 
-    fun loadLoginPage() {
-        startActivity(
-            Intent(this, LoginActivity::class.java)
-        )
-    }
-
+    // Passing registration data to ViewModel to add to list of students
     fun registerStudent(
         fullNameInput: String,
         emailAddressInput: String,
@@ -173,6 +198,7 @@ class RegisterActivity : AppCompatActivity() {
         graduationYearInput: Int,
         passwordInput: String
     ) {
+
         val registered = viewModel.register(
             fullNameInput,
             emailAddressInput,
@@ -185,13 +211,21 @@ class RegisterActivity : AppCompatActivity() {
         )
 
         if (registered) {
+
             Toast.makeText(this, "Account created.", Toast.LENGTH_LONG).show()
             finish()
+
         } else {
-            Toast.makeText(this, "User already found. Please login.", Toast.LENGTH_LONG).show()
+
+            Toast.makeText(
+                this,
+                "User already found. Please login.",
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
 
+    // Setting spinner options
     private fun setSpinnerOptions(
         spUniversity: Spinner,
         spField: Spinner,

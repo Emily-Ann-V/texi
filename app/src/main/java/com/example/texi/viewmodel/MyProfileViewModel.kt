@@ -3,8 +3,9 @@ package com.example.texi.viewmodel
 import androidx.lifecycle.ViewModel
 import com.example.texi.model.updateProfile
 
-class MyProfileViewModel: ViewModel() {
+class MyProfileViewModel : ViewModel() {
 
+    // Passing user input to update student details
     fun update(
         fullNameInput: String,
         emailAddressInput: String,

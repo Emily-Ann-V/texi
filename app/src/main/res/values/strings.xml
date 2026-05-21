@@ -1,4 +1,5 @@
 <resources>
+    <!-- General screen text -->
     <string name="app_name">texi</string>
     <string name="welcome_back">Welcome Back</string>
     <string name="password">Password</string>
@@ -55,6 +56,7 @@
     <string name="send_message">Send message</string>
     <string name="textbook_cover_image_preview">Textbook cover image preview</string>
 
+    <!-- Registration arrays -->
     <string-array name="university_options">
         <item>STADIO Higher Education</item>
         <item>UCT</item>

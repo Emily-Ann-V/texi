@@ -15,32 +15,24 @@ class FilterTextbooksFragment : Fragment(R.layout.fragment_filter_textbooks) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Binding UI elements
         val ibCloseFilter = view.findViewById<ImageButton>(
             R.id.ib_filter_textbooks_close_filter_options_icon
         )
+        val btnFilter = view.findViewById<Button>(R.id.btn_filter_textbooks_submit)
+        val spUniversity = view.findViewById<Spinner>(R.id.sp_filter_textbooks_university)
+        val spField = view.findViewById<Spinner>(R.id.sp_filter_textbooks_field)
+        val spDegree = view.findViewById<Spinner>(R.id.sp_filter_textbooks_degree)
 
-        val btnFilter = view.findViewById<Button>(
-            R.id.btn_filter_textbooks_submit
-        )
-
-        val spUniversity = view.findViewById<Spinner>(
-            R.id.sp_filter_textbooks_university
-        )
-
-        val spField = view.findViewById<Spinner>(
-            R.id.sp_filter_textbooks_field
-        )
-
-        val spDegree = view.findViewById<Spinner>(
-            R.id.sp_filter_textbooks_degree
-        )
-
+        // Setting spinner options
         setSpinnerOptions(spUniversity, spField, spDegree)
 
+        // Returning to previous page
         ibCloseFilter.setOnClickListener {
             parentFragmentManager.popBackStack()
         }
 
+        // Filtering textbooks and passing data
         btnFilter.setOnClickListener {
 
             val bundle = Bundle().apply {
@@ -54,21 +46,26 @@ class FilterTextbooksFragment : Fragment(R.layout.fragment_filter_textbooks) {
         }
     }
 
+    // Setting spinner options from available textbooks
     private fun setSpinnerOptions(
         spUniversity: Spinner,
         spField: Spinner,
         spDegree: Spinner
     ) {
 
-        val universityOptions = mutableListOf("Any").apply { addAll(textbooks.map { it.university }.distinct())
+        val universityOptions = mutableListOf("Any").apply {
+            addAll(textbooks.map { it.university }.distinct())
         }
 
-        val fieldOptions = mutableListOf("Any").apply { addAll(textbooks.map { it.field }.distinct())
+        val fieldOptions = mutableListOf("Any").apply {
+            addAll(textbooks.map { it.field }.distinct())
         }
 
-        val degreeOptions = mutableListOf("Any").apply { addAll(textbooks.map { it.degree }.distinct())
+        val degreeOptions = mutableListOf("Any").apply {
+            addAll(textbooks.map { it.degree }.distinct())
         }
 
+        // Setting spinner adapters
         val universityAdapter = ArrayAdapter(
             requireContext(),
             R.layout.item_filter_spinner,

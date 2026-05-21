@@ -1,5 +1,6 @@
 package com.example.texi.model
 
+// Holder for student details
 data class Student(
     var fullName: String,
     var emailAddress: String,
@@ -11,8 +12,10 @@ data class Student(
     var password: String
 )
 
+// Creating a list of students
 val students = mutableListOf<Student>()
 
+// Checking if student exists and (if not) adding to list of students
 fun registerStudent(
     fullNameRegisterInput: String,
     emailAddressRegisterInput: String,
@@ -32,23 +35,24 @@ fun registerStudent(
         return false
     } else {
 
-    val newStudent = Student(
-        fullNameRegisterInput,
-        emailAddressRegisterInput,
-        studentNumberRegisterInput,
-        universityRegisterInput,
-        fieldRegisterInput,
-        degreeRegisterInput,
-        graduationYearRegisterInput,
-        passwordRegisterInput
-    )
+        val newStudent = Student(
+            fullNameRegisterInput,
+            emailAddressRegisterInput,
+            studentNumberRegisterInput,
+            universityRegisterInput,
+            fieldRegisterInput,
+            degreeRegisterInput,
+            graduationYearRegisterInput,
+            passwordRegisterInput
+        )
 
-    students.add(newStudent)
+        students.add(newStudent)
 
-    return true
-        }
+        return true
+    }
 }
 
+// Checking if student exists, logging them in and setting logged in student details
 fun loginStudent(studentEmailLoginInput: String, passwordLoginInput: String): Boolean {
 
     val existingStudent = students.find {
@@ -73,6 +77,7 @@ fun loginStudent(studentEmailLoginInput: String, passwordLoginInput: String): Bo
     }
 }
 
+// Finding student and updating account and logged in student details
 fun updateProfile(
     fullNameProfileInput: String,
     emailAddressProfileInput: String,
@@ -86,28 +91,28 @@ fun updateProfile(
                 it.emailAddress != existingEmail
     }
 
-    if (duplicate){
+    if (duplicate) {
         return false
     } else {
 
-    val index = students.indexOfFirst {
-        it.emailAddress == existingEmail
-    }
+        val index = students.indexOfFirst {
+            it.emailAddress == existingEmail
+        }
 
-    if (index == -1) return false
+        if (index == -1) return false
 
-    val updatedStudent = students[index].copy(
-        fullName = fullNameProfileInput,
-        emailAddress = emailAddressProfileInput,
-        password = passwordProfileInput
-    )
+        val updatedStudent = students[index].copy(
+            fullName = fullNameProfileInput,
+            emailAddress = emailAddressProfileInput,
+            password = passwordProfileInput
+        )
 
-    students[index] = updatedStudent
+        students[index] = updatedStudent
 
-    LoggedInStudent.fullName = fullNameProfileInput
-    LoggedInStudent.emailAddress = emailAddressProfileInput
-    LoggedInStudent.password = passwordProfileInput
+        LoggedInStudent.fullName = fullNameProfileInput
+        LoggedInStudent.emailAddress = emailAddressProfileInput
+        LoggedInStudent.password = passwordProfileInput
 
-    return true
+        return true
     }
 }

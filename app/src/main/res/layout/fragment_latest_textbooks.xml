@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- View all -->
     <Button
         android:id="@+id/btn_view_all_textbooks_page"
         style="@style/DefaultPrimaryButton"
@@ -14,6 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Main -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_latest_textbooks"
         android:layout_width="0dp"
@@ -26,9 +28,10 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_view_all_textbooks_page"
         app:layout_constraintVertical_bias="1.0" />
 
+    <!-- Empty state message -->
     <TextView
         android:id="@+id/tv_latest_textbooks_no_books_message"
-        style="@style/NoBookMessage"
+        style="@style/NoBookMessageText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

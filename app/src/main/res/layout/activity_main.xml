@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- Header -->
         <include
             android:id="@+id/l_header"
             layout="@layout/component_header"
@@ -18,6 +19,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Main -->
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nsv_main"
             android:layout_width="0dp"
@@ -40,6 +42,7 @@
                 android:layout_height="wrap_content" />
         </androidx.core.widget.NestedScrollView>
 
+        <!-- Footer -->
         <include
             android:id="@+id/l_footer"
             layout="@layout/component_footer"
@@ -49,6 +52,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!-- Menu -->
     <include
         android:id="@+id/l_menu"
         layout="@layout/drawer_menu" />

@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Search bar -->
     <EditText
         android:id="@+id/et_all_textbooks_search_bar"
         style="@style/SearchBar"
@@ -23,6 +24,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="RtlSymmetry" />
 
+    <!-- Icons -->
     <ImageButton
         android:id="@+id/ib_all_textbooks_search_icon"
         style="@style/DefaultIcon"
@@ -43,6 +45,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/et_all_textbooks_search_bar" />
 
+    <!-- Main -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_all_textbooks"
         android:layout_width="0dp"
@@ -53,9 +56,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_all_textbooks_search_bar" />
 
+    <!-- Empty state message -->
     <TextView
         android:id="@+id/tv_all_textbooks_no_books_message"
-        style="@style/NoBookMessage"
+        style="@style/NoBookMessageText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

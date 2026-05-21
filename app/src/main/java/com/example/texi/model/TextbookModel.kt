@@ -3,7 +3,8 @@ package com.example.texi.model
 import android.net.Uri
 import com.example.texi.R
 
-data class Textbook (
+// Holder for textbook details
+data class Textbook(
     val uploadedImageResId: Int? = null,
     var uploadedImageUri: Uri? = null,
     var title: String,
@@ -15,14 +16,15 @@ data class Textbook (
     var field: String,
     var degree: String,
     var uploadedBy: String
-    )
+)
 
+// Creating a list of textbooks (with 10 pre-sets)
 val textbooks = mutableListOf(
     Textbook(
         uploadedImageResId = R.drawable.img_textbook_introduction_to_law_and_legal_skills_in_south_africa_2ed,
         title = "Introduction to Law and Legal Skills in South Africa 2ed.",
         author = "Du Plessis et al",
-        isbn = 	9780190748111,
+        isbn = 9780190748111,
         description = "Lightly used, in good condition.",
         price = 300.0f,
         university = "UNISA",
@@ -140,54 +142,58 @@ val textbooks = mutableListOf(
     )
 )
 
-    fun uploadTextbook(
-        uploadedImageResIdInput: Int? = null,
-        uploadedImageUriInput: Uri? = null,
-        titleInput: String,
-        authorInput: String,
-        isbnInput: Long,
-        descriptionInput: String,
-        priceInput: Float,
-        universityInput: String,
-        fieldInput: String,
-        degreeInput: String,
-        uploadedBy: String) : Boolean {
-
-            val newTextbook = Textbook(
-                uploadedImageResIdInput,
-                uploadedImageUriInput,
-                titleInput,
-                authorInput,
-                isbnInput,
-                descriptionInput,
-                priceInput,
-                universityInput,
-                fieldInput,
-                degreeInput,
-                uploadedBy
-            )
-
-        textbooks.add(newTextbook)
-        return true
-}
-
-fun updateTextbook(
-    currentISBN:Long,
+// Adding to list of textbooks
+fun uploadTextbook(
     uploadedImageResIdInput: Int? = null,
     uploadedImageUriInput: Uri? = null,
     titleInput: String,
     authorInput: String,
     isbnInput: Long,
     descriptionInput: String,
-    priceInput: Float) : Boolean {
+    priceInput: Float,
+    universityInput: String,
+    fieldInput: String,
+    degreeInput: String,
+    uploadedBy: String
+): Boolean {
+
+    val newTextbook = Textbook(
+        uploadedImageResIdInput,
+        uploadedImageUriInput,
+        titleInput,
+        authorInput,
+        isbnInput,
+        descriptionInput,
+        priceInput,
+        universityInput,
+        fieldInput,
+        degreeInput,
+        uploadedBy
+    )
+
+    textbooks.add(newTextbook)
+    return true
+}
+
+// Finding textbook and updating details
+fun updateTextbook(
+    currentISBN: Long,
+    uploadedImageResIdInput: Int? = null,
+    uploadedImageUriInput: Uri? = null,
+    titleInput: String,
+    authorInput: String,
+    isbnInput: Long,
+    descriptionInput: String,
+    priceInput: Float
+): Boolean {
 
     val currentUser = LoggedInStudent.emailAddress
 
     val index = textbooks.indexOfFirst {
-            it.uploadedBy == currentUser && it.isbn == currentISBN
-        }
+        it.uploadedBy == currentUser && it.isbn == currentISBN
+    }
 
-        if (index == -1) return false
+    if (index == -1) return false
 
     val updatedTextbook = textbooks[index].copy(
         uploadedImageResId = uploadedImageResIdInput,
@@ -204,7 +210,8 @@ fun updateTextbook(
     return true
 }
 
-fun deleteTextbook(currentISBN: Long):Boolean{
+// Finding textbook and deleting from list
+fun deleteTextbook(currentISBN: Long): Boolean {
     val currentUser = LoggedInStudent.emailAddress
 
     val index = textbooks.indexOfFirst {

@@ -4,7 +4,9 @@ import android.net.Uri
 import androidx.lifecycle.ViewModel
 import com.example.texi.model.uploadTextbook
 
-class UploadTextbookViewModel: ViewModel() {
+class UploadTextbookViewModel : ViewModel() {
+
+    // Passing user input to upload textbook (add to list of textbooks)
     fun upload(
         uploadedImageResIdInput: Int? = null,
         uploadedImageUriInput: Uri? = null,
@@ -16,7 +18,8 @@ class UploadTextbookViewModel: ViewModel() {
         universityInput: String,
         fieldInput: String,
         degreeInput: String,
-        uploadedBy: String) : Boolean {
+        uploadedBy: String
+    ): Boolean {
 
         return uploadTextbook(
             uploadedImageResIdInput,

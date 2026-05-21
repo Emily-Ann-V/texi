@@ -9,9 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.texi.R
 import com.example.texi.model.Textbook
 
+// Adapter for RecyclerView items
 class TextbookAdapter(
     private val textbooks: List<Textbook>,
-    private val onDetailsClick: (Textbook) -> Unit
+    private val textbookDetailsOnClick: (Textbook) -> Unit
 ) : RecyclerView.Adapter<TextbookAdapter.TextbookViewHolder>() {
 
     class TextbookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -30,19 +31,21 @@ class TextbookAdapter(
 
     override fun onBindViewHolder(holder: TextbookViewHolder, position: Int) {
 
+        // Setting the textbook image cover
         val textbook = textbooks[position]
         val uploadedImageResId = textbook.uploadedImageResId
 
-        if (uploadedImageResId!= null && uploadedImageResId != 0) {
+        if (uploadedImageResId != null && uploadedImageResId != 0) {
             holder.ivTextbook.setImageResource(uploadedImageResId)
-        } else if (textbook.uploadedImageUri!=null){
+        } else if (textbook.uploadedImageUri != null) {
             holder.ivTextbook.setImageURI(textbook.uploadedImageUri)
-        } else{
+        } else {
             holder.ivTextbook.setImageResource(R.drawable.img_upload_textbook_image_preview_placeholder)
         }
 
+        // Passing individual textbook for details screen
         holder.btnTextbookDetails.setOnClickListener {
-            onDetailsClick(textbook)
+            textbookDetailsOnClick(textbook)
         }
     }
 

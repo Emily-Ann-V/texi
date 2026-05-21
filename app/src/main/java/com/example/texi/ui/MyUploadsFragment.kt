@@ -11,30 +11,45 @@ import com.example.texi.adapter.TextbookAdapter
 import com.example.texi.model.LoggedInStudent
 import com.example.texi.model.textbooks
 
-class MyUploadsFragment: Fragment(R.layout.fragment_my_uploads) {
+class MyUploadsFragment : Fragment(R.layout.fragment_my_uploads) {
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Binding UI elements
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_my_uploads)
+        val tvNoBooksMessage = view.findViewById<TextView>(R.id.tv_my_uploads_no_books_message)
+
+        // Getting uploaded textbooks for logged in user
+        val uploadedTextbooks = textbooks.filter {
+            it.uploadedBy == LoggedInStudent.emailAddress
+        }
+
+        // Setting RecyclerView layout
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        val tvNoBooksMessage = view.findViewById<TextView>(R.id.tv_my_uploads_no_books_message)
-        val uploadedTextbooks = textbooks.filter { it.uploadedBy == LoggedInStudent.emailAddress }
+        // Showing empty state message when textbook list is empty
+        if (uploadedTextbooks.isEmpty()) {
 
-        if(uploadedTextbooks.isEmpty()){
             tvNoBooksMessage.visibility = View.VISIBLE
             recyclerView.visibility = View.GONE
-        } else{
+
+        } else {
+
             tvNoBooksMessage.visibility = View.GONE
             recyclerView.visibility = View.VISIBLE
         }
 
+        // Setting adapter for uploaded textbooks
         val uploadedTextbookAdapter = TextbookAdapter(uploadedTextbooks) { textbook ->
 
+            // Passing selected textbook details to edit screen
             val bundle = Bundle().apply {
+
                 if (textbook.uploadedImageResId != null) {
                     putInt("uploadedImageResId", textbook.uploadedImageResId)
                 }
+
                 putString("uploadedImageUri", textbook.uploadedImageUri.toString())
                 putString("title", textbook.title)
                 putString("author", textbook.author)
@@ -46,6 +61,7 @@ class MyUploadsFragment: Fragment(R.layout.fragment_my_uploads) {
                 putString("degree", textbook.degree)
             }
 
+            // Opening edit textbook screen
             val fragment = EditUploadedTextbookDetailsFragment()
             fragment.arguments = bundle
 

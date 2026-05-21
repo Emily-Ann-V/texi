@@ -24,6 +24,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <!-- Details image -->
             <ImageView
                 android:id="@+id/iv_uploaded_textbook_image"
                 style="@style/RoundedImage"
@@ -38,6 +39,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <!-- Details button -->
             <Button
                 android:id="@+id/btn_uploaded_textbook_details_page"
                 style="@style/DefaultPrimaryButton"

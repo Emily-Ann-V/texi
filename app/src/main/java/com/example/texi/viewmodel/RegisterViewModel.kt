@@ -5,6 +5,7 @@ import com.example.texi.model.registerStudent
 
 class RegisterViewModel : ViewModel() {
 
+    // Passing user input to register student (add to list of students)
     fun register(
         fullNameInput: String,
         emailAddressInput: String,

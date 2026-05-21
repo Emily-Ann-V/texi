@@ -17,41 +17,50 @@ class AllTextbooksFragment : Fragment(R.layout.fragment_all_textbooks) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Binding UI elements
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_all_textbooks)
-        val ibSearch = view.findViewById<ImageButton>(R.id.ib_all_textbooks_search_icon)
-        val ibFilter = view.findViewById<ImageButton>(R.id.ib_all_textbooks_filter_icon)
+        val ibSearchTextbooks = view.findViewById<ImageButton>(R.id.ib_all_textbooks_search_icon)
+        val ibFilterTextbooks = view.findViewById<ImageButton>(R.id.ib_all_textbooks_filter_icon)
         val etSearchBar = view.findViewById<EditText>(R.id.et_all_textbooks_search_bar)
         val tvNoBooksMessage = view.findViewById<TextView>(R.id.tv_all_textbooks_no_books_message)
-        val allTextbooks = textbooks
+        val mlAllTextbooks = textbooks
 
+        // Setting RecyclerView layout
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        filterTextbooks(recyclerView,tvNoBooksMessage)
 
-        if(allTextbooks.isEmpty()){
+        // Setting adapter for all textbooks
+        val allTextbookAdapter = TextbookAdapter(mlAllTextbooks) { textbook ->
+            openTextbookDetails(textbook)
+        }
+
+        recyclerView.adapter = allTextbookAdapter
+
+        // Applying filter listener for textbooks
+        filterTextbooks(recyclerView, tvNoBooksMessage)
+
+        // Showing empty state message when textbook list is empty
+        if (mlAllTextbooks.isEmpty()) {
             tvNoBooksMessage.visibility = View.VISIBLE
             recyclerView.visibility = View.GONE
-        } else{
+        } else {
             tvNoBooksMessage.visibility = View.GONE
             recyclerView.visibility = View.VISIBLE
         }
 
-        ibSearch.setOnClickListener {
+        // Searching for textbooks using function
+        ibSearchTextbooks.setOnClickListener {
             val searchBarInput = etSearchBar.text.toString()
             searchTextbooks(recyclerView, searchBarInput, tvNoBooksMessage)
         }
 
-        ibFilter.setOnClickListener {
+        // Opening filter screen
+        ibFilterTextbooks.setOnClickListener {
             loadNewFragment(FilterTextbooksFragment())
         }
-
-        val allTextbookAdapter = TextbookAdapter(allTextbooks) { textbook ->
-            openDetails(textbook)
-        }
-
-        recyclerView.adapter = allTextbookAdapter
     }
 
-    private fun openDetails(textbook: com.example.texi.model.Textbook) {
+    // Opening textbook details screen and passing selected textbook data
+    private fun openTextbookDetails(textbook: com.example.texi.model.Textbook) {
 
         val fragment = TextbookDetailsFragment().apply {
             arguments = Bundle().apply {
@@ -70,33 +79,36 @@ class AllTextbooksFragment : Fragment(R.layout.fragment_all_textbooks) {
             }
         }
 
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.fl_main, fragment)
-            .addToBackStack(null)
-            .commit()
+        loadNewFragment(fragment)
     }
 
-    fun searchTextbooks(recyclerView: RecyclerView, searchBarInput: String, tvNoBooksMessage: TextView) {
+    // Searching textbooks by title or author
+    fun searchTextbooks(
+        recyclerView: RecyclerView,
+        searchBarInput: String,
+        tvNoBooksMessage: TextView
+    ) {
 
         val searchedTextbooks = textbooks.filter { textbook ->
             textbook.title.contains(searchBarInput, true) ||
                     textbook.author.contains(searchBarInput, true)
         }
 
-        if(searchedTextbooks.isEmpty()){
+        if (searchedTextbooks.isEmpty()) {
             tvNoBooksMessage.visibility = View.VISIBLE
             recyclerView.visibility = View.GONE
-        } else{
+        } else {
             tvNoBooksMessage.visibility = View.GONE
             recyclerView.visibility = View.VISIBLE
         }
 
         recyclerView.adapter = TextbookAdapter(searchedTextbooks) { textbook ->
-            openDetails(textbook)
+            openTextbookDetails(textbook)
         }
     }
 
-    fun filterTextbooks(recyclerView: RecyclerView,tvNoBooksMessage: TextView) {
+    // Filtering textbooks using filterKey from FilterTextbooksFragment
+    fun filterTextbooks(recyclerView: RecyclerView, tvNoBooksMessage: TextView) {
 
         parentFragmentManager.setFragmentResultListener(
             "filterKey",
@@ -109,25 +121,29 @@ class AllTextbooksFragment : Fragment(R.layout.fragment_all_textbooks) {
 
             val filteredTextbooks = textbooks.filter { textbook ->
 
-                (university == "Any" || textbook.university.equals(university, true)) &&
-                        (field == "Any" || textbook.field.equals(field, true)) &&
-                        (degree == "Any" || textbook.degree.equals(degree, true))
+                (university == "Any" ||
+                        textbook.university.equals(university, true)) &&
+                        (field == "Any" ||
+                                textbook.field.equals(field, true)) &&
+                        (degree == "Any" ||
+                                textbook.degree.equals(degree, true))
             }
 
-            if(filteredTextbooks.isEmpty()){
+            if (filteredTextbooks.isEmpty()) {
                 tvNoBooksMessage.visibility = View.VISIBLE
                 recyclerView.visibility = View.GONE
-            } else{
+            } else {
                 tvNoBooksMessage.visibility = View.GONE
                 recyclerView.visibility = View.VISIBLE
             }
 
             recyclerView.adapter = TextbookAdapter(filteredTextbooks) { textbook ->
-                openDetails(textbook)
+                openTextbookDetails(textbook)
             }
         }
     }
 
+    // Helper function for fragment navigation
     fun loadNewFragment(fragment: Fragment) {
         parentFragmentManager.beginTransaction()
             .replace(R.id.fl_main, fragment)

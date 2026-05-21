@@ -4,7 +4,6 @@ import android.net.Uri
 import androidx.lifecycle.ViewModel
 import com.example.texi.model.deleteTextbook
 import com.example.texi.model.updateTextbook
-import com.example.texi.model.uploadTextbook
 
 class EditUploadedTextbookDetailsViewModel: ViewModel() {
     fun update(

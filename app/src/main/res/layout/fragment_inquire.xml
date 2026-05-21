@@ -28,7 +28,8 @@
                 app:cardBackgroundColor="@color/yellow"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextSizeCheck">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/cl_inquire_chat_header"
@@ -104,6 +105,7 @@
                     <ImageButton
                         android:id="@+id/ib_inquire_send_message_icon"
                         style="@style/LargeIcon"
+                        android:contentDescription="@string/todo"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"

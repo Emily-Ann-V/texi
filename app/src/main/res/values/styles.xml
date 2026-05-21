@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <style name="PrimaryHeadingText">
         <item name="android:textSize">@dimen/primary_heading_text_size</item>
         <item name="android:fontFamily">@font/abyssinica_sil_latin</item>
@@ -191,13 +191,13 @@
     <style name="RoundedImage">
         <item name="android:scaleType">centerCrop</item>
         <item name="android:background">@drawable/bg_rounded_image</item>
-        <item name="android:clipToOutline">true</item>
+        <item name="android:clipToOutline" tools:targetApi="31">true</item>
     </style>
 
     <style name="RoundedUploadedImage">
         <item name="android:scaleType">centerCrop</item>
         <item name="android:background">@drawable/bg_rounded_uploaded_image</item>
-        <item name="android:clipToOutline">true</item>
+        <item name="android:clipToOutline" tools:ignore="NewApi">true</item>
     </style>
 
     <style name="SearchBar">
@@ -208,7 +208,7 @@
         <item name="android:textColor">@color/dark_grey</item>
         <item name="android:textColorHint">@color/dark_grey</item>
         <item name="android:background">@drawable/bg_rounded_search_bar</item>
-        <item name="android:clipToOutline">true</item>
+        <item name="android:clipToOutline" tools:ignore="NewApi">true</item>
     </style>
 
     <style name="RegisterSpinnerBackground">
@@ -222,7 +222,7 @@
     <style name="FilterSpinnerBackground">
         <item name="android:minHeight">@dimen/default_button_height</item>
         <item name="android:background">@drawable/bg_rounded_filter_spinner</item>
-        <item name="android:clipToOutline">true</item>
+        <item name="android:clipToOutline" tools:ignore="NewApi">true</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">@dimen/small_spacing</item>
@@ -250,7 +250,7 @@
         <item name="android:minHeight">@dimen/default_element_height</item>
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/bg_rounded_message</item>
-        <item name="android:clipToOutline">true</item>
+        <item name="android:clipToOutline" tools:ignore="NewApi">true</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">@dimen/medium_spacing</item>

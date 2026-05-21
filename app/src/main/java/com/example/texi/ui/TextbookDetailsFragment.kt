@@ -1,5 +1,6 @@
 package com.example.texi.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -12,6 +13,7 @@ import androidx.core.net.toUri
 
 class TextbookDetailsFragment : Fragment(R.layout.fragment_textbook_details) {
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

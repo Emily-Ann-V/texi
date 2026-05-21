@@ -26,6 +26,7 @@
             android:layout_marginTop="@dimen/default_vertical_padding"
             android:layout_marginEnd="@dimen/default_spacing"
             android:layout_marginBottom="@dimen/default_vertical_padding"
+            android:contentDescription="@string/todo"
             android:fadeScrollbars="false"
             android:fillViewport="true"
             app:layout_constraintBottom_toBottomOf="parent"

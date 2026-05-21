@@ -20,7 +20,8 @@
         android:paddingStart="@dimen/default_spacing"
         app:layout_constraintEnd_toStartOf="@+id/ib_all_textbooks_filter_icon"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlSymmetry" />
 
     <ImageButton
         android:id="@+id/ib_all_textbooks_search_icon"

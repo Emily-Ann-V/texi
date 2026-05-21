@@ -1,6 +1,7 @@
 package com.example.texi.ui
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.ArrayAdapter
@@ -8,11 +9,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.texi.R
-import com.example.texi.model.LoggedInStudent
-import com.example.texi.model.textbooks
 import com.example.texi.viewmodel.RegisterViewModel
 import java.time.LocalDate
 
@@ -20,6 +20,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private lateinit var viewModel: RegisterViewModel
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)

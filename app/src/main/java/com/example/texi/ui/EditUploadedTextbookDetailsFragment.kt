@@ -1,5 +1,6 @@
 package com.example.texi.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -38,12 +39,13 @@ class EditUploadedTextbookDetailsFragment: Fragment(R.layout.fragment_edit_uploa
             }
         }
 
+    @SuppressLint("CutPasteId", "SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this)[EditUploadedTextbookDetailsViewModel::class.java]
 
-        updatedUploadedImage = view.findViewById<ImageView>(R.id.iv_edit_uploaded_textbook_details_image)
+        updatedUploadedImage = view.findViewById(R.id.iv_edit_uploaded_textbook_details_image)
         val uploadedImageResId = arguments?.getInt("uploadedImageResId")
         val uploadedImageUri = arguments?.getString("uploadedImageUri")
         val title = arguments?.getString("title")

@@ -3,6 +3,7 @@
     <item android:state_pressed="true">
         <shape>
             <solid android:color="@color/medium_yellow"/>
+            <corners android:radius="@dimen/button_radius"/>
         </shape>
     </item>
 
@@ -10,12 +11,14 @@
     <item android:state_enabled="false">
         <shape>
             <solid android:color="@color/disabled"/>
+            <corners android:radius="@dimen/button_radius"/>
         </shape>
     </item>
 
     <item>
         <shape>
             <solid android:color="@color/yellow"/>
+            <corners android:radius="@dimen/button_radius"/>
         </shape>
     </item>
 </selector>

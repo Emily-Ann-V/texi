@@ -9,6 +9,7 @@
     <dimen name="default_element_height">30dp</dimen>
     <dimen name="default_button_width">90dp</dimen>
     <dimen name="search_bar_width">210dp</dimen>
+    <dimen name="button_radius">100dp</dimen>
     <dimen name="default_icon_scale">0.5</dimen>
     <dimen name="large_icon_scale">0.55</dimen>
     <dimen name="authentication_screen_max_width">800dp</dimen>

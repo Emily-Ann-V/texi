@@ -113,6 +113,13 @@ fun updateProfile(
         LoggedInStudent.emailAddress = emailAddressProfileInput
         LoggedInStudent.password = passwordProfileInput
 
+        // Updating the uploader email to keep uploaded textbooks linked to the profile
+        textbooks.forEach { textbook ->
+            if (textbook.uploadedBy == existingEmail) {
+                textbook.uploadedBy = emailAddressProfileInput
+            }
+        }
+
         return true
     }
 }

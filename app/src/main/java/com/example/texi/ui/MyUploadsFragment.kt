@@ -41,7 +41,8 @@ class MyUploadsFragment : Fragment(R.layout.fragment_my_uploads) {
         }
 
         // Setting adapter for uploaded textbooks
-        val uploadedTextbookAdapter = TextbookAdapter(uploadedTextbooks) { textbook ->
+        val uploadedTextbookAdapter = TextbookAdapter(uploadedTextbooks,
+            "Edit") { textbook ->
 
             // Passing selected textbook details to edit screen
             val bundle = Bundle().apply {

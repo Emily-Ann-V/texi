@@ -55,7 +55,6 @@
     <string name="close_filter_options">Close filter options</string>
     <string name="send_message">Send message</string>
     <string name="textbook_cover_image_preview">Textbook cover image preview</string>
-    <string name="edit">Edit</string>
 
     <!-- Registration arrays -->
     <string-array name="university_options">

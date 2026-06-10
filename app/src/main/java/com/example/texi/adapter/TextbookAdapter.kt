@@ -12,6 +12,7 @@ import com.example.texi.model.Textbook
 // Adapter for RecyclerView items
 class TextbookAdapter(
     private val textbooks: List<Textbook>,
+    private val textbookButtonText: String = "Details",
     private val textbookDetailsOnClick: (Textbook) -> Unit
 ) : RecyclerView.Adapter<TextbookAdapter.TextbookViewHolder>() {
 
@@ -42,6 +43,9 @@ class TextbookAdapter(
         } else {
             holder.ivTextbook.setImageResource(R.drawable.img_upload_textbook_image_preview_placeholder)
         }
+
+        // Setting button text for the current screen
+        holder.btnTextbookDetails.text = textbookButtonText
 
         // Passing individual textbook for details screen
         holder.btnTextbookDetails.setOnClickListener {

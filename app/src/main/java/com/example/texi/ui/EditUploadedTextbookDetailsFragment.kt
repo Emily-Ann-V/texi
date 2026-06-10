@@ -229,10 +229,10 @@ class EditUploadedTextbookDetailsFragment :
         )
 
         if (updated) {
-            Toast.makeText(context, "Textbook updated.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Changes saved.", Toast.LENGTH_SHORT).show()
             parentFragmentManager.popBackStack()
         } else {
-            Toast.makeText(context, "Failed to update textbook.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Failed to save changes.", Toast.LENGTH_SHORT).show()
         }
     }
 

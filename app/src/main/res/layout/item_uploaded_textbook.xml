@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/small_spacing"
                 android:layout_marginBottom="@dimen/default_spacing"
-                android:text="@string/details"
+                android:text="@string/edit"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

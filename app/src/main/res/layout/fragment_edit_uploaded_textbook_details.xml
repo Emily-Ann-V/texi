@@ -23,7 +23,7 @@
         android:src="@drawable/img_default_logo"
         app:layout_constraintBottom_toTopOf="@+id/ll_edit_uploaded_textbook_details_filter_categories"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@+id/ib_edit_uploaded_textbook_details_edit_cover_image_icon"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ib_edit_uploaded_textbook_back" />
 

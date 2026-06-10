@@ -141,7 +141,7 @@ class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
 
             Toast.makeText(
                 context,
-                "Profile updated.",
+                "Changes saved.",
                 Toast.LENGTH_LONG
             ).show()
 

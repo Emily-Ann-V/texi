@@ -5,13 +5,17 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.texi.R
 import com.example.texi.adapter.TextbookAdapter
-import com.example.texi.model.textbooks
+import com.example.texi.viewmodel.AllTextbooksViewModel
 
 class LatestTextbooksFragment : Fragment(R.layout.fragment_latest_textbooks) {
+
+    private lateinit var viewModel: AllTextbooksViewModel
+    private var latestTextbooksList = listOf<com.example.texi.model.Textbook>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -23,23 +27,17 @@ class LatestTextbooksFragment : Fragment(R.layout.fragment_latest_textbooks) {
             R.id.tv_latest_textbooks_no_books_message
         )
 
-        // Getting latest uploaded textbooks
-        val mlLatestTextbooks = textbooks.takeLast(5)
+        // Setting ViewModel
+        viewModel = ViewModelProvider(requireActivity())[AllTextbooksViewModel::class.java]
 
         // Setting up RecyclerView layout
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        // Showing TextView message textbooks are not available
-        if (mlLatestTextbooks.isEmpty()) {
-            tvNoBooksMessage.visibility = View.VISIBLE
-            recyclerView.visibility = View.GONE
-        } else {
-            tvNoBooksMessage.visibility = View.GONE
-            recyclerView.visibility = View.VISIBLE
-        }
+        // Showing empty state message when textbook list is empty
+        updateEmptyState(recyclerView, tvNoBooksMessage, latestTextbooksList)
 
         // Setting adapter for latest textbooks
-        val latestTextbookAdapter = TextbookAdapter(mlLatestTextbooks) { textbook ->
+        val latestTextbookAdapter = TextbookAdapter(emptyList()) { textbook ->
 
             // Passing selected textbook details to details screen
             val bundle = Bundle().apply {
@@ -68,8 +66,14 @@ class LatestTextbooksFragment : Fragment(R.layout.fragment_latest_textbooks) {
                 .addToBackStack(null)
                 .commit()
         }
-
         recyclerView.adapter = latestTextbookAdapter
+
+        // Observing data
+        viewModel.textbookList.observe(viewLifecycleOwner) { fullList ->
+            latestTextbooksList = fullList.takeLast(5)
+            latestTextbookAdapter.updateList(latestTextbooksList)
+            updateEmptyState(recyclerView, tvNoBooksMessage, latestTextbooksList)
+        }
 
         // Opening all textbooks screen
         btnViewAllTextbooks.setOnClickListener {
@@ -79,5 +83,17 @@ class LatestTextbooksFragment : Fragment(R.layout.fragment_latest_textbooks) {
                 .addToBackStack(null)
                 .commit()
         }
+    }
+
+    // Helper function to show empty state message when textbook list is empty
+    private fun updateEmptyState(
+        recyclerView: RecyclerView,
+        tvNoBooksMessage: TextView,
+        currentList: List<com.example.texi.model.Textbook>
+    ) {
+        val isEmpty = currentList.isEmpty()
+
+        tvNoBooksMessage.visibility = if (isEmpty) View.VISIBLE else View.GONE
+        recyclerView.visibility = if (isEmpty) View.GONE else View.VISIBLE
     }
 }

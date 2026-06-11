@@ -1,59 +1,63 @@
 package com.example.texi.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.texi.R
+import com.example.texi.databinding.ItemTextbookBinding
 import com.example.texi.model.Textbook
 
 // Adapter for RecyclerView items
 class TextbookAdapter(
-    private val textbooks: List<Textbook>,
+    private var textbooks: List<Textbook>,
     private val textbookButtonText: String = "Details",
     private val textbookDetailsOnClick: (Textbook) -> Unit
 ) : RecyclerView.Adapter<TextbookAdapter.TextbookViewHolder>() {
 
-    class TextbookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        val ivTextbook: ImageView = itemView.findViewById(R.id.iv_textbook_image)
-        val btnTextbookDetails: Button = itemView.findViewById(R.id.btn_textbook_details_page)
-    }
+    class TextbookViewHolder(val binding: ItemTextbookBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TextbookViewHolder {
 
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_textbook, parent, false)
+        val binding = ItemTextbookBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
 
-        return TextbookViewHolder(view)
+        return TextbookViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: TextbookViewHolder, position: Int) {
 
-        // Setting the textbook image cover
         val textbook = textbooks[position]
+
+        // Setting the textbook image cover
         val uploadedImageResId = textbook.uploadedImageResId
 
         if (uploadedImageResId != null && uploadedImageResId != 0) {
-            holder.ivTextbook.setImageResource(uploadedImageResId)
+            holder.binding.ivTextbookImage.setImageResource(uploadedImageResId)
         } else if (textbook.uploadedImageUri != null) {
-            holder.ivTextbook.setImageURI(textbook.uploadedImageUri)
+            holder.binding.ivTextbookImage.setImageURI(textbook.uploadedImageUri)
         } else {
-            holder.ivTextbook.setImageResource(R.drawable.img_upload_textbook_image_preview_placeholder)
+            holder.binding.ivTextbookImage.setImageResource(R.drawable.img_default_logo)
         }
 
         // Setting button text for the current screen
-        holder.btnTextbookDetails.text = textbookButtonText
+        holder.binding.btnTextbookDetailsPage.text = textbookButtonText
 
         // Passing individual textbook for details screen
-        holder.btnTextbookDetails.setOnClickListener {
+        holder.binding.btnTextbookDetailsPage.setOnClickListener {
             textbookDetailsOnClick(textbook)
         }
     }
 
     override fun getItemCount(): Int {
         return textbooks.size
+    }
+
+    fun updateList(newList: List<Textbook>) {
+        textbooks = newList
+        notifyDataSetChanged()
     }
 }

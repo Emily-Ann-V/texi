@@ -16,14 +16,20 @@ import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.texi.R
+import com.example.texi.databinding.FragmentEditUploadedTextbookDetailsBinding
 import com.example.texi.model.LoggedInStudent
+import com.example.texi.model.Textbook
+import com.example.texi.viewmodel.AllTextbooksViewModel
 import com.example.texi.viewmodel.EditUploadedTextbookDetailsViewModel
 
 class EditUploadedTextbookDetailsFragment :
     Fragment(R.layout.fragment_edit_uploaded_textbook_details) {
 
+    private lateinit var binding: FragmentEditUploadedTextbookDetailsBinding
+
     // Binding UI elements
     private lateinit var viewModel: EditUploadedTextbookDetailsViewModel
+    private lateinit var allTextbooksViewModel: AllTextbooksViewModel
 
     // Setting up document picker for textbook image
     private lateinit var updatedUploadedImage: ImageView
@@ -54,65 +60,69 @@ class EditUploadedTextbookDetailsFragment :
         // Receiving textbook data from previous screen
         val uploadedImageResId = arguments?.getInt("uploadedImageResId")
         val uploadedImageUri = arguments?.getString("uploadedImageUri")
-        val title = arguments?.getString("title")
-        val author = arguments?.getString("author")
-        val isbn = arguments?.getLong("isbn")
-        val description = arguments?.getString("description")
-        val price = arguments?.getFloat("price")
+        val title = arguments?.getString("title") ?: ""
+        val author = arguments?.getString("author") ?: ""
+        val isbn = arguments?.getLong("isbn") ?: 0L
+        val description = arguments?.getString("description") ?: ""
+        val price = arguments?.getFloat("price") ?: 0f
 
-        // Binding UI elements
-        val ibBack = view.findViewById<ImageButton>(R.id.ib_edit_uploaded_textbook_back)
-        val ibEdit =
-            view.findViewById<ImageButton>(R.id.ib_edit_uploaded_textbook_details_edit_cover_image_icon)
-        val btnSave = view.findViewById<Button>(R.id.btn_edit_uploaded_textbook_details_save)
-        val btnDelete = view.findViewById<Button>(R.id.btn_uploaded_textbook_delete)
-        val tvUniversity = view.findViewById<TextView>(
-            R.id.tv_edit_uploaded_textbook_details_university)
-        val tvField = view.findViewById<TextView>(R.id.tv_edit_uploaded_textbook_details_field)
-        val tvDegree = view.findViewById<TextView>(R.id.tv_edit_uploaded_textbook_details_degree)
-        val ivImage =
-            view.findViewById<ImageView>(R.id.iv_edit_uploaded_textbook_details_cover_image)
-        val etTitle = view.findViewById<EditText>(R.id.et_edit_uploaded_textbook_details_title)
-        val etAuthor = view.findViewById<EditText>(R.id.et_edit_uploaded_textbook_details_author)
-        val etISBN = view.findViewById<EditText>(R.id.et_edit_uploaded_textbook_details_isbn)
-        val etDescription =
-            view.findViewById<EditText>(R.id.et_edit_uploaded_textbook_details_description)
-        val etPrice = view.findViewById<EditText>(R.id.et_edit_uploaded_textbook_details_price)
+        // Initialize binding
+        binding = FragmentEditUploadedTextbookDetailsBinding.bind(view)
 
-        // Setting ViewModel
-        viewModel = ViewModelProvider(this)[EditUploadedTextbookDetailsViewModel::class.java]
+        // Create textbook object from arguments
+        val textbook = Textbook(
+            uploadedImageResId = uploadedImageResId,
+            uploadedImageUri = uploadedImageUri?.toUri(),
+            title = title,
+            author = author,
+            isbn = isbn,
+            description = description,
+            price = price,
+            university = "",
+            field = "",
+            degree = "",
+            uploadedBy = LoggedInStudent.emailAddress
+        )
+
+        // Bind textbook to layout
+        binding.textbook = textbook
+        binding.isbnString = isbn.toString()
+        binding.priceString = price.toString()
+
+        // Setting ViewModels
+        viewModel = ViewModelProvider(requireActivity())[EditUploadedTextbookDetailsViewModel::class.java]
+        allTextbooksViewModel = ViewModelProvider(requireActivity())[AllTextbooksViewModel::class.java]
 
         // Binding image view for updates
-        updatedUploadedImage = view.findViewById(R.id.iv_edit_uploaded_textbook_details_cover_image)
+        updatedUploadedImage = binding.ivEditUploadedTextbookDetailsCoverImage
 
-        // Displaying textbook details
+        // Displaying textbook image (resource or URI fallback)
         if (uploadedImageResId != null && uploadedImageResId != 0) {
-            ivImage.setImageResource(uploadedImageResId)
+            binding.ivEditUploadedTextbookDetailsCoverImage.setImageResource(uploadedImageResId)
         } else if (!uploadedImageUri.isNullOrEmpty()) {
-            ivImage.setImageURI(uploadedImageUri.toUri())
+            binding.ivEditUploadedTextbookDetailsCoverImage.setImageURI(uploadedImageUri.toUri())
         }
 
-        tvUniversity.text = LoggedInStudent.university
-        tvField.text = LoggedInStudent.field
-        tvDegree.text = LoggedInStudent.degree
-        etTitle.setText(title)
-        etAuthor.setText(author)
-        etISBN.setText(isbn?.toString())
-        etDescription.setText(description)
-        etPrice.setText("R%.2f".format(price ?: 0f))
+        // Set logged in student details manually
+        binding.tvEditUploadedTextbookDetailsUniversity.text = LoggedInStudent.university
+        binding.tvEditUploadedTextbookDetailsField.text = LoggedInStudent.field
+        binding.tvEditUploadedTextbookDetailsDegree.text = LoggedInStudent.degree
+
+        // Execute pending bindings
+        binding.executePendingBindings()
 
         // Returning to previous screen
-        ibBack.setOnClickListener {
+        binding.ibEditUploadedTextbookBack.setOnClickListener {
             parentFragmentManager.popBackStack()
         }
 
         // Launching image picker (images)
-        ibEdit.setOnClickListener {
+        binding.ibEditUploadedTextbookDetailsEditCoverImageIcon.setOnClickListener {
             updatedUploadImage.launch(arrayOf("image/*"))
         }
 
         // Updating textbook details using functions
-        btnSave.setOnClickListener {
+        binding.btnEditUploadedTextbookDetailsSave.setOnClickListener {
             val uploadedImageResIdInput = null
             val uploadedImageUriInput =
                 if (updatedUploadedImageUri != null) {
@@ -121,18 +131,16 @@ class EditUploadedTextbookDetailsFragment :
                     uploadedImageUri?.toUri()
                 }
 
-            val isbnInputString = etISBN.text.toString()
-            val isbnInput = isbnInputString.toLongOrNull()
-
-            val titleInput = etTitle.text.toString().trim()
-            val authorInput = etAuthor.text.toString().trim()
-            val descriptionInput = etDescription.text.toString().trim()
+            val titleInput = binding.textbook?.title?.trim() ?: ""
+            val authorInput = binding.textbook?.author?.trim() ?: ""
+            val descriptionInput = binding.textbook?.description?.trim() ?: ""
+            val isbnInput = binding.isbnString?.toLongOrNull() ?: 0L
+            val priceInput = binding.priceString?.toFloatOrNull() ?: 0f
 
             val titleLetterCount = titleInput.count { it.isLetter() }
             val authorLetterCount = authorInput.count { it.isLetter() }
             val descriptionLetterCount = descriptionInput.count { it.isLetter() }
-
-            val priceInput = etPrice.text.toString().replace("R", "").trim().toFloatOrNull()
+            val isbnInputString = isbnInput.toString()
 
             if (updateUploadValidation(
                     uploadedImageUriInput,
@@ -144,21 +152,21 @@ class EditUploadedTextbookDetailsFragment :
                 )
             ) {
                 updateUploadedTextbook(
-                    isbn!!,
+                    isbn,
                     uploadedImageResIdInput,
                     uploadedImageUriInput,
                     titleInput,
                     authorInput,
-                    isbnInput!!,
+                    isbnInput,
                     descriptionInput,
-                    priceInput!!
+                    priceInput
                 )
             }
         }
 
         // Deleting textbook using function
-        btnDelete.setOnClickListener {
-            deleteTextbook(isbn!!)
+        binding.btnUploadedTextbookDelete.setOnClickListener {
+            deleteTextbook(isbn)
         }
     }
 
@@ -230,6 +238,7 @@ class EditUploadedTextbookDetailsFragment :
 
         if (updated) {
             Toast.makeText(context, "Changes saved.", Toast.LENGTH_SHORT).show()
+            allTextbooksViewModel.refresh()
             parentFragmentManager.popBackStack()
         } else {
             Toast.makeText(context, "Failed to save changes.", Toast.LENGTH_SHORT).show()
@@ -241,6 +250,7 @@ class EditUploadedTextbookDetailsFragment :
         val deleted = viewModel.delete(currentISBN)
         if (deleted) {
             Toast.makeText(context, "Textbook deleted.", Toast.LENGTH_SHORT).show()
+            allTextbooksViewModel.refresh()
             parentFragmentManager.popBackStack()
         } else {
             Toast.makeText(context, "Failed to delete textbook.", Toast.LENGTH_SHORT).show()

@@ -202,7 +202,11 @@ fun updateTextbook(
         author = authorInput,
         isbn = isbnInput,
         description = descriptionInput,
-        price = priceInput
+        price = priceInput,
+        university = textbooks[index].university,
+        field = textbooks[index].field,
+        degree = textbooks[index].degree,
+        uploadedBy = textbooks[index].uploadedBy
     )
 
     textbooks[index] = updatedTextbook

@@ -10,8 +10,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.texi.R
 import androidx.core.net.toUri
+import com.example.texi.databinding.FragmentTextbookDetailsBinding
 
 class TextbookDetailsFragment : Fragment(R.layout.fragment_textbook_details) {
+
+    private lateinit var binding: FragmentTextbookDetailsBinding
 
     // Suppressing warning
     @SuppressLint("SetTextI18n")
@@ -31,43 +34,44 @@ class TextbookDetailsFragment : Fragment(R.layout.fragment_textbook_details) {
         val field = arguments?.getString("field")
         val degree = arguments?.getString("degree")
 
-        // Binding UI elements
-        val ibBack = view.findViewById<ImageButton>(R.id.ib_textbook_details_back)
-        val btnInquire = view.findViewById<Button>(R.id.btn_inquire_page)
-        val ivImage = view.findViewById<ImageView>(R.id.iv_textbook_details_cover_image)
-        val tvTitle = view.findViewById<TextView>(R.id.tv_textbook_details_title)
-        val tvAuthor = view.findViewById<TextView>(R.id.tv_textbook_details_author)
-        val tvISBN = view.findViewById<TextView>(R.id.tv_textbook_details_isbn)
-        val tvDescription = view.findViewById<TextView>(R.id.tv_textbook_details_description)
-        val tvPrice = view.findViewById<TextView>(R.id.tv_textbook_details_price)
-        val tvUniversity = view.findViewById<TextView>(R.id.tv_textbook_details_university)
-        val tvField = view.findViewById<TextView>(R.id.tv_textbook_details_field)
-        val tvDegree = view.findViewById<TextView>(R.id.tv_textbook_details_degree)
+        // Create textbook object from arguments
+        val textbook = com.example.texi.model.Textbook(
+            uploadedImageResId = uploadedImageResId,
+            uploadedImageUri = uploadedImageUri?.toUri(),
+            title = title ?: "",
+            author = author ?: "",
+            isbn = isbn ?: 0,
+            description = description ?: "",
+            price = price ?: 0f,
+            university = university ?: "",
+            field = field ?: "",
+            degree = degree ?: "",
+            uploadedBy = ""
+        )
+
+        // Initialize binding
+        binding = FragmentTextbookDetailsBinding.bind(view)
+
+        // Bind textbook to layout
+        binding.textbook = textbook
 
         // Setting textbook image (resource or URI fallback)
         if (uploadedImageResId != null && uploadedImageResId != 0) {
-            ivImage.setImageResource(uploadedImageResId)
+            binding.ivTextbookDetailsCoverImage.setImageResource(uploadedImageResId)
         } else if (!uploadedImageUri.isNullOrEmpty()) {
-            ivImage.setImageURI(uploadedImageUri.toUri())
+            binding.ivTextbookDetailsCoverImage.setImageURI(uploadedImageUri.toUri())
         }
 
-        // Displaying textbook details
-        tvTitle.text = title
-        tvAuthor.text = author
-        tvISBN.text = isbn?.toString()
-        tvDescription.text = description
-        tvPrice.text = "R%.2f".format(price ?: 0f)
-        tvUniversity.text = university
-        tvField.text = field
-        tvDegree.text = degree
+        // Execute pending bindings
+        binding.executePendingBindings()
 
         // Returning to previous screen
-        ibBack.setOnClickListener {
+        binding.ibTextbookDetailsBack.setOnClickListener {
             parentFragmentManager.popBackStack()
         }
 
         // Opening inquire screen
-        btnInquire.setOnClickListener {
+        binding.btnInquirePage.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fl_main, InquireFragment())
                 .addToBackStack(null)

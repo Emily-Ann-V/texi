@@ -14,12 +14,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.texi.R
 import com.example.texi.model.LoggedInStudent
+import com.example.texi.viewmodel.AllTextbooksViewModel
 import com.example.texi.viewmodel.UploadTextbookViewModel
 
 class UploadTextbookFragment : Fragment(R.layout.fragment_upload_textbook) {
 
     // Declaring ViewModel
     private lateinit var viewModel: UploadTextbookViewModel
+    private lateinit var allTextbooksViewModel: AllTextbooksViewModel
 
     // Setting up document picker for textbook image
     private lateinit var uploadedImage: ImageView
@@ -55,8 +57,11 @@ class UploadTextbookFragment : Fragment(R.layout.fragment_upload_textbook) {
         val etISBN = view.findViewById<EditText>(R.id.et_upload_textbook_isbn)
         val etPrice = view.findViewById<EditText>(R.id.et_upload_textbook_price)
 
-        // Setting ViewModel
-        viewModel = ViewModelProvider(this)[UploadTextbookViewModel::class.java]
+        // Setting ViewModels
+        viewModel = ViewModelProvider(
+            requireActivity())[UploadTextbookViewModel::class.java
+        ]
+        allTextbooksViewModel = ViewModelProvider(requireActivity())[AllTextbooksViewModel::class.java]
 
         // Binding image preview
         uploadedImage = view.findViewById(R.id.iv_upload_textbook_image_preview)
@@ -191,6 +196,7 @@ class UploadTextbookFragment : Fragment(R.layout.fragment_upload_textbook) {
 
         if (uploaded) {
             Toast.makeText(context, "Textbook uploaded.", Toast.LENGTH_SHORT).show()
+            allTextbooksViewModel.refresh()
             parentFragmentManager.popBackStack()
         } else {
             Toast.makeText(context, "Failed to upload textbook.", Toast.LENGTH_SHORT).show()

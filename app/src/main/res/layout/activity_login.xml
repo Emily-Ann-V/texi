@@ -1,108 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cl_login"
-    style="@style/AuthenticationScreen">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- Logo -->
-    <ImageView
-        android:id="@+id/iv_login_logo"
-        style="@style/RoundedImage"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/default_form_spacing"
-        android:contentDescription="@string/login_logo"
-        android:scaleType="fitCenter"
-        android:src="@drawable/img_default_logo"
-        app:layout_constraintBottom_toTopOf="@+id/tv_login_heading"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+        <variable
+            name="emailAddress"
+            type="String" />
+        <variable
+            name="password"
+            type="String" />
+    </data>
 
-    <!-- Form -->
-    <TextView
-        android:id="@+id/tv_login_heading"
-        style="@style/PrimaryHeadingText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_form_spacing"
-        android:text="@string/welcome_back"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_login_logo" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_login"
+        style="@style/AuthenticationScreen">
 
-    <EditText
-        android:id="@+id/et_login_email_address"
-        style="@style/LoginFormText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:autofillHints="emailAddress"
-        android:hint="@string/email_address"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/et_login_password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_login_heading" />
+        <!-- Logo -->
+        <ImageView
+            android:id="@+id/iv_login_logo"
+            style="@style/RoundedImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/default_form_spacing"
+            android:contentDescription="@string/login_logo"
+            android:scaleType="fitCenter"
+            android:src="@drawable/img_default_logo"
+            app:layout_constraintBottom_toTopOf="@+id/tv_login_heading"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/et_login_password"
-        style="@style/LoginFormText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/default_form_spacing"
-        android:autofillHints="password"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/ll_login_buttons"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_login_email_address" />
-
-    <!-- Form buttons -->
-    <LinearLayout
-        android:id="@+id/ll_login_buttons"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_login_password">
-
-        <Space
+        <!-- Form -->
+        <TextView
+            android:id="@+id/tv_login_heading"
+            style="@style/PrimaryHeadingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5" />
+            android:layout_marginTop="@dimen/default_form_spacing"
+            android:text="@string/welcome_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_login_logo" />
 
-        <Button
-            android:id="@+id/btn_login_submit"
-            style="@style/LargePrimaryButton"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/et_login_email_address"
+            style="@style/LoginFormText"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/login" />
+            android:layout_marginTop="16dp"
+            android:autofillHints="emailAddress"
+            android:hint="@string/email_address"
+            android:inputType="textEmailAddress"
+            android:text="@={emailAddress}"
+            app:layout_constraintBottom_toTopOf="@+id/et_login_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_login_heading" />
 
-        <Space
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/et_login_password"
+            style="@style/LoginFormText"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_marginBottom="@dimen/default_form_spacing"
+            android:autofillHints="password"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:text="@={password}"
+            app:layout_constraintBottom_toTopOf="@+id/ll_login_buttons"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_login_email_address" />
 
-        <Button
-            android:id="@+id/btn_register_page"
-            style="@style/LargeSecondaryButton"
-            android:layout_width="wrap_content"
+        <!-- Form buttons -->
+        <LinearLayout
+            android:id="@+id/ll_login_buttons"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/register" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_login_password">
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5" />
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5" />
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/btn_login_submit"
+                style="@style/LargePrimaryButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/login" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btn_register_page"
+                style="@style/LargeSecondaryButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/register" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

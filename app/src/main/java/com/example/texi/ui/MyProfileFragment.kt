@@ -3,12 +3,11 @@ package com.example.texi.ui
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.texi.R
+import com.example.texi.databinding.FragmentMyProfileBinding
 import com.example.texi.model.LoggedInStudent
 import com.example.texi.viewmodel.MyProfileViewModel
 
@@ -16,31 +15,26 @@ class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
 
     // Declaring ViewModel
     private lateinit var viewModel: MyProfileViewModel
+    private lateinit var binding: FragmentMyProfileBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Binding UI elements
-        val btnSave = view.findViewById<Button>(R.id.btn_my_profile_save)
-        val btnMyUploads = view.findViewById<Button>(R.id.btn_my_uploads_page)
-        val etFullName = view.findViewById<EditText>(R.id.et_my_profile_full_name)
-        val etEmailAddress = view.findViewById<EditText>(R.id.et_my_profile_email)
-        val etPassword = view.findViewById<EditText>(R.id.et_my_profile_password)
-
         // Setting ViewModel
         viewModel = ViewModelProvider(this)[MyProfileViewModel::class.java]
 
-        // Displaying logged in user details
-        etFullName.setText(LoggedInStudent.fullName)
-        etEmailAddress.setText(LoggedInStudent.emailAddress)
-        etPassword.setText(LoggedInStudent.password)
+        binding = FragmentMyProfileBinding.bind(view)
+        binding.fullName = LoggedInStudent.fullName
+        binding.emailAddress = LoggedInStudent.emailAddress
+        binding.password = LoggedInStudent.password
+        binding.executePendingBindings()
 
         // Saving updated user details using functions
-        btnSave.setOnClickListener {
+        binding.btnMyProfileSave.setOnClickListener {
 
-            val fullNameInput = etFullName.text.toString().trim()
-            val emailAddressInput = etEmailAddress.text.toString().trim()
-            val passwordInput = etPassword.text.toString().trim()
+            val fullNameInput = binding.fullName?.trim() ?: ""
+            val emailAddressInput = binding.emailAddress?.trim() ?: ""
+            val passwordInput = binding.password?.trim() ?: ""
 
             val fullNameLetterCount = fullNameInput.count { it.isLetter() }
 
@@ -61,7 +55,7 @@ class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
         }
 
         // Opening my uploads screen
-        btnMyUploads.setOnClickListener {
+        binding.btnMyUploadsPage.setOnClickListener {
 
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fl_main, MyUploadsFragment())

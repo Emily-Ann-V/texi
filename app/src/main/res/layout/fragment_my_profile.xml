@@ -1,104 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cl_my_profile"
-    style="@style/FragmentScreen">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- Form -->
-    <TextView
-        android:id="@+id/tv_my_profile_heading"
-        style="@style/PrimaryHeadingText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/my_profile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+        <variable
+            name="fullName"
+            type="String" />
+        <variable
+            name="emailAddress"
+            type="String" />
+        <variable
+            name="password"
+            type="String" />
+    </data>
 
-    <EditText
-        android:id="@+id/et_my_profile_full_name"
-        style="@style/PrimaryFormText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_spacing"
-        android:autofillHints="name"
-        android:hint="@string/full_name"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/et_my_profile_email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_my_profile_heading" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_my_profile"
+        style="@style/FragmentScreen">
 
-    <EditText
-        android:id="@+id/et_my_profile_email"
-        style="@style/PrimaryFormText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:autofillHints="emailAddress"
-        android:hint="@string/email_address"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/et_my_profile_password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_my_profile_full_name" />
-
-    <EditText
-        android:id="@+id/et_my_profile_password"
-        style="@style/PrimaryFormText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/default_spacing"
-        android:autofillHints="password"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/ll_my_profile_buttons"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_my_profile_email" />
-
-    <!-- Form buttons -->
-    <LinearLayout
-        android:id="@+id/ll_my_profile_buttons"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_my_profile_password">
-
-        <Space
+        <!-- Form -->
+        <TextView
+            android:id="@+id/tv_my_profile_heading"
+            style="@style/PrimaryHeadingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5" />
+            android:text="@string/my_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btn_my_profile_save"
-            style="@style/LargePrimaryButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/save" />
-
-        <Space
+        <EditText
+            android:id="@+id/et_my_profile_full_name"
+            style="@style/PrimaryFormText"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/btn_my_uploads_page"
-            style="@style/LargeSecondaryButton"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/uploads" />
+            android:layout_marginTop="@dimen/default_spacing"
+            android:autofillHints="name"
+            android:hint="@string/full_name"
+            android:inputType="textPersonName"
+            android:text="@={fullName}"
+            app:layout_constraintBottom_toTopOf="@+id/et_my_profile_email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_my_profile_heading" />
 
-        <Space
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/et_my_profile_email"
+            style="@style/PrimaryFormText"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5" />
+            android:autofillHints="emailAddress"
+            android:hint="@string/email_address"
+            android:inputType="textEmailAddress"
+            android:text="@={emailAddress}"
+            app:layout_constraintBottom_toTopOf="@+id/et_my_profile_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_my_profile_full_name" />
 
-    </LinearLayout>
+        <EditText
+            android:id="@+id/et_my_profile_password"
+            style="@style/PrimaryFormText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_spacing"
+            android:autofillHints="password"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:text="@={password}"
+            app:layout_constraintBottom_toTopOf="@+id/ll_my_profile_buttons"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_my_profile_email" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Form buttons -->
+        <LinearLayout
+            android:id="@+id/ll_my_profile_buttons"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_my_profile_password">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5" />
+
+            <Button
+                android:id="@+id/btn_my_profile_save"
+                style="@style/LargePrimaryButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/save" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btn_my_uploads_page"
+                style="@style/LargeSecondaryButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/uploads" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

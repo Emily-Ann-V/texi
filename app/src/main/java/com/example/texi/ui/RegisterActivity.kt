@@ -5,14 +5,13 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.texi.R
+import com.example.texi.databinding.ActivityRegisterBinding
 import com.example.texi.viewmodel.RegisterViewModel
 import java.time.LocalDate
 
@@ -20,44 +19,40 @@ class RegisterActivity : AppCompatActivity() {
 
     // Declaring ViewModel
     private lateinit var viewModel: RegisterViewModel
+    private lateinit var binding: ActivityRegisterBinding
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
-
-        // Binding UI elements
-        val etFullName = findViewById<EditText>(R.id.et_register_full_name)
-        val etEmail = findViewById<EditText>(R.id.et_register_email)
-        val etStudentNumber = findViewById<EditText>(R.id.et_register_student_number)
-        val spUniversity = findViewById<Spinner>(R.id.sp_register_university)
-        val spField = findViewById<Spinner>(R.id.sp_register_field)
-        val spDegree = findViewById<Spinner>(R.id.sp_register_degree)
-        val etGraduationYear = findViewById<EditText>(R.id.et_register_graduation_year)
-        val etPassword = findViewById<EditText>(R.id.et_register_password)
-
-        val btnRegister = findViewById<Button>(R.id.btn_register_submit)
-        val btnLoginPage = findViewById<Button>(R.id.btn_login_page)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // Setting ViewModel
         viewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
 
+        binding.fullName = ""
+        binding.emailAddress = ""
+        binding.studentNumber = ""
+        binding.graduationYear = ""
+        binding.password = ""
+        binding.executePendingBindings()
+
         // Setting spinner options
-        setSpinnerOptions(spUniversity, spField, spDegree)
+        setSpinnerOptions(binding.spRegisterUniversity, binding.spRegisterField, binding.spRegisterDegree)
 
         // Adding user to list of students using functions
-        btnRegister.setOnClickListener {
+        binding.btnRegisterSubmit.setOnClickListener {
 
-            val fullNameInput = etFullName.text.toString().trim()
-            val emailAddressInput = etEmail.text.toString().trim()
-            val universityInput = spUniversity.selectedItem.toString().trim()
-            val fieldInput = spField.selectedItem.toString().trim()
-            val degreeInput = spDegree.selectedItem.toString().trim()
-            val passwordInput = etPassword.text.toString()
+            val fullNameInput = binding.fullName?.trim() ?: ""
+            val emailAddressInput = binding.emailAddress?.trim() ?: ""
+            val universityInput = binding.spRegisterUniversity.selectedItem.toString().trim()
+            val fieldInput = binding.spRegisterField.selectedItem.toString().trim()
+            val degreeInput = binding.spRegisterDegree.selectedItem.toString().trim()
+            val passwordInput = binding.password?.trim() ?: ""
 
-            val studentNumberInputString = etStudentNumber.text.toString().trim()
+            val studentNumberInputString = binding.studentNumber?.trim() ?: ""
             val studentNumberInput = studentNumberInputString.toIntOrNull()
-            val graduationYearInput = etGraduationYear.text.toString().toIntOrNull()
+            val graduationYearInput = binding.graduationYear?.trim()?.toIntOrNull()
 
             val fullNameLetterCount = fullNameInput.count { it.isLetter() }
 
@@ -89,7 +84,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         // Opening login screen
-        btnLoginPage.setOnClickListener {
+        binding.btnLoginPage.setOnClickListener {
             startActivity(
                 Intent(this, LoginActivity::class.java)
             )

@@ -36,7 +36,7 @@ Refer to installation steps as this is a student project.
 ## Acknowledgements
 
 ### Author & Contributor
-Emily-Ann van der Walt
+Emily-Ann V
 
 ### License
 This project was created as a university project requirement.

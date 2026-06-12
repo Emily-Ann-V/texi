@@ -2,8 +2,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- Using two-way data binding through layout and ViewModel -->
     <data>
-
         <variable
             name="uploadVM"
             type="com.example.texi.viewmodel.UploadTextbookViewModel" />
@@ -131,6 +131,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_upload_textbook_price" />
 
+        <!-- Error message -->
         <TextView
             android:id="@+id/tv_upload_textbook_error"
             style="@style/ErrorText"

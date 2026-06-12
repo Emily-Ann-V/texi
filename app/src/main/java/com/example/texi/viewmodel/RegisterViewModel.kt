@@ -8,6 +8,7 @@ import java.time.LocalDate
 
 class RegisterViewModel : ViewModel() {
 
+    // Two way data binding variables
     var fullNameInput: String = ""
     var emailAddressInput: String = ""
     var studentNumberInput: String = ""
@@ -20,6 +21,8 @@ class RegisterViewModel : ViewModel() {
 
     // Passing user input to register student (add to list of students)
     fun register(): Boolean {
+
+        // Registering if validation is successful
         return if (validation()) {
             registerStudent(
                 fullNameInput,
@@ -36,7 +39,10 @@ class RegisterViewModel : ViewModel() {
         }
     }
 
+    // Suppressing error
     @SuppressLint("NewApi")
+
+    // Helper function to validate user input
     fun validation(): Boolean {
 
         val fullNameLetterCount = fullNameInput.count { it.isLetter() }

@@ -5,11 +5,14 @@ import com.example.texi.model.loginStudent
 
 class LoginViewModel : ViewModel() {
 
+    // Two way data binding variables
     var emailAddressInput: String = ""
     var passwordInput: String = ""
     var errorMessage: String = ""
 
     fun login(): Boolean {
+
+        // Logging in if validation is successful
         return if (validation()) {
             loginStudent(emailAddressInput, passwordInput)
         } else {
@@ -17,7 +20,9 @@ class LoginViewModel : ViewModel() {
         }
     }
 
+    // Helper function to validate user input
     fun validation(): Boolean {
+
         if (emailAddressInput.isEmpty()) {
             errorMessage = "Please enter your email address."
             return false

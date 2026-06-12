@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import com.example.texi.model.uploadTextbook
 
 class UploadTextbookViewModel : ViewModel() {
+
+    // Two way data binding variables
     var uploadedImageResIdInput: Int? = null
     var uploadedImageUriInput: Uri? = null
     var titleInput: String = ""
@@ -20,6 +22,8 @@ class UploadTextbookViewModel : ViewModel() {
 
     // Passing user input to upload textbook (add to list of textbooks)
     fun upload(): Boolean {
+
+        // Uploading if validation is successful
         return if (validation()) {
             uploadTextbook(
                 uploadedImageResIdInput,
@@ -39,6 +43,7 @@ class UploadTextbookViewModel : ViewModel() {
         }
     }
 
+    // Helper function to validate user input
     fun validation(): Boolean {
 
         val titleLetterCount = titleInput.count { it.isLetter() }

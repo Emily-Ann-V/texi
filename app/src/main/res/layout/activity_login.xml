@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- Using two-way data binding through layout and ViewModel -->
     <data>
         <variable
             name="loginVM"
@@ -115,6 +116,7 @@
 
         </LinearLayout>
 
+        <!-- Error message -->
         <TextView
             android:id="@+id/tv_login_error"
             style="@style/ErrorText"

@@ -46,7 +46,7 @@ class FilterTextbooksFragment : Fragment(R.layout.fragment_filter_textbooks) {
         }
     }
 
-    // Setting spinner options from available textbooks
+    // Setting spinner options from list of textbooks
     private fun setSpinnerOptions(
         spUniversity: Spinner,
         spField: Spinner,

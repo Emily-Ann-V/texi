@@ -14,6 +14,7 @@ import com.example.texi.viewmodel.AllTextbooksViewModel
 
 class MyUploadsFragment : Fragment(R.layout.fragment_my_uploads) {
 
+    // Setting ViewModel components
     private lateinit var viewModel: AllTextbooksViewModel
     private var myUploadsList = listOf<com.example.texi.model.Textbook>()
 
@@ -31,8 +32,10 @@ class MyUploadsFragment : Fragment(R.layout.fragment_my_uploads) {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         // Setting adapter for uploaded textbooks
-        val uploadedTextbookAdapter = TextbookAdapter(emptyList(),
-            "Edit") { textbook ->
+        val uploadedTextbookAdapter = TextbookAdapter(
+            emptyList(),
+            "Edit"
+        ) { textbook ->
 
             // Passing selected textbook details to edit screen
             val bundle = Bundle().apply {
@@ -63,7 +66,7 @@ class MyUploadsFragment : Fragment(R.layout.fragment_my_uploads) {
         }
         recyclerView.adapter = uploadedTextbookAdapter
 
-        // Observing data and filter by current student
+        // Observing data to update UI dynamically
         viewModel.textbookList.observe(viewLifecycleOwner) { fullList ->
             myUploadsList = fullList.filter {
                 it.uploadedBy == LoggedInStudent.emailAddress

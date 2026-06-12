@@ -12,28 +12,29 @@ import com.example.texi.viewmodel.MyProfileViewModel
 
 class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
 
-    // Declaring ViewModel
+    // Setting ViewModel and Binding components
     private lateinit var viewModel: MyProfileViewModel
     private lateinit var binding: FragmentMyProfileBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Initialize binding
+        // Initialising binding
         binding = FragmentMyProfileBinding.bind(view)
 
         // Setting ViewModel
         viewModel = ViewModelProvider(this)[MyProfileViewModel::class.java]
 
+        // Setting up data binding connections
         binding.profileVM = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        // Receiving student data from model
+        // Loading logged-in student data into ViewModel
         viewModel.fullNameInput = LoggedInStudent.fullName
         viewModel.emailAddressInput = LoggedInStudent.emailAddress
         viewModel.passwordInput = LoggedInStudent.password
 
-        // Execute pending bindings to display the data
+        // Executing pending bindings
         binding.executePendingBindings()
 
         // Saving updated user details using functions
@@ -60,12 +61,14 @@ class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
     fun updateProfileValidation(): Boolean {
         if (viewModel.fullNameInput.isEmpty()
             || viewModel.emailAddressInput.isEmpty()
-            || viewModel.passwordInput.isEmpty()) {
+            || viewModel.passwordInput.isEmpty()
+        ) {
 
             Toast.makeText(
                 requireContext(),
                 "Please complete all fields.",
-                Toast.LENGTH_SHORT).show()
+                Toast.LENGTH_SHORT
+            ).show()
             binding.tvMyProfileError.visibility = View.GONE
             return false
         }

@@ -11,18 +11,22 @@ import com.example.texi.viewmodel.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
 
-    // Declaring ViewModel
+    // Setting ViewModel and Binding components
     private lateinit var viewModel: LoginViewModel
     private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Initialising binding
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Setting ViewModel
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
 
+
+        // Setting up data binding connections
         binding.loginVM = viewModel
         binding.lifecycleOwner = this
 
@@ -48,7 +52,8 @@ class LoginActivity : AppCompatActivity() {
 
             Toast.makeText(
                 this,
-                "Please complete all fields.", Toast.LENGTH_SHORT).show()
+                "Please complete all fields.", Toast.LENGTH_SHORT
+            ).show()
             binding.tvLoginError.visibility = View.GONE
             return false
         }

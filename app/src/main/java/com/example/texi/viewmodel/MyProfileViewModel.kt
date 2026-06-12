@@ -6,6 +6,7 @@ import com.example.texi.model.updateProfile
 
 class MyProfileViewModel : ViewModel() {
 
+    // Two way data binding variables
     var fullNameInput: String = ""
     var emailAddressInput: String = ""
     var passwordInput: String = ""
@@ -14,6 +15,7 @@ class MyProfileViewModel : ViewModel() {
     // Passing user input to update student details
     fun update(): Boolean {
 
+        // Updating if validation is successful
         return if (validation()) {
             updateProfile(
                 fullNameInput,
@@ -25,6 +27,7 @@ class MyProfileViewModel : ViewModel() {
         }
     }
 
+    // Helper function to validate user input
     fun validation(): Boolean {
 
         val fullNameLetterCount = fullNameInput.count { it.isLetter() }

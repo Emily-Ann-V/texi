@@ -7,6 +7,7 @@ import com.example.texi.model.updateTextbook
 
 class EditUploadedTextbookDetailsViewModel : ViewModel() {
 
+    // Two way data binding variables
     var uploadedImageResIdInput: Int? = null
     var uploadedImageUriInput: Uri? = null
     var titleInput: String = ""
@@ -19,6 +20,7 @@ class EditUploadedTextbookDetailsViewModel : ViewModel() {
     // Passing user input to update textbook details
     fun update(currentISBN: Long): Boolean {
 
+        // Updating if validation is successful
         return if (validation()) {
             updateTextbook(
                 currentISBN,
@@ -40,6 +42,7 @@ class EditUploadedTextbookDetailsViewModel : ViewModel() {
         return deleteTextbook(currentISBN)
     }
 
+    // Helper function to validate user input
     fun validation(): Boolean {
 
         val titleLetterCount = titleInput.count { it.isLetter() }

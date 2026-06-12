@@ -17,7 +17,7 @@ import com.example.texi.viewmodel.UploadTextbookViewModel
 
 class UploadTextbookFragment : Fragment(R.layout.fragment_upload_textbook) {
 
-    // Declaring ViewModel
+    // Setting ViewModel and Binding components
     private lateinit var viewModel: UploadTextbookViewModel
     private lateinit var binding: FragmentUploadTextbookBinding
     private lateinit var allTextbooksViewModel: AllTextbooksViewModel
@@ -26,7 +26,8 @@ class UploadTextbookFragment : Fragment(R.layout.fragment_upload_textbook) {
     private lateinit var uploadedImage: ImageView
     private var uploadedImageUri: Uri? = null
     private val uploadImage =
-        registerForActivityResult(ActivityResultContracts.OpenDocument()) { imageUri: Uri? ->
+        registerForActivityResult(ActivityResultContracts.OpenDocument())
+        { imageUri: Uri? ->
 
             if (imageUri != null) {
 
@@ -47,7 +48,7 @@ class UploadTextbookFragment : Fragment(R.layout.fragment_upload_textbook) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Initialize binding
+        // Initialising binding
         binding = FragmentUploadTextbookBinding.bind(view)
 
         // Setting ViewModels
@@ -58,6 +59,7 @@ class UploadTextbookFragment : Fragment(R.layout.fragment_upload_textbook) {
         allTextbooksViewModel =
             ViewModelProvider(requireActivity())[AllTextbooksViewModel::class.java]
 
+        // Setting up data binding connections
         binding.uploadVM = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
@@ -89,22 +91,24 @@ class UploadTextbookFragment : Fragment(R.layout.fragment_upload_textbook) {
     // Validating upload input
     fun uploadValidation(): Boolean {
 
-        if(viewModel.uploadedImageUriInput == null
+        if (viewModel.uploadedImageUriInput == null
             || viewModel.titleInput.isEmpty()
             || viewModel.authorInput.isEmpty()
             || viewModel.isbnStringInput.isEmpty()
             || viewModel.descriptionInput.isEmpty()
-            || viewModel.priceStringInput.isEmpty()){
+            || viewModel.priceStringInput.isEmpty()
+        ) {
 
             Toast.makeText(
                 requireContext(),
                 "Please complete all fields.",
-                Toast.LENGTH_SHORT).show()
+                Toast.LENGTH_SHORT
+            ).show()
             binding.tvUploadTextbookError.visibility = View.GONE
             return false
-            }
+        }
 
-        if(!viewModel.validation()){
+        if (!viewModel.validation()) {
             binding.tvUploadTextbookError.text = viewModel.errorMessage
             binding.tvUploadTextbookError.visibility = View.VISIBLE
             return false
@@ -120,11 +124,19 @@ class UploadTextbookFragment : Fragment(R.layout.fragment_upload_textbook) {
         val uploaded = viewModel.upload()
 
         if (uploaded) {
-            Toast.makeText(requireContext(), "Textbook uploaded.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                "Textbook uploaded.",
+                Toast.LENGTH_SHORT
+            ).show()
             allTextbooksViewModel.refresh()
             parentFragmentManager.popBackStack()
         } else {
-            Toast.makeText(requireContext(), "Failed to upload textbook.", Toast.LENGTH_SHORT)
+            Toast.makeText(
+                requireContext(),
+                "Failed to upload textbook.",
+                Toast.LENGTH_SHORT
+            )
                 .show()
         }
     }

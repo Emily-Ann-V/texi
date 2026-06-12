@@ -15,6 +15,7 @@ import com.example.texi.viewmodel.AllTextbooksViewModel
 
 class AllTextbooksFragment : Fragment(R.layout.fragment_all_textbooks) {
 
+    // Setting ViewModel and RecyclerView components
     private lateinit var viewModel: AllTextbooksViewModel
     private lateinit var allTextbookAdapter: TextbookAdapter
     private var allTextbooksList = listOf<com.example.texi.model.Textbook>()
@@ -37,12 +38,12 @@ class AllTextbooksFragment : Fragment(R.layout.fragment_all_textbooks) {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         // Setting adapter for all textbooks
-        allTextbookAdapter = TextbookAdapter(emptyList()) {
-            textbook -> openTextbookDetails(textbook)
+        allTextbookAdapter = TextbookAdapter(emptyList()) { textbook ->
+            openTextbookDetails(textbook)
         }
         recyclerView.adapter = allTextbookAdapter
 
-        // Observing data
+        // Observing data to update UI dynamically
         viewModel.textbookList.observe(viewLifecycleOwner) { updatedList ->
             allTextbooksList = updatedList
             allTextbookAdapter.updateList(updatedList)
@@ -98,8 +99,8 @@ class AllTextbooksFragment : Fragment(R.layout.fragment_all_textbooks) {
     ) {
 
         val searchedTextbooks = allTextbooksList.filter { textbook ->
-            textbook.title.contains(searchBarInput, true) ||
-                    textbook.author.contains(searchBarInput, true)
+            textbook.title.contains(searchBarInput, true)
+                    || textbook.author.contains(searchBarInput, true)
         }
 
         // Updating textbook list
@@ -123,12 +124,12 @@ class AllTextbooksFragment : Fragment(R.layout.fragment_all_textbooks) {
 
             val filteredTextbooks = allTextbooksList.filter { textbook ->
 
-                (university == "Any" ||
-                        textbook.university.equals(university, true)) &&
-                        (field == "Any" ||
-                                textbook.field.equals(field, true)) &&
-                        (degree == "Any" ||
-                                textbook.degree.equals(degree, true))
+                (university == "Any"
+                        || textbook.university.equals(university, true)) &&
+                        (field == "Any"
+                                || textbook.field.equals(field, true)) &&
+                        (degree == "Any"
+                                || textbook.degree.equals(degree, true))
             }
 
             // Updating textbook list

@@ -142,7 +142,7 @@ val textbooks = mutableListOf(
     )
 )
 
-// Adding to list of textbooks
+// Adding textbook to list of textbooks
 fun uploadTextbook(
     uploadedImageResIdInput: Int? = null,
     uploadedImageUriInput: Uri? = null,

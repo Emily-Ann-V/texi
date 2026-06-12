@@ -14,23 +14,27 @@ import com.example.texi.viewmodel.RegisterViewModel
 
 class RegisterActivity : AppCompatActivity() {
 
-    // Declaring ViewModel
+    // Setting ViewModel and Binding components
     private lateinit var viewModel: RegisterViewModel
     private lateinit var binding: ActivityRegisterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Initialising binding
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Setting ViewModel
         viewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
 
+        // Setting up data binding connections
         binding.registerVM = viewModel
         binding.lifecycleOwner = this
 
         // Setting spinner options
-        setSpinnerOptions(binding.spRegisterUniversity,
+        setSpinnerOptions(
+            binding.spRegisterUniversity,
             binding.spRegisterField,
             binding.spRegisterDegree
         )
@@ -64,12 +68,14 @@ class RegisterActivity : AppCompatActivity() {
             || viewModel.emailAddressInput.isEmpty()
             || viewModel.studentNumberInput.isEmpty()
             || viewModel.graduationYearInput.isEmpty()
-            || viewModel.passwordInput.isEmpty()) {
+            || viewModel.passwordInput.isEmpty()
+        ) {
 
             Toast.makeText(
                 this,
                 "Please complete all fields.",
-                Toast.LENGTH_SHORT).show()
+                Toast.LENGTH_SHORT
+            ).show()
             binding.tvRegisterError.visibility = View.GONE
             return false
         }
@@ -91,7 +97,11 @@ class RegisterActivity : AppCompatActivity() {
 
         if (registered) {
 
-            Toast.makeText(this, "Account created.", Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                this,
+                "Account created.",
+                Toast.LENGTH_LONG
+            ).show()
             finish()
 
         } else {

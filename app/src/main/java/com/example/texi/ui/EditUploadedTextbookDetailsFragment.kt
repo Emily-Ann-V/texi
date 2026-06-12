@@ -19,7 +19,7 @@ import com.example.texi.viewmodel.EditUploadedTextbookDetailsViewModel
 class EditUploadedTextbookDetailsFragment :
     Fragment(R.layout.fragment_edit_uploaded_textbook_details) {
 
-    // Binding UI elements
+    // Setting ViewModel and Binding components
     private lateinit var viewModel: EditUploadedTextbookDetailsViewModel
     private lateinit var binding: FragmentEditUploadedTextbookDetailsBinding
     private lateinit var allTextbooksViewModel: AllTextbooksViewModel
@@ -58,17 +58,22 @@ class EditUploadedTextbookDetailsFragment :
         val description = arguments?.getString("description") ?: ""
         val price = arguments?.getFloat("price") ?: 0f
 
-        // Initialize binding
+        // Initialising binding
         binding = FragmentEditUploadedTextbookDetailsBinding.bind(view)
 
         // Setting ViewModels
-        viewModel = ViewModelProvider(requireActivity())[EditUploadedTextbookDetailsViewModel::class.java]
-        allTextbooksViewModel = ViewModelProvider(requireActivity())[AllTextbooksViewModel::class.java]
+        viewModel =
+            ViewModelProvider(
+                requireActivity()
+            )[EditUploadedTextbookDetailsViewModel::class.java]
+        allTextbooksViewModel =
+            ViewModelProvider(requireActivity())[AllTextbooksViewModel::class.java]
 
+        // Setting up data binding connections
         binding.editVM = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        // Set initial values from arguments into ViewModel
+        // Setting view model values
         viewModel.titleInput = title
         viewModel.authorInput = author
         viewModel.isbnStringInput = isbn.toString()
@@ -87,12 +92,12 @@ class EditUploadedTextbookDetailsFragment :
             binding.ivEditUploadedTextbookDetailsCoverImage.setImageURI(uploadedImageUri.toUri())
         }
 
-        // Set logged in student details manually
+        // Setting logged in student details
         binding.tvEditUploadedTextbookDetailsUniversity.text = LoggedInStudent.university
         binding.tvEditUploadedTextbookDetailsField.text = LoggedInStudent.field
         binding.tvEditUploadedTextbookDetailsDegree.text = LoggedInStudent.degree
 
-        // Execute pending bindings
+        // Executing pending bindings
         binding.executePendingBindings()
 
         // Returning to previous screen
@@ -123,22 +128,24 @@ class EditUploadedTextbookDetailsFragment :
     // Validating user input before updating
     fun updateUploadValidation(): Boolean {
 
-        if(viewModel.uploadedImageUriInput == null
+        if (viewModel.uploadedImageUriInput == null
             || viewModel.titleInput.isEmpty()
             || viewModel.authorInput.isEmpty()
             || viewModel.isbnStringInput.isEmpty()
             || viewModel.descriptionInput.isEmpty()
-            || viewModel.priceStringInput.isEmpty()){
+            || viewModel.priceStringInput.isEmpty()
+        ) {
 
             Toast.makeText(
                 requireContext(),
                 "Please complete all fields.",
-                Toast.LENGTH_SHORT).show()
+                Toast.LENGTH_SHORT
+            ).show()
             binding.tvEditTextbookError.visibility = View.GONE
             return false
         }
 
-        if(!viewModel.validation()){
+        if (!viewModel.validation()) {
             binding.tvEditTextbookError.text = viewModel.errorMessage
             binding.tvEditTextbookError.visibility = View.VISIBLE
             return false
@@ -154,13 +161,19 @@ class EditUploadedTextbookDetailsFragment :
         val updated = viewModel.update(currentISBN)
 
         if (updated) {
-            Toast.makeText(requireContext(),
+            Toast.makeText(
+                requireContext(),
                 "Changes saved.",
-                Toast.LENGTH_SHORT).show()
+                Toast.LENGTH_SHORT
+            ).show()
             allTextbooksViewModel.refresh()
             parentFragmentManager.popBackStack()
         } else {
-            Toast.makeText(requireContext(), "Failed to save changes.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                "Failed to save changes.",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
@@ -168,11 +181,19 @@ class EditUploadedTextbookDetailsFragment :
     fun deleteTextbook(currentISBN: Long) {
         val deleted = viewModel.delete(currentISBN)
         if (deleted) {
-            Toast.makeText(requireContext(), "Textbook deleted.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                "Textbook deleted.",
+                Toast.LENGTH_SHORT
+            ).show()
             allTextbooksViewModel.refresh()
             parentFragmentManager.popBackStack()
         } else {
-            Toast.makeText(requireContext(), "Failed to delete textbook.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                "Failed to delete textbook.",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 }

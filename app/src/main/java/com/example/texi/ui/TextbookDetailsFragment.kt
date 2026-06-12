@@ -3,17 +3,14 @@ package com.example.texi.ui
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import com.example.texi.R
-import androidx.core.net.toUri
 import com.example.texi.databinding.FragmentTextbookDetailsBinding
 
 class TextbookDetailsFragment : Fragment(R.layout.fragment_textbook_details) {
 
+    // Setting Binding components
     private lateinit var binding: FragmentTextbookDetailsBinding
 
     // Suppressing warning
@@ -49,7 +46,7 @@ class TextbookDetailsFragment : Fragment(R.layout.fragment_textbook_details) {
             uploadedBy = ""
         )
 
-        // Initialize binding
+        // Initialising binding
         binding = FragmentTextbookDetailsBinding.bind(view)
 
         // Bind textbook to layout
@@ -62,7 +59,7 @@ class TextbookDetailsFragment : Fragment(R.layout.fragment_textbook_details) {
             binding.ivTextbookDetailsCoverImage.setImageURI(uploadedImageUri.toUri())
         }
 
-        // Execute pending bindings
+        // Executing pending bindings
         binding.executePendingBindings()
 
         // Returning to previous screen

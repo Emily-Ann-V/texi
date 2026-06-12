@@ -14,6 +14,7 @@ import com.example.texi.viewmodel.AllTextbooksViewModel
 
 class LatestTextbooksFragment : Fragment(R.layout.fragment_latest_textbooks) {
 
+    // Setting ViewModel and Binding components
     private lateinit var viewModel: AllTextbooksViewModel
     private var latestTextbooksList = listOf<com.example.texi.model.Textbook>()
 
@@ -68,7 +69,7 @@ class LatestTextbooksFragment : Fragment(R.layout.fragment_latest_textbooks) {
         }
         recyclerView.adapter = latestTextbookAdapter
 
-        // Observing data
+        // Observing data to update UI dynamically
         viewModel.textbookList.observe(viewLifecycleOwner) { fullList ->
             latestTextbooksList = fullList.takeLast(5)
             latestTextbookAdapter.updateList(latestTextbooksList)

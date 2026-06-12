@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- Using two-way data binding through layout and ViewModel -->
     <data>
         <variable
             name="profileVM"
@@ -113,6 +113,7 @@
 
         </LinearLayout>
 
+        <!-- Error message -->
         <TextView
             android:id="@+id/tv_my_profile_error"
             style="@style/ErrorText"

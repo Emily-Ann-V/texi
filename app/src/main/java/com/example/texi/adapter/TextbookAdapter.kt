@@ -56,6 +56,8 @@ class TextbookAdapter(
         return textbooks.size
     }
 
+
+    // Helper function to update the list of textbooks
     fun updateList(newList: List<Textbook>) {
         textbooks = newList
         notifyDataSetChanged()

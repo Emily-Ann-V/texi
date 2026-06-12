@@ -2,10 +2,10 @@ package com.example.texi.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.texi.R
 import com.example.texi.databinding.ActivityLoginBinding
 import com.example.texi.viewmodel.LoginViewModel
 
@@ -23,19 +23,15 @@ class LoginActivity : AppCompatActivity() {
         // Setting ViewModel
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
 
-        binding.emailAddress = ""
-        binding.password = ""
-        binding.executePendingBindings()
+        binding.loginVM = viewModel
+        binding.lifecycleOwner = this
 
         // Logging student in using function
         binding.btnLoginSubmit.setOnClickListener {
 
-            val emailAddressInput = binding.emailAddress?.trim() ?: ""
-            val passwordInput = binding.password?.trim() ?: ""
-
             // Validating login details
-            if (loginValidation(emailAddressInput, passwordInput)) {
-                loginAuthentication(emailAddressInput, passwordInput)
+            if (loginValidation()) {
+                loginAuthentication()
             }
         }
 
@@ -46,34 +42,31 @@ class LoginActivity : AppCompatActivity() {
     }
 
     // Validating login input fields
-    fun loginValidation(emailAddressInput: String, passwordInput: String): Boolean {
+    fun loginValidation(): Boolean {
 
-        if (emailAddressInput.isEmpty()) {
-
-            Toast.makeText(
-                this, "Please enter email address.", Toast.LENGTH_SHORT
-            ).show()
-
-            return false
-
-        } else if (passwordInput.isEmpty()) {
+        if (viewModel.emailAddressInput.isEmpty() && viewModel.passwordInput.isEmpty()) {
 
             Toast.makeText(
-                this, "Please enter password.", Toast.LENGTH_SHORT
-            ).show()
-
+                this,
+                "Please complete all fields.", Toast.LENGTH_SHORT).show()
+            binding.tvLoginError.visibility = View.GONE
             return false
         }
 
+        if (!viewModel.validation()) {
+            binding.tvLoginError.text = viewModel.errorMessage
+            binding.tvLoginError.visibility = View.VISIBLE
+            return false
+        }
+
+        binding.tvLoginError.visibility = View.GONE
         return true
     }
 
     // Passing login details to ViewModel for authentication
-    fun loginAuthentication(emailAddressInput: String, passwordInput: String) {
+    fun loginAuthentication() {
 
-        val authentication = viewModel.login(
-            emailAddressInput, passwordInput
-        )
+        val authentication = viewModel.login()
 
         // Opening home screen if login is successful
         if (authentication) {

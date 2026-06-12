@@ -4,11 +4,8 @@
 
     <data>
         <variable
-            name="emailAddress"
-            type="String" />
-        <variable
-            name="password"
-            type="String" />
+            name="loginVM"
+            type="com.example.texi.viewmodel.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +18,7 @@
             style="@style/RoundedImage"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="@dimen/default_form_spacing"
+            android:layout_marginBottom="@dimen/small_spacing"
             android:contentDescription="@string/login_logo"
             android:scaleType="fitCenter"
             android:src="@drawable/img_default_logo"
@@ -37,7 +34,7 @@
             style="@style/PrimaryHeadingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_form_spacing"
+            android:layout_marginTop="@dimen/small_spacing"
             android:text="@string/welcome_back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,11 +45,11 @@
             style="@style/LoginFormText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/medium_spacing"
             android:autofillHints="emailAddress"
             android:hint="@string/email_address"
             android:inputType="textEmailAddress"
-            android:text="@={emailAddress}"
+            android:text="@={loginVM.emailAddressInput}"
             app:layout_constraintBottom_toTopOf="@+id/et_login_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,11 +60,11 @@
             style="@style/LoginFormText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/default_form_spacing"
+            android:layout_marginBottom="@dimen/medium_spacing"
             android:autofillHints="password"
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:text="@={password}"
+            android:text="@={loginVM.passwordInput}"
             app:layout_constraintBottom_toTopOf="@+id/ll_login_buttons"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -117,6 +114,19 @@
                 android:layout_weight="0.5" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_login_error"
+            style="@style/ErrorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/xx_small_spacing"
+            android:layout_marginBottom="@dimen/x_small_spacing"
+            android:text="@{loginVM.errorMessage}"
+            app:layout_constraintBottom_toTopOf="@+id/ll_login_buttons"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_login_password" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

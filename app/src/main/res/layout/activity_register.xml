@@ -4,20 +4,8 @@
 
     <data>
         <variable
-            name="fullName"
-            type="String" />
-        <variable
-            name="emailAddress"
-            type="String" />
-        <variable
-            name="studentNumber"
-            type="String" />
-        <variable
-            name="graduationYear"
-            type="String" />
-        <variable
-            name="password"
-            type="String" />
+            name="registerVM"
+            type="com.example.texi.viewmodel.RegisterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,11 +28,11 @@
             style="@style/PrimaryFormText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_form_spacing"
+            android:layout_marginTop="@dimen/medium_spacing"
             android:autofillHints="name"
             android:hint="@string/full_name"
             android:inputType="textPersonName"
-            android:text="@={fullName}"
+            android:text="@={registerVM.fullNameInput}"
             app:layout_constraintBottom_toTopOf="@+id/et_register_email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +46,7 @@
             android:autofillHints="emailAddress"
             android:hint="@string/email_address"
             android:inputType="textEmailAddress"
-            android:text="@={emailAddress}"
+            android:text="@={registerVM.emailAddressInput}"
             app:layout_constraintBottom_toTopOf="@+id/et_register_student_number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +60,7 @@
             android:hint="@string/student_number"
             android:importantForAutofill="no"
             android:inputType="number"
-            android:text="@={studentNumber}"
+            android:text="@={registerVM.studentNumberInput}"
             app:layout_constraintBottom_toTopOf="@+id/sp_register_university"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +99,7 @@
             android:hint="@string/graduation_year"
             android:importantForAutofill="no"
             android:inputType="number"
-            android:text="@={graduationYear}"
+            android:text="@={registerVM.graduationYearInput}"
             app:layout_constraintBottom_toTopOf="@+id/et_register_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -122,11 +110,11 @@
             style="@style/PrimaryFormText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/default_form_spacing"
+            android:layout_marginBottom="@dimen/medium_spacing"
             android:autofillHints="password"
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:text="@={password}"
+            android:text="@={registerVM.passwordInput}"
             app:layout_constraintBottom_toTopOf="@+id/ll_register_buttons"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -176,6 +164,18 @@
                 android:layout_weight="0.5" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_register_error"
+            style="@style/ErrorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/xx_small_spacing"
+            android:layout_marginBottom="@dimen/x_small_spacing"
+            app:layout_constraintBottom_toTopOf="@+id/ll_register_buttons"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_register_password" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

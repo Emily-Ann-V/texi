@@ -1,19 +1,16 @@
 package com.example.texi.ui
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.util.Patterns
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.texi.R
 import com.example.texi.databinding.ActivityRegisterBinding
 import com.example.texi.viewmodel.RegisterViewModel
-import java.time.LocalDate
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -21,7 +18,6 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var viewModel: RegisterViewModel
     private lateinit var binding: ActivityRegisterBinding
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
@@ -30,56 +26,26 @@ class RegisterActivity : AppCompatActivity() {
         // Setting ViewModel
         viewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
 
-        binding.fullName = ""
-        binding.emailAddress = ""
-        binding.studentNumber = ""
-        binding.graduationYear = ""
-        binding.password = ""
-        binding.executePendingBindings()
+        binding.registerVM = viewModel
+        binding.lifecycleOwner = this
 
         // Setting spinner options
-        setSpinnerOptions(binding.spRegisterUniversity, binding.spRegisterField, binding.spRegisterDegree)
+        setSpinnerOptions(binding.spRegisterUniversity,
+            binding.spRegisterField,
+            binding.spRegisterDegree
+        )
 
         // Adding user to list of students using functions
         binding.btnRegisterSubmit.setOnClickListener {
 
-            val fullNameInput = binding.fullName?.trim() ?: ""
-            val emailAddressInput = binding.emailAddress?.trim() ?: ""
-            val universityInput = binding.spRegisterUniversity.selectedItem.toString().trim()
-            val fieldInput = binding.spRegisterField.selectedItem.toString().trim()
-            val degreeInput = binding.spRegisterDegree.selectedItem.toString().trim()
-            val passwordInput = binding.password?.trim() ?: ""
-
-            val studentNumberInputString = binding.studentNumber?.trim() ?: ""
-            val studentNumberInput = studentNumberInputString.toIntOrNull()
-            val graduationYearInput = binding.graduationYear?.trim()?.toIntOrNull()
-
-            val fullNameLetterCount = fullNameInput.count { it.isLetter() }
-
-            val year = LocalDate.now().year
+            // Save spinner selections to ViewModel
+            viewModel.universityInput = binding.spRegisterUniversity.selectedItem.toString()
+            viewModel.fieldInput = binding.spRegisterField.selectedItem.toString()
+            viewModel.degreeInput = binding.spRegisterDegree.selectedItem.toString()
 
             // Validating registration input and adding student to list of students using functions
-            if (registerValidation(
-                    fullNameInput,
-                    fullNameLetterCount,
-                    emailAddressInput,
-                    studentNumberInput,
-                    studentNumberInputString,
-                    graduationYearInput,
-                    passwordInput,
-                    year
-                )
-            ) {
-                registerStudent(
-                    fullNameInput,
-                    emailAddressInput,
-                    studentNumberInput!!,
-                    universityInput,
-                    fieldInput,
-                    degreeInput,
-                    graduationYearInput!!,
-                    passwordInput
-                )
+            if (registerValidation()) {
+                registerStudent()
             }
         }
 
@@ -92,118 +58,36 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     // Validating registration input
-    fun registerValidation(
-        fullNameInput: String,
-        fullNameLetterCount: Int,
-        emailAddressInput: String,
-        studentNumberInput: Int?,
-        studentNumberInputString: String,
-        graduationYearInput: Int?,
-        passwordInput: String,
-        year: Int
-    ): Boolean {
+    fun registerValidation(): Boolean {
 
-        if (studentNumberInput == null) {
-
-            Toast.makeText(this, "Please enter student number.", Toast.LENGTH_SHORT).show()
-            return false
-        }
-
-        if (graduationYearInput == null) {
-
-            Toast.makeText(this, "Please enter graduation year.", Toast.LENGTH_SHORT).show()
-            return false
-        }
-
-        if (fullNameLetterCount < 5 ||
-            fullNameInput.any { it.isDigit() } ||
-            !fullNameInput.contains(" ")
-        ) {
+        if (viewModel.fullNameInput.isEmpty()
+            || viewModel.emailAddressInput.isEmpty()
+            || viewModel.studentNumberInput.isEmpty()
+            || viewModel.graduationYearInput.isEmpty()
+            || viewModel.passwordInput.isEmpty()) {
 
             Toast.makeText(
                 this,
-                "Full name (name + surname) must have 5+ letters and no numbers.",
-                Toast.LENGTH_LONG
-            ).show()
-
+                "Please complete all fields.",
+                Toast.LENGTH_SHORT).show()
+            binding.tvRegisterError.visibility = View.GONE
             return false
         }
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(emailAddressInput).matches()) {
-
-            Toast.makeText(
-                this,
-                "Please enter a valid email address.",
-                Toast.LENGTH_LONG
-            ).show()
-
+        if (!viewModel.validation()) {
+            binding.tvRegisterError.text = viewModel.errorMessage
+            binding.tvRegisterError.visibility = View.VISIBLE
             return false
         }
 
-        if (studentNumberInputString.length < 2) {
-
-            Toast.makeText(
-                this,
-                "Student number must have 2+ numbers",
-                Toast.LENGTH_LONG
-            ).show()
-
-            return false
-        }
-
-        if (graduationYearInput < (year - 1) || graduationYearInput > (year + 4)) {
-
-            Toast.makeText(
-                this,
-                "Graduation year must be within the last year or the next 4 years.",
-                Toast.LENGTH_LONG
-            ).show()
-
-            return false
-        }
-
-        if (
-            passwordInput.length < 8 ||
-            !passwordInput.any { it.isDigit() } ||
-            !passwordInput.any { !it.isLetterOrDigit() } ||
-            !passwordInput.any { it.isUpperCase() } ||
-            !passwordInput.any { it.isLowerCase() }
-        ) {
-
-            Toast.makeText(
-                this,
-                "Password must have 8+ uppercase, lowercase, number and special chars.",
-                Toast.LENGTH_LONG
-            ).show()
-
-            return false
-        }
-
+        binding.tvRegisterError.visibility = View.GONE
         return true
     }
 
     // Passing registration data to ViewModel to add to list of students
-    fun registerStudent(
-        fullNameInput: String,
-        emailAddressInput: String,
-        studentNumberInput: Int,
-        universityInput: String,
-        fieldInput: String,
-        degreeInput: String,
-        graduationYearInput: Int,
-        passwordInput: String
-    ) {
+    fun registerStudent() {
 
-        val registered = viewModel.register(
-            fullNameInput,
-            emailAddressInput,
-            studentNumberInput,
-            universityInput,
-            fieldInput,
-            degreeInput,
-            graduationYearInput,
-            passwordInput
-        )
+        val registered = viewModel.register()
 
         if (registered) {
 

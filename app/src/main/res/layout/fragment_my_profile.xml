@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
-            name="fullName"
-            type="String" />
-        <variable
-            name="emailAddress"
-            type="String" />
-        <variable
-            name="password"
-            type="String" />
+            name="profileVM"
+            type="com.example.texi.viewmodel.MyProfileViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,7 +33,7 @@
             android:autofillHints="name"
             android:hint="@string/full_name"
             android:inputType="textPersonName"
-            android:text="@={fullName}"
+            android:text="@={profileVM.fullNameInput}"
             app:layout_constraintBottom_toTopOf="@+id/et_my_profile_email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +47,7 @@
             android:autofillHints="emailAddress"
             android:hint="@string/email_address"
             android:inputType="textEmailAddress"
-            android:text="@={emailAddress}"
+            android:text="@={profileVM.emailAddressInput}"
             app:layout_constraintBottom_toTopOf="@+id/et_my_profile_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +62,7 @@
             android:autofillHints="password"
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:text="@={password}"
+            android:text="@={profileVM.passwordInput}"
             app:layout_constraintBottom_toTopOf="@+id/ll_my_profile_buttons"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -117,6 +112,18 @@
                 android:layout_weight="0.5" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_my_profile_error"
+            style="@style/ErrorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/xx_small_spacing"
+            android:layout_marginBottom="@dimen/x_small_spacing"
+            app:layout_constraintBottom_toTopOf="@+id/ll_my_profile_buttons"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_my_profile_password" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

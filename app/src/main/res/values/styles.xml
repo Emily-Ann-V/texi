@@ -145,15 +145,22 @@
         <item name="android:textSize">@dimen/primary_body_text_size</item>
         <item name="android:fontFamily">@font/open_sans_regular</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:padding">@dimen/small_spacing</item>
+        <item name="android:padding">@dimen/x_small_spacing</item>
         <item name="android:minHeight">@dimen/default_element_height</item>
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/bg_rounded_message</item>
         <item name="android:clipToOutline" tools:ignore="NewApi">true</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">@dimen/medium_spacing</item>
-        <item name="android:layout_marginEnd">@dimen/medium_spacing</item>
+        <item name="android:layout_marginStart">@dimen/small_spacing</item>
+        <item name="android:layout_marginEnd">@dimen/small_spacing</item>
+    </style>
+
+    <style name="ErrorText">
+        <item name="android:textSize">@dimen/primary_body_text_size</item>
+        <item name="android:fontFamily">@font/advent_pro_medium</item>
+        <item name="android:textColor">@color/error</item>
+        <item name="android:visibility">gone</item>
     </style>
 
     <!-- Buttons -->
@@ -263,14 +270,14 @@
         <item name="android:background">@drawable/bg_register_spinner</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">@dimen/extra_small_spacing</item>
+        <item name="android:layout_marginStart">@dimen/xx_small_spacing</item>
     </style>
 
     <style name="FilterSpinnerText">
         <item name="android:textSize">@dimen/primary_body_text_size</item>
         <item name="android:fontFamily">@font/open_sans_regular</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:paddingStart">@dimen/small_spacing</item>
+        <item name="android:paddingStart">@dimen/x_small_spacing</item>
     </style>
 
     <style name="FilterSpinnerBackground">
@@ -279,8 +286,8 @@
         <item name="android:clipToOutline" tools:ignore="NewApi">true</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">@dimen/small_spacing</item>
-        <item name="android:layout_marginEnd">@dimen/small_spacing</item>
+        <item name="android:layout_marginStart">@dimen/x_small_spacing</item>
+        <item name="android:layout_marginEnd">@dimen/x_small_spacing</item>
     </style>
 
     <!-- Screens -->

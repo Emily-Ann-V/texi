@@ -45,7 +45,7 @@
             style="@style/SecondaryHeadingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small_spacing"
+            android:layout_marginStart="@dimen/x_small_spacing"
             android:text="@string/home" />
     </LinearLayout>
 
@@ -73,7 +73,7 @@
             style="@style/SecondaryHeadingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small_spacing"
+            android:layout_marginStart="@dimen/x_small_spacing"
             android:text="@string/upload_textbook" />
     </LinearLayout>
 
@@ -101,7 +101,7 @@
             style="@style/SecondaryHeadingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small_spacing"
+            android:layout_marginStart="@dimen/x_small_spacing"
             android:text="@string/my_profile" />
     </LinearLayout>
 
@@ -129,7 +129,7 @@
             style="@style/SecondaryHeadingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small_spacing"
+            android:layout_marginStart="@dimen/x_small_spacing"
             android:gravity="center_vertical"
             android:text="@string/all_textbooks" />
     </LinearLayout>

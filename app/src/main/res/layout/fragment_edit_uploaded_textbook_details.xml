@@ -4,14 +4,8 @@
 
     <data>
         <variable
-            name="textbook"
-            type="com.example.texi.model.Textbook" />
-        <variable
-            name="isbnString"
-            type="String" />
-        <variable
-            name="priceString"
-            type="String" />
+            name="editVM"
+            type="com.example.texi.viewmodel.EditUploadedTextbookDetailsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,8 +50,8 @@
             android:id="@+id/ll_edit_uploaded_textbook_details_filter_categories"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/small_spacing"
-            android:layout_marginBottom="@dimen/small_spacing"
+            android:layout_marginTop="@dimen/x_small_spacing"
+            android:layout_marginBottom="@dimen/x_small_spacing"
             android:gravity="clip_horizontal|center_vertical"
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/et_edit_uploaded_textbook_details_title"
@@ -94,11 +88,12 @@
         <EditText
             android:id="@+id/et_edit_uploaded_textbook_details_title"
             style="@style/TextbookDetailsPrimaryHeadingText"
+            android:layout_marginTop="@dimen/default_spacing"
             android:gravity="start"
             android:hint="@string/title"
             android:importantForAutofill="no"
             android:inputType="text"
-            android:text="@={textbook.title}"
+            android:text="@={editVM.titleInput}"
             app:layout_constraintBottom_toTopOf="@+id/et_edit_uploaded_textbook_details_author"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +106,7 @@
             android:hint="@string/author"
             android:importantForAutofill="no"
             android:inputType="text"
-            android:text="@={textbook.author}"
+            android:text="@={editVM.authorInput}"
             app:layout_constraintBottom_toTopOf="@+id/et_edit_uploaded_textbook_details_isbn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -124,7 +119,7 @@
             android:hint="@string/isbn"
             android:importantForAutofill="no"
             android:inputType="number"
-            android:text="@={isbnString}"
+            android:text="@={editVM.isbnStringInput}"
             app:layout_constraintBottom_toTopOf="@+id/et_edit_uploaded_textbook_details_description"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -137,7 +132,7 @@
             android:hint="@string/description"
             android:importantForAutofill="no"
             android:inputType="text"
-            android:text="@={textbook.description}"
+            android:text="@={editVM.descriptionInput}"
             app:layout_constraintBottom_toTopOf="@+id/et_edit_uploaded_textbook_details_price"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -146,12 +141,12 @@
         <EditText
             android:id="@+id/et_edit_uploaded_textbook_details_price"
             style="@style/TextbookDetailsSmallHeadingText"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="@dimen/default_spacing"
             android:gravity="start"
             android:hint="@string/price"
             android:importantForAutofill="no"
             android:inputType="numberDecimal"
-            android:text="@={priceString}"
+            android:text="@={editVM.priceStringInput}"
             app:layout_constraintBottom_toTopOf="@+id/ll_edit_uploaded_textbook_details_buttons"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -201,5 +196,17 @@
                 android:layout_weight="0.5" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_edit_textbook_error"
+            style="@style/ErrorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/xx_small_spacing"
+            android:layout_marginBottom="@dimen/x_small_spacing"
+            app:layout_constraintBottom_toTopOf="@+id/ll_edit_uploaded_textbook_details_buttons"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_edit_uploaded_textbook_details_price" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

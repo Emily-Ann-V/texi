@@ -33,10 +33,10 @@
 
     <!-- General spacing -->
     <dimen name="default_spacing">20dp</dimen>
-    <dimen name="medium_spacing">15dp</dimen>
-    <dimen name="small_spacing">10dp</dimen>
-    <dimen name="extra_small_spacing">5dp</dimen>
-    <dimen name="default_form_spacing">15dp</dimen>
+    <dimen name="medium_spacing">25dp</dimen>
+    <dimen name="small_spacing">15dp</dimen>
+    <dimen name="x_small_spacing">10dp</dimen>
+    <dimen name="xx_small_spacing">5dp</dimen>
 
     <!-- Specified spacing -->
     <dimen name="search_bar_spacing">60dp</dimen>

@@ -9,5 +9,5 @@
     <item
         android:drawable="@drawable/ic_spinner_open_options"
         android:gravity="end|center_vertical"
-        android:right="@dimen/small_spacing" />
+        android:right="@dimen/x_small_spacing" />
 </layer-list>

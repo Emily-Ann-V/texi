@@ -40,8 +40,8 @@
             android:id="@+id/ll_textbook_details_filter_categories"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/small_spacing"
-            android:layout_marginBottom="@dimen/small_spacing"
+            android:layout_marginTop="@dimen/x_small_spacing"
+            android:layout_marginBottom="@dimen/x_small_spacing"
             android:gravity="clip_horizontal|center_vertical"
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/tv_textbook_details_title"
@@ -77,7 +77,7 @@
         <TextView
             android:id="@+id/tv_textbook_details_title"
             style="@style/TextbookDetailsPrimaryHeadingText"
-            android:layout_marginTop="@dimen/default_form_spacing"
+            android:layout_marginTop="@dimen/small_spacing"
             android:text="@{textbook.title}"
             app:layout_constraintBottom_toTopOf="@+id/tv_textbook_details_author"
             app:layout_constraintEnd_toEndOf="parent"
@@ -87,7 +87,7 @@
         <TextView
             android:id="@+id/tv_textbook_details_author"
             style="@style/TextbookDetailsSecondaryHeadingText"
-            android:layout_marginTop="@dimen/default_form_spacing"
+            android:layout_marginTop="@dimen/small_spacing"
             android:text="@{textbook.author}"
             app:layout_constraintBottom_toTopOf="@+id/tv_textbook_details_isbn"
             app:layout_constraintEnd_toEndOf="parent"
@@ -97,7 +97,7 @@
         <TextView
             android:id="@+id/tv_textbook_details_isbn"
             style="@style/TextbookDetailsSmallHeadingText"
-            android:layout_marginTop="@dimen/default_form_spacing"
+            android:layout_marginTop="@dimen/small_spacing"
             android:text='@{String.valueOf(textbook.isbn)}'
             app:layout_constraintBottom_toTopOf="@+id/tv_textbook_details_description"
             app:layout_constraintEnd_toEndOf="parent"
@@ -107,7 +107,7 @@
         <TextView
             android:id="@+id/tv_textbook_details_description"
             style="@style/TextbookDetailsPrimaryBodyText"
-            android:layout_marginTop="@dimen/default_form_spacing"
+            android:layout_marginTop="@dimen/small_spacing"
             android:text="@{textbook.description}"
             app:layout_constraintBottom_toTopOf="@+id/tv_textbook_details_price"
             app:layout_constraintEnd_toEndOf="parent"
@@ -117,8 +117,8 @@
         <TextView
             android:id="@+id/tv_textbook_details_price"
             style="@style/TextbookDetailsSmallHeadingText"
-            android:layout_marginTop="@dimen/default_form_spacing"
-            android:layout_marginBottom="@dimen/small_spacing"
+            android:layout_marginTop="@dimen/small_spacing"
+            android:layout_marginBottom="@dimen/x_small_spacing"
             android:text='@{String.format("R%.2f", textbook.price)}'
             app:layout_constraintBottom_toTopOf="@+id/btn_inquire_page"
             app:layout_constraintEnd_toEndOf="parent"

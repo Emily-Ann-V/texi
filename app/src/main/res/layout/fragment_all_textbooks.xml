@@ -29,7 +29,7 @@
         android:id="@+id/ib_all_textbooks_search_icon"
         style="@style/DefaultIcon"
         android:layout_width="wrap_content"
-        android:layout_marginEnd="@dimen/small_spacing"
+        android:layout_marginEnd="@dimen/x_small_spacing"
         android:contentDescription="@string/search_textbooks"
         android:src="@drawable/ic_all_textbooks_search"
         app:layout_constraintBottom_toBottomOf="@+id/et_all_textbooks_search_bar"

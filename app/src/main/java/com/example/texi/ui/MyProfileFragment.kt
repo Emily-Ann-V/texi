@@ -1,7 +1,6 @@
 package com.example.texi.ui
 
 import android.os.Bundle
-import android.util.Patterns
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -20,37 +19,30 @@ class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Initialize binding
+        binding = FragmentMyProfileBinding.bind(view)
+
         // Setting ViewModel
         viewModel = ViewModelProvider(this)[MyProfileViewModel::class.java]
 
-        binding = FragmentMyProfileBinding.bind(view)
-        binding.fullName = LoggedInStudent.fullName
-        binding.emailAddress = LoggedInStudent.emailAddress
-        binding.password = LoggedInStudent.password
+        binding.profileVM = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+
+        // Receiving student data from model
+        viewModel.fullNameInput = LoggedInStudent.fullName
+        viewModel.emailAddressInput = LoggedInStudent.emailAddress
+        viewModel.passwordInput = LoggedInStudent.password
+
+        // Execute pending bindings to display the data
         binding.executePendingBindings()
 
         // Saving updated user details using functions
         binding.btnMyProfileSave.setOnClickListener {
 
-            val fullNameInput = binding.fullName?.trim() ?: ""
-            val emailAddressInput = binding.emailAddress?.trim() ?: ""
-            val passwordInput = binding.password?.trim() ?: ""
-
-            val fullNameLetterCount = fullNameInput.count { it.isLetter() }
-
             // Validating profile input and updating details using functions
-            if (updateProfileValidation(
-                    fullNameInput,
-                    fullNameLetterCount,
-                    emailAddressInput,
-                    passwordInput
-                )
+            if (updateProfileValidation()
             ) {
-                updateProfile(
-                    fullNameInput,
-                    emailAddressInput,
-                    passwordInput
-                )
+                updateProfile()
             }
         }
 
@@ -65,76 +57,38 @@ class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
     }
 
     // Validating profile input
-    fun updateProfileValidation(
-        fullNameInput: String,
-        fullNameLetterCount: Int,
-        emailAddressInput: String,
-        passwordInput: String,
-    ): Boolean {
-
-        if (fullNameLetterCount < 5 ||
-            fullNameInput.any { it.isDigit() } ||
-            !fullNameInput.contains(" ")
-        ) {
+    fun updateProfileValidation(): Boolean {
+        if (viewModel.fullNameInput.isEmpty()
+            || viewModel.emailAddressInput.isEmpty()
+            || viewModel.passwordInput.isEmpty()) {
 
             Toast.makeText(
-                context,
-                "Full name (name + surname) must have 5+ letters and no numbers.",
-                Toast.LENGTH_LONG
-            ).show()
-
+                requireContext(),
+                "Please complete all fields.",
+                Toast.LENGTH_SHORT).show()
+            binding.tvMyProfileError.visibility = View.GONE
             return false
         }
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(emailAddressInput).matches()) {
-
-            Toast.makeText(
-                context,
-                "Please enter a valid email address.",
-                Toast.LENGTH_LONG
-            ).show()
-
+        if (!viewModel.validation()) {
+            binding.tvMyProfileError.text = viewModel.errorMessage
+            binding.tvMyProfileError.visibility = View.VISIBLE
             return false
         }
 
-        if (
-            passwordInput.length < 8 ||
-            !passwordInput.any { it.isDigit() } ||
-            !passwordInput.any { !it.isLetterOrDigit() } ||
-            !passwordInput.any { it.isUpperCase() } ||
-            !passwordInput.any { it.isLowerCase() }
-        ) {
-
-            Toast.makeText(
-                context,
-                "Password must be 8+ characters and include uppercase, " +
-                        "lowercase, number and special character.",
-                Toast.LENGTH_LONG
-            ).show()
-
-            return false
-        }
-
+        binding.tvMyProfileError.visibility = View.GONE
         return true
     }
 
     // Updating profile details
-    fun updateProfile(
-        fullNameInput: String,
-        emailAddressInput: String,
-        passwordInput: String
-    ) {
+    fun updateProfile() {
 
-        val updated = viewModel.update(
-            fullNameInput,
-            emailAddressInput,
-            passwordInput
-        )
+        val updated = viewModel.update()
 
         if (updated) {
 
             Toast.makeText(
-                context,
+                requireContext(),
                 "Changes saved.",
                 Toast.LENGTH_LONG
             ).show()
@@ -142,7 +96,7 @@ class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
         } else {
 
             Toast.makeText(
-                context,
+                requireContext(),
                 "Email already in use. Please login.",
                 Toast.LENGTH_LONG
             ).show()

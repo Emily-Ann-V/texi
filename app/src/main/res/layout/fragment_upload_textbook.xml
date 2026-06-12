@@ -1,120 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cl_upload_textbook"
-    style="@style/FragmentScreen">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- Form -->
-    <TextView
-        android:id="@+id/tv_upload_textbook_heading"
-        style="@style/PrimaryHeadingText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/upload_a_textbook"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-    <!-- Form upload image -->
-    <ImageView
-        android:id="@+id/iv_upload_textbook_image_preview"
-        style="@style/RoundedUploadedImage"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="@dimen/default_form_spacing"
-        android:contentDescription="@string/textbook_cover_image_preview"
-        app:layout_constraintBottom_toTopOf="@+id/et_upload_textbook_title"
-        app:layout_constraintEnd_toStartOf="@+id/ib_upload_textbook_upload_image_icon"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_upload_textbook_heading"
-        app:srcCompat="@drawable/img_upload_textbook_image_preview_placeholder" />
+        <variable
+            name="uploadVM"
+            type="com.example.texi.viewmodel.UploadTextbookViewModel" />
+    </data>
 
-    <ImageButton
-        android:id="@+id/ib_upload_textbook_upload_image_icon"
-        style="@style/DefaultIcon"
-        android:contentDescription="@string/upload_a_textbook"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_upload_textbook_image_preview"
-        app:layout_constraintStart_toEndOf="@+id/iv_upload_textbook_image_preview"
-        app:layout_constraintTop_toTopOf="@+id/iv_upload_textbook_image_preview"
-        app:srcCompat="@drawable/ic_upload_textbook_upload_image" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_upload_textbook"
+        style="@style/FragmentScreen">
 
-    <!-- Form text -->
-    <EditText
-        android:id="@+id/et_upload_textbook_title"
-        style="@style/PrimaryFormText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/title"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/et_upload_textbook_author"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_upload_textbook_image_preview" />
+        <!-- Form -->
+        <TextView
+            android:id="@+id/tv_upload_textbook_heading"
+            style="@style/PrimaryHeadingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/upload_a_textbook"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/et_upload_textbook_author"
-        style="@style/PrimaryFormText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/author"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/et_upload_textbook_isbn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_upload_textbook_title" />
+        <!-- Form upload image -->
+        <ImageView
+            android:id="@+id/iv_upload_textbook_image_preview"
+            style="@style/RoundedUploadedImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/small_spacing"
+            android:contentDescription="@string/textbook_cover_image_preview"
+            app:layout_constraintBottom_toTopOf="@+id/et_upload_textbook_title"
+            app:layout_constraintEnd_toStartOf="@+id/ib_upload_textbook_upload_image_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_upload_textbook_heading"
+            app:srcCompat="@drawable/img_upload_textbook_image_preview_placeholder" />
 
-    <EditText
-        android:id="@+id/et_upload_textbook_isbn"
-        style="@style/PrimaryFormText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/isbn"
-        android:importantForAutofill="no"
-        android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/et_upload_textbook_description"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_upload_textbook_author" />
+        <ImageButton
+            android:id="@+id/ib_upload_textbook_upload_image_icon"
+            style="@style/DefaultIcon"
+            android:contentDescription="@string/upload_a_textbook"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_upload_textbook_image_preview"
+            app:layout_constraintStart_toEndOf="@+id/iv_upload_textbook_image_preview"
+            app:layout_constraintTop_toTopOf="@+id/iv_upload_textbook_image_preview"
+            app:srcCompat="@drawable/ic_upload_textbook_upload_image" />
 
-    <EditText
-        android:id="@+id/et_upload_textbook_description"
-        style="@style/PrimaryFormText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/description"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/et_upload_textbook_price"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_upload_textbook_isbn" />
+        <!-- Form text -->
+        <EditText
+            android:id="@+id/et_upload_textbook_title"
+            style="@style/PrimaryFormText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/title"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:text="@={uploadVM.titleInput}"
+            app:layout_constraintBottom_toTopOf="@+id/et_upload_textbook_author"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_upload_textbook_image_preview" />
 
-    <EditText
-        android:id="@+id/et_upload_textbook_price"
-        style="@style/PrimaryFormText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/default_form_spacing"
-        android:hint="@string/price"
-        android:importantForAutofill="no"
-        android:inputType="numberDecimal"
-        app:layout_constraintBottom_toTopOf="@+id/btn_upload_textbook_submit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_upload_textbook_description" />
+        <EditText
+            android:id="@+id/et_upload_textbook_author"
+            style="@style/PrimaryFormText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/author"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:text="@={uploadVM.authorInput}"
+            app:layout_constraintBottom_toTopOf="@+id/et_upload_textbook_isbn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_upload_textbook_title" />
 
-    <!-- Form button -->
-    <Button
-        android:id="@+id/btn_upload_textbook_submit"
-        style="@style/DefaultPrimaryButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/upload"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_upload_textbook_price" />
+        <EditText
+            android:id="@+id/et_upload_textbook_isbn"
+            style="@style/PrimaryFormText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/isbn"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:text="@={uploadVM.isbnStringInput}"
+            app:layout_constraintBottom_toTopOf="@+id/et_upload_textbook_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_upload_textbook_author" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/et_upload_textbook_description"
+            style="@style/PrimaryFormText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/description"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:text="@={uploadVM.descriptionInput}"
+            app:layout_constraintBottom_toTopOf="@+id/et_upload_textbook_price"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_upload_textbook_isbn" />
+
+        <EditText
+            android:id="@+id/et_upload_textbook_price"
+            style="@style/PrimaryFormText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/small_spacing"
+            android:hint="@string/price"
+            android:importantForAutofill="no"
+            android:inputType="numberDecimal"
+            android:text="@={uploadVM.priceStringInput}"
+            app:layout_constraintBottom_toTopOf="@+id/btn_upload_textbook_submit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_upload_textbook_description" />
+
+        <!-- Form button -->
+        <Button
+            android:id="@+id/btn_upload_textbook_submit"
+            style="@style/DefaultPrimaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/upload"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_upload_textbook_price" />
+
+        <TextView
+            android:id="@+id/tv_upload_textbook_error"
+            style="@style/ErrorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/xx_small_spacing"
+            android:layout_marginBottom="@dimen/x_small_spacing"
+            app:layout_constraintBottom_toTopOf="@+id/btn_upload_textbook_submit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_upload_textbook_price" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

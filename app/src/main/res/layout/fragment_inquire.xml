@@ -97,7 +97,7 @@
                         style="@style/DarkLargePrimaryBodyText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/medium_spacing"
+                        android:layout_marginStart="@dimen/small_spacing"
                         android:backgroundTint="@color/transparent"
                         android:hint="@string/type"
                         android:importantForAutofill="no"

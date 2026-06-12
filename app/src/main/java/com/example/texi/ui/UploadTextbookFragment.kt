@@ -4,15 +4,13 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.texi.R
+import com.example.texi.databinding.FragmentUploadTextbookBinding
 import com.example.texi.model.LoggedInStudent
 import com.example.texi.viewmodel.AllTextbooksViewModel
 import com.example.texi.viewmodel.UploadTextbookViewModel
@@ -21,6 +19,7 @@ class UploadTextbookFragment : Fragment(R.layout.fragment_upload_textbook) {
 
     // Declaring ViewModel
     private lateinit var viewModel: UploadTextbookViewModel
+    private lateinit var binding: FragmentUploadTextbookBinding
     private lateinit var allTextbooksViewModel: AllTextbooksViewModel
 
     // Setting up document picker for textbook image
@@ -40,166 +39,93 @@ class UploadTextbookFragment : Fragment(R.layout.fragment_upload_textbook) {
 
                 uploadedImageUri = imageUri
                 uploadedImage.setImageURI(imageUri)
+
+                viewModel.uploadedImageUriInput = imageUri
             }
         }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Binding UI elements
-        val ibUploadImage = view.findViewById<ImageButton>(
-            R.id.ib_upload_textbook_upload_image_icon
-        )
-        val btnUpload = view.findViewById<Button>(R.id.btn_upload_textbook_submit)
-        val etTitle = view.findViewById<EditText>(R.id.et_upload_textbook_title)
-        val etAuthor = view.findViewById<EditText>(R.id.et_upload_textbook_author)
-        val etDescription = view.findViewById<EditText>(R.id.et_upload_textbook_description)
-        val etISBN = view.findViewById<EditText>(R.id.et_upload_textbook_isbn)
-        val etPrice = view.findViewById<EditText>(R.id.et_upload_textbook_price)
+        // Initialize binding
+        binding = FragmentUploadTextbookBinding.bind(view)
 
         // Setting ViewModels
         viewModel = ViewModelProvider(
-            requireActivity())[UploadTextbookViewModel::class.java
+            requireActivity()
+        )[UploadTextbookViewModel::class.java
         ]
-        allTextbooksViewModel = ViewModelProvider(requireActivity())[AllTextbooksViewModel::class.java]
+        allTextbooksViewModel =
+            ViewModelProvider(requireActivity())[AllTextbooksViewModel::class.java]
+
+        binding.uploadVM = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
 
         // Binding image preview
-        uploadedImage = view.findViewById(R.id.iv_upload_textbook_image_preview)
+        uploadedImage = binding.ivUploadTextbookImagePreview
 
         // Launching image picker (images)
-        ibUploadImage.setOnClickListener {
+        binding.ibUploadTextbookUploadImageIcon.setOnClickListener {
             uploadImage.launch(arrayOf("image/*"))
         }
 
         // Adding textbook to list of textbooks using function
-        btnUpload.setOnClickListener {
-
-            val uploadedImageResIdInput = null
-            val uploadedImageUriInput = uploadedImageUri
-
-            val titleInput = etTitle.text.toString().trim()
-            val authorInput = etAuthor.text.toString().trim()
-            val descriptionInput = etDescription.text.toString().trim()
-
-            val titleLetterCount = titleInput.count { it.isLetter() }
-            val authorLetterCount = authorInput.count { it.isLetter() }
-            val descriptionLetterCount = descriptionInput.count { it.isLetter() }
-
-            val isbnInputString = etISBN.text.toString()
-            val isbnInput = isbnInputString.toLongOrNull()
-            val priceInput = etPrice.text.toString().toFloatOrNull()
+        binding.btnUploadTextbookSubmit.setOnClickListener {
 
             // Getting logged in student data
-            val universityInput = LoggedInStudent.university
-            val fieldInput = LoggedInStudent.field
-            val degreeInput = LoggedInStudent.degree
-            val uploadedByInput = LoggedInStudent.emailAddress
+            viewModel.universityInput = LoggedInStudent.university
+            viewModel.fieldInput = LoggedInStudent.field
+            viewModel.degreeInput = LoggedInStudent.degree
+            viewModel.uploadedByInput = LoggedInStudent.emailAddress
 
             // Validating upload input and adding textbook to list of textbooks using functions
-            if (uploadValidation(
-                    uploadedImageUriInput,
-                    titleLetterCount,
-                    authorLetterCount,
-                    isbnInputString,
-                    descriptionLetterCount,
-                    priceInput
-                )
+            if (uploadValidation()
             ) {
-                uploadTextbook(
-                    uploadedImageResIdInput,
-                    uploadedImageUriInput,
-                    titleInput,
-                    authorInput,
-                    isbnInput!!,
-                    descriptionInput,
-                    priceInput!!,
-                    universityInput,
-                    fieldInput,
-                    degreeInput,
-                    uploadedByInput
-                )
+                uploadTextbook()
             }
         }
     }
 
     // Validating upload input
-    fun uploadValidation(
-        uploadedImageUriInput: Uri? = null,
-        titleLetterCount: Int,
-        authorLetterCount: Int,
-        isbnInputString: String,
-        descriptionLetterCount: Int,
-        priceInput: Float?,
-    ): Boolean {
+    fun uploadValidation(): Boolean {
 
-        if (uploadedImageUriInput == null) {
-            Toast.makeText(context, "Please upload an image.", Toast.LENGTH_SHORT).show()
+        if(viewModel.uploadedImageUriInput == null
+            || viewModel.titleInput.isEmpty()
+            || viewModel.authorInput.isEmpty()
+            || viewModel.isbnStringInput.isEmpty()
+            || viewModel.descriptionInput.isEmpty()
+            || viewModel.priceStringInput.isEmpty()){
+
+            Toast.makeText(
+                requireContext(),
+                "Please complete all fields.",
+                Toast.LENGTH_SHORT).show()
+            binding.tvUploadTextbookError.visibility = View.GONE
+            return false
+            }
+
+        if(!viewModel.validation()){
+            binding.tvUploadTextbookError.text = viewModel.errorMessage
+            binding.tvUploadTextbookError.visibility = View.VISIBLE
             return false
         }
 
-        if (titleLetterCount < 5) {
-            Toast.makeText(context, "Title must have 5+ letters.", Toast.LENGTH_SHORT).show()
-            return false
-        }
-
-        if (authorLetterCount < 5) {
-            Toast.makeText(context, "Author must have 5+ letters.", Toast.LENGTH_SHORT).show()
-            return false
-        }
-
-        if (isbnInputString.length != 13) {
-            Toast.makeText(context, "ISBN must be 13 numbers.", Toast.LENGTH_SHORT).show()
-            return false
-        }
-
-        if (descriptionLetterCount < 10) {
-            Toast.makeText(context, "Description must have 10+ letters.", Toast.LENGTH_SHORT).show()
-            return false
-        }
-
-        if (priceInput == null || (priceInput < 20f)) {
-            Toast.makeText(context, "Price must be R20+.", Toast.LENGTH_SHORT).show()
-            return false
-        }
-
+        binding.tvUploadTextbookError.visibility = View.GONE
         return true
     }
 
     // Passing data to ViewModel to add to list of textbooks
-    fun uploadTextbook(
-        uploadedImageResIdInput: Int? = null,
-        uploadedImageUriInput: Uri? = null,
-        titleInput: String,
-        authorInput: String,
-        isbnInput: Long,
-        descriptionInput: String,
-        priceInput: Float,
-        universityInput: String,
-        fieldInput: String,
-        degreeInput: String,
-        uploadedByInput: String
-    ) {
+    fun uploadTextbook() {
 
-        val uploaded = viewModel.upload(
-            uploadedImageResIdInput,
-            uploadedImageUriInput,
-            titleInput,
-            authorInput,
-            isbnInput,
-            descriptionInput,
-            priceInput,
-            universityInput,
-            fieldInput,
-            degreeInput,
-            uploadedByInput
-        )
+        val uploaded = viewModel.upload()
 
         if (uploaded) {
-            Toast.makeText(context, "Textbook uploaded.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Textbook uploaded.", Toast.LENGTH_SHORT).show()
             allTextbooksViewModel.refresh()
             parentFragmentManager.popBackStack()
         } else {
-            Toast.makeText(context, "Failed to upload textbook.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Failed to upload textbook.", Toast.LENGTH_SHORT)
+                .show()
         }
     }
 }
